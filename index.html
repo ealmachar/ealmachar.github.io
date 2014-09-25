@@ -15,45 +15,36 @@
 
 
 <div id="bodyContainer">
-  <div class="column">
 
+  <div class="column">
 	  <div class="box">
 	    <div align="center">
 	      <p>Edson Almachar</p>
 	      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><a style="font-size: 80%;color:white;">About Me</a></button>
 		</div>
 	  </div>
-
+	  <div class="box"><!--<p id="moveMe" align="center" style="position:relative;font-size: 80%;top:30px;">move me</p>--></div>
 	  <div class="box"></div>
-	  
-	  <div class="box"></div>
-
   </div>
+  
   <div class="column">
-
 	  <div class="box"></div>
-
 	  <div class="box">
 	    <a href="http://www.linkedin.com/pub/edson-almachar/8b/507/687" target="_blank">
 	      <img src="linkedin.png" alt="linkedin">
 		</a>
 	  </div>
-	  
 	  <div class="box"></div>
-
   </div>
+  
   <div class="column">
-
 	  <div class="box"></div>
-
 	  <div class="box"></div>
-	  
 	  <div class="box">
 	    <a href="https://github.com/ealmachar" target="_blank">
 	      <img src="github.png" alt="github">
 		</a>
       </div>
-
   </div>
 </div>
 
@@ -74,6 +65,8 @@
 		<p>My main experiences as a programmer are still limited to a junior level. However, my experiences in programming have peered into the fields of Image Processing and Web Development.</p>
 		
 		<p>I've mainly used C++ and Javascript in my projects throughout school with some experience with other languages like Python and other web technologies like JQuery, AngularJS, D3 and Twitter Bootstrap.</p>
+		<hr></hr>
+		<p>e-mail: eoa775@live.com</p>
       </div>
     </div>
   </div>
@@ -85,7 +78,10 @@
 
 $(".column").sortable({
   connectWith: ".column"
-  //handle: ".box-handle"
 });
+
+$("#moveMe").hover(function(){
+  $(this).remove();
+})
 
 </script>
