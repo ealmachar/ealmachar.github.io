@@ -2,18 +2,66 @@ body {
   background-color: #F5F8FA;
 }
 
-#bodyContainer {
-  display: flex;
+.bodyContainer {
   position: relative;
   
-  width: 360px;
+  width: 80%;
   top: 50px;
   
   margin-top: 200px;
-  margin: auto;
+  margin: 50px auto;
 
   background-color: #EEEEEE;
   border-radius: 5px;
+}
+
+#header {
+  padding: 10px;
+}
+
+#portrait {
+  float: left;
+  margin-right: 10px;
+}
+
+#links {
+  display: block;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+#resume {
+  display: block;
+  padding: 30px;
+}
+
+.date {
+  float: right;
+  margin-right: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.subcomponent {
+  display: block;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.title {
+  margin-top: 40px;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 40px;
+}
+
+.title-span {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .column {
