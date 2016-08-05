@@ -1,8 +1,11 @@
 app.controller('mainBodyController', ['$scope', function($scope){
-	$scope.templates = [
-		{ name: 'resume', url: 'src/html/resume.html'},
-		{ name: 'blank', url: 'src/html/blank.html'}
-	]
 	
-	$scope.template = $scope.templates[0];
+	$scope.tab = 'resume';
+	
+	$scope.templates = {
+		resume: 'src/html/resume.html',
+		blank: 'src/html/blank.html'
+	}
+	
+	$scope.template = $scope.templates[$scope.tab];
 }]);

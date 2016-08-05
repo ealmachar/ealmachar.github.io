@@ -55,13 +55,17 @@
 </div>
 
 <div id="main" class="bodyContainer" ng-controller="mainBodyController">
-	<select ng-model="template" ng-options="t.name for t in templates">
-		<option value="">(blank)</option>
-	</select>
-	url of the template: <code>{{template.url}}</code>
+
+
+	<ul class="nav nav-tabs">
+	  <li role="presentation" ng-class="tab == 'home' ? 'active' : ''" ng-click="tab = 'home'"><a href="#">Home</a></li>
+	  <li role="presentation" ng-class="tab == 'blank' ? 'active' : ''" ng-click="tab = 'blank'"><a href="#">Profile</a></li>
+	</ul>
+
+
 	</hr>
 	<div>
-		<div ng-include="template.url"></div>
+		<div ng-include="template"></div>
 	</div>
 
 
