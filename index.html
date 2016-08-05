@@ -7,12 +7,16 @@
   
   <script src="src/js/bootstrap.min.js"></script>
   
+  <script src="src/js/angular.min.js"></script>
+  <script src="src/js/app/app.js"></script>
+  <script src="src/js/app/controllers.js"></script>
+  
   <link rel="stylesheet" href="src/css/styles.css">
   <link rel="stylesheet" href="src/css/jquery-ui.min.css">
   <link rel="stylesheet" href="src/css/bootstrap.min.css">
-</head>
-<body id="body">
 
+</head>
+<body id="body" ng-app="angularApp">
 <div id="header" class="bodyContainer">
 	<div id="portrait">
 		<img src="Edson.jpg" alt="linkedin">
@@ -50,134 +54,16 @@
 	</div>
 </div>
 
-<div id="resume" class="bodyContainer">
+<div id="main" class="bodyContainer" ng-controller="mainBodyController">
+	<select ng-model="template" ng-options="t.name for t in templates">
+		<option value="">(blank)</option>
+	</select>
+	url of the template: <code>{{template.url}}</code>
+	</hr>
+	<div>
+		<div ng-include="template.url"></div>
+	</div>
 
-<div class="resume-component">
-	<center>
-		<h2>Edson Almachar</h2>
-		<div class="subcomponent">
-			<span class="title-span">Phone: 775-815-3720</span>
-			<span class="title-span">E-mail: eoa775 "at" live.com</span>
-			<span class="title-span">Reno, NV</span>
-		</div>
-	</center>
-	<h2 class="title">Education</h2>
-	<div class="subcomponent">
-		<ul>
-			<li>University of Nevada, Reno</li>
-			<li>Bachelor or Science, Computer Science<div class="date">May 2014</div></li>
-			<li>Minor in Mathematics</li>
-		</ul>
-	</div>
-	<h2 class="title">Example Projects</h2>
-	<div class="subcomponent">
-		<ul>
-			<li class="subtitle">Image Processing Series
-				<p class="subcomponent">
-				Programmed and implemented multiple image processing programs utilizing concepts learned in Data Structures, Image Processing, and Pattern Recognition which include histogram processing, convolution, bayesian classifiers, and fourier/wavelet transformations in C++.
-				</p>
-			</li>
-			<li class="subtitle">"Robot Hertz"
-				<p class="subcomponent">
-				Programmed a 3D-world video game project to creatively showcase concepts learned in classes Simulation Physics and Game Development Pipeline in Python using the Ogre3D engine
-				</p>
-			</li>
-			
-			<li class="subtitle">"Reports and Database Implementation of UNR's NeoCortical Simulator
-				<p class="subcomponent">
-				Designed and Implemented a client-side Web Application for the University's NCS project to provide D3 based graphical reports for ongoing processes and websocket based data streaming
-				</p>
-			</li>
-		</ul>
-	</div>
-	<h2 class="title">Work Experience</h2>
-	<div class="subcomponent">
-		<ul>
-			<li class="subtitle">Software Developer - UNR's Brain Computation Lab<div class="date">May 2014 - September 2014</div>
-			<p class="subcomponent">
-			Worked with other graduate students in the integration and merging of the NCS Web Application interface for the NeoCortical Simulator
-			</p>
-		</ul>
-		<ul>
-			<li class="subtitle">Volunteer Work<div class="date">Oct 2014 - Dec 2015</div>
-			<p class="subcomponent">
-				<ul>
-					<li>- Volunteering for UNR's Brainlab as a volunteer software engineer</li>
-				</ul>
-			</p>
-		</ul>
-		<ul>
-			<li class="subtitle">Volunteer Work<div class="date">Dec 2015 - current</div>
-			<p class="subcomponent">
-				<ul>
-					<li>- Developing handheld barcode scanning and inventory management applications in Javascript, HTML5, CSS (Front end) and PHP (Back end) for smart phones used to interface with legacy PICK database systems</li>
-				</ul>
-			</p>
-		</ul>
-	</div>
-	<h2 class="title">Publications</h2>
-		<div class="subcomponent">
-		<ul>
-			<li class="subtitle">NeoCortical Repository and Reports: Database and Reports for NCS<div class="date">October 2014</div>
-			<p class="subcomponent">
-			A Repository Service and Graphical Reporting Interface is devised to serve as a front-end means of interaction with the NeoCortical Simulator - SEDE 2014 - 
-			<a href="https://docs.google.com/file/d/0BwMp7za2w1poR2NWM3AtelZpR1E/preview" target="_blank">Link</a>
-			</p>
-		</ul>
-	</div>
-	<h2 class="title">Computer Development</h2>
-	<div class="subcomponent">
-		<ul>
-			<li class="subtitle">Languages
-				<ul>
-					<li>C++/C (Intermediate Proficiency)</li>
-					<li>Javascript (Intermediate Proficiency)</li>
-					<li>Python (Beginning Proficiency)</li>
-					<li>PHP (Beginning Proficiency</li>
-				</ul>
-			</li>
-			<li class="subtitle">Web Technologies
-				<ul>
-					<li>HTML5</li>
-					<li>CSS</li>
-					<li>jQuery and jQueryUI</li>
-					<li>AngularJS</li>
-					<li>D3.js</li>
-					<li>Twitter Bootstrap</li>
-				</ul>
-			</li>
-			<li class="subtitle">Operating Systems
-				<ul>
-					<li>Windows</li>
-					<li>Linux (Ubuntu)</li>
-				</ul>
-			</li>
-			<li class="subtitle">Software Packages
-				<ul>
-					<li>MS Word/Spreadsheet 03-07</li>
-					<li>Apache OpenOffice</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<h2 class="title">Attributes</h2>
-	<div class="subcomponent">
-		<ul>
-			<li class="subtitle">
-				<ul>
-					<li>- Understanding of computer components, both hardware and software</li>
-					<li>- Understanding of software architectural systems and unit testing</li>
-					<li>- Passion for Science and Technology and a curiosity to learn more about field of Computer Science</li>
-					<li>- Loves working with a team, or independently, great communication skills</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<div style="margin-top:50px;">
-		<a href="AlmacharEdson-resume.pdf" download>Download Resume</a>
-	</div>
-</a>
-</div>
 
 </div>
 
