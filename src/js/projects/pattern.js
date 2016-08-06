@@ -1,21 +1,33 @@
 
-var patternInit = function(){
-	c = document.getElementById("patternCanvas");
-	ctx = c.getContext("2d");
-	doTheThing();
+
+var pattern = {
+	c: null,
+	ctx: null,
+	width: 1000,
+	height: 600,
+	dots: [],
+	attributes: {
+		order: 0,
+		density: 1
+	},
+	init: function(){
+		this.c = document.getElementById("patternCanvas");
+		this.ctx = this.c.getContext("2d");
+		console.log(this);
+	},
+	update: function(){
+		doTheThing();
+	}
 }
 
-//loadFunctions.push(patternInit)
+loadFunctions.push(pattern.init.bind(pattern))
+loadFunctions.push(pattern.update)
 
-var c;
-var ctx;
-
-var width = 1000;
-var height = 600;
-
-var dots;
 
 function dot(x, y){
+	
+	var ctx = pattern.ctx;
+
 	ctx.beginPath();
 
 	ctx.arc(x,y,2,0,2*Math.PI);
@@ -34,21 +46,21 @@ function grid(){
 	var y, ymax, ymin;
 	var numDots = 0;
 
-	var spacing = 100;
-	var border = 0;
+	var spacing = 100;//+Math.floor(25*pattern.attributes.density);
+	var border = (spacing/2)*pattern.attributes.order;
 	var outside = 100;
-	var numXDots = Math.floor((width+outside*2)/spacing), numYDots = Math.floor((height+outside*2)/spacing);
+	var numXDots = Math.floor((pattern.width+outside*2)/spacing), numYDots = Math.floor((pattern.height+outside*2)/spacing);
 	var xinterval, yinterval;
 	
-	dots = new Array(numXDots);
+	pattern.dots = new Array(numXDots);
 
 	for(var i = 0; i < numXDots; i++){
-		dots[i] = new Array(numYDots);
+		pattern.dots[i] = new Array(numYDots);
 	}
 
-	for(var i = 0 - outside, u = 0; i < width + outside; i+=spacing, u++){
+	for(var i = 0 - outside, u = 0; i < pattern.width + outside; i+=spacing, u++){
 
-		for(var j = 0 - outside, v = 0; j < height + outside; j+=spacing, v++){
+		for(var j = 0 - outside, v = 0; j < pattern.height + outside; j+=spacing, v++){
 		
 			xmax = i + spacing;
 			xmin = xmax - spacing;
@@ -63,7 +75,7 @@ function grid(){
 
 			dot(x,y);
 
-			dots[u][v] = {
+			pattern.dots[u][v] = {
 				x: x,
 				y: y
 			}
@@ -80,6 +92,8 @@ function findNeighbors(){
 	var neighborsFound;
 	
 	var m, n;
+	
+	var dots = pattern.dots;
 	
 	dots.forEach(function(subArray, i){
 		subArray.forEach(function(item, j){
@@ -134,7 +148,7 @@ function findNeighbors(){
 }
 
 function drawPattern(){
-	dots.forEach(function(subArray, i){
+	pattern.dots.forEach(function(subArray, i){
 		subArray.forEach(function(item, j){
 			item.neighbors.forEach(function(neighbor, k){
 				drawTriangle(item, neighbor, item.neighbors[(k+1)%item.neighbors.length]);
@@ -144,6 +158,8 @@ function drawPattern(){
 }
 
 function drawTriangle (start, first, second){
+
+	var ctx = pattern.ctx;
 
 	var red, green, blue;
 	red = Math.floor(Math.random()*100+155);
@@ -167,7 +183,7 @@ function tangent(){
 
 	var x, xmax, xmin;
 	var y, ymax, ymin;
-	var center = width/2;
+	var center = pattern.width/2;
 
 	var density = .2;
 
@@ -175,9 +191,9 @@ function tangent(){
 	var border = 8;
 	var xinterval, yinterval;
 
-	for(var i = 0; i < width; i+=spacing){
+	for(var i = 0; i < pattern.width; i+=spacing){
 
-		for(var j = 0; j < height; j+=spacing){
+		for(var j = 0; j < pattern.height; j+=spacing){
 		
 			xmax = i + spacing;
 			xmin = xmax - spacing;
@@ -192,10 +208,10 @@ function tangent(){
 			//x = Math.floor((Math.random() * (xinterval)) + (xmin));
 			x = center + offset*Math.tan(Math.random()*360)*density;
 			//y = Math.floor((Math.random() * (yinterval)) + (ymin));
-			//y = Math.random()*height;
+			//y = Math.random()*pattern.height;
 			
-			var ycenter = height/2;
-			var yoffset = Math.random()*height/2;
+			var ycenter = pattern.height/2;
+			var yoffset = Math.random()*pattern.height/2;
 			
 			y = ycenter + yoffset*Math.tan(Math.random()*360)*density;
 
