@@ -4,15 +4,16 @@ app.controller('mainBodyController', ['$scope', function($scope){
 	
 	$scope.templates = {
 		resume: 'src/html/resume.html',
-		blank: 'src/html/blank.html'
+		blank: 'src/html/pattern.html'
 	}
 	
-	$scope.$watch(
-		'tab',
-		function(){
-			$scope.template = $scope.templates[$scope.tab];
+	$scope.$show = function(page){
+		$scope.tab = page;
+		
+		if(page == 'pattern'){
+			patternInit();
 		}
-	)
+	}
 	
 	$scope.template = $scope.templates[$scope.tab];
 }]);
