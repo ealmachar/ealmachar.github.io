@@ -4,7 +4,7 @@ app.controller('mainBodyController', ['$scope', function($scope){
 	
 	$scope.templates = {
 		resume: 'src/html/resume.html',
-		blank: 'src/html/pattern.html'
+		pattern: 'src/html/pattern.html'
 	}
 	
 	$scope.show = function(page){
