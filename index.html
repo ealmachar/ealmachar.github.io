@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+
+<script>
+loadFunctions = [];
+
+window.onload = function() {
+	loadFunctions.forEach(function(fcn, i){
+		fcn();
+	});
+};
+</script>
+
 <head>
 
   <script src="src/js/jquery.js"></script>
@@ -83,3 +94,5 @@
 
 
 </html>
+
+

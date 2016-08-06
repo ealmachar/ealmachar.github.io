@@ -1,11 +1,19 @@
 
+var patternInit = function(){
+	c = document.getElementById("patternCanvas");
+	ctx = c.getContext("2d");
+	doTheThing();
+}
 
+loadFunctions.push(patternInit)
 
-var c = document.getElementById("patternCanvas");
-var ctx = c.getContext("2d");
+var c;
+var ctx;
 
 var width = 1000;
 var height = 600;
+
+var dots;
 
 function dot(x, y){
 	ctx.beginPath();
@@ -18,7 +26,7 @@ function dot(x, y){
 	ctx.stroke();
 };
 
-var dots;
+
 
 function grid(){
 
@@ -202,4 +210,4 @@ var doTheThing = function(){
 	grid();
 	findNeighbors();
 	drawPattern();
-}();
+};
