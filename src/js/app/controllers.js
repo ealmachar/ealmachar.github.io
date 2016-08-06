@@ -7,9 +7,10 @@ app.controller('mainBodyController', ['$scope', function($scope){
 		blank: 'src/html/pattern.html'
 	}
 	
-	$scope.$show = function(page){
+	$scope.show = function(page){
 		$scope.tab = page;
-		
+		$scope.template = $scope.templates[$scope.tab];
+		console.log(page);
 		if(page == 'pattern'){
 			patternInit();
 		}
