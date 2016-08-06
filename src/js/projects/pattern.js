@@ -5,7 +5,7 @@ var patternInit = function(){
 	doTheThing();
 }
 
-loadFunctions.push(patternInit)
+//loadFunctions.push(patternInit)
 
 var c;
 var ctx;

@@ -11,7 +11,10 @@ app.controller('mainBodyController', ['$scope', function($scope){
 		$scope.tab = page;
 		$scope.template = $scope.templates[$scope.tab];
 		console.log(page);
-		if(page == 'pattern'){
+	}
+	
+	$scope.mainLoaded = function(){
+		if($scope.tab == 'pattern'){
 			patternInit();
 		}
 	}
