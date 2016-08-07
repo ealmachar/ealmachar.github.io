@@ -17,6 +17,7 @@ var pattern = {
 		setTimeout(function(){
 			this.width = document.getElementById("pattern").offsetWidth;
 			document.getElementById("patternCanvas").width = this.width;
+			this.update();
 		}, 300);
 	},
 	update: function(){
