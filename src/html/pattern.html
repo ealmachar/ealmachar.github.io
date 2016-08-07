@@ -1,5 +1,24 @@
+
 <div id="pattern" class="bodyContainer">
 	<div>
-		<canvas id="patternCanvas" width="1000" height="600" style="border:1px solid #000000;"></canvas>
+		<canvas id="patternCanvas" height="600" style="border:1px solid #000000;"></canvas>
 	</div>
+	<md-slider-container>
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">Chaos/Order</span>
+		</div>
+		<md-slider flex min="0" max="100" ng-model="pattern.order" aria-label="red" ng-change="pattern.update('order')"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="pattern.order" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+	<md-slider-container>
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">Dense/Sparse</span>
+		</div>
+		<md-slider flex min="0" max="100" ng-model="pattern.density" aria-label="red" ng-change="pattern.update('density')"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="pattern.density" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
 </div>

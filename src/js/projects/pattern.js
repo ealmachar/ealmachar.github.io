@@ -3,7 +3,7 @@
 var pattern = {
 	c: null,
 	ctx: null,
-	width: 1000,
+	width: 1000,//function(){return document.getElementById("pattern").offsetWidth}(),
 	height: 600,
 	dots: [],
 	attributes: {
@@ -13,15 +13,39 @@ var pattern = {
 	init: function(){
 		this.c = document.getElementById("patternCanvas");
 		this.ctx = this.c.getContext("2d");
-		console.log(this);
+
+		setTimeout(function(){
+			this.width = document.getElementById("pattern").offsetWidth;
+			document.getElementById("patternCanvas").width = this.width;
+			console.log(this.width + " " + document.getElementById("pattern").offsetWidth);
+		}, 500);
 	},
 	update: function(){
 		doTheThing();
 	}
 }
 
-loadFunctions.push(pattern.init.bind(pattern))
-loadFunctions.push(pattern.update)
+var resizePass = true;
+
+function onResize(){
+	window.addEventListener("resize", function(){
+		if(resizePass){
+			resizePass = false
+			console.log(document.getElementById("pattern").offsetWidth + " " + pattern.c.offsetHeight);
+			pattern.width = document.getElementById("pattern").offsetWidth;
+			document.getElementById("patternCanvas").width = pattern.width;
+			pattern.update();
+			setTimeout(function(){
+				resizePass = true;
+			}, 100);
+		}
+	});
+}
+
+		
+//loadFunctions.push(pattern.init.bind(pattern))
+//loadFunctions.push(pattern.update)
+loadFunctions.push(onResize)
 
 
 function dot(x, y){
@@ -46,19 +70,15 @@ function grid(){
 	var y, ymax, ymin;
 	var numDots = 0;
 
-	var spacing = 100;//+Math.floor(25*pattern.attributes.density);
+	var spacing = 50+Math.floor(50*pattern.attributes.density);
 	var border = (spacing/2)*pattern.attributes.order;
 	var outside = 100;
-	var numXDots = Math.floor((pattern.width+outside*2)/spacing), numYDots = Math.floor((pattern.height+outside*2)/spacing);
 	var xinterval, yinterval;
-	
-	pattern.dots = new Array(numXDots);
 
-	for(var i = 0; i < numXDots; i++){
-		pattern.dots[i] = new Array(numYDots);
-	}
+	pattern.dots = [];
 
 	for(var i = 0 - outside, u = 0; i < pattern.width + outside; i+=spacing, u++){
+		pattern.dots.push([]);
 
 		for(var j = 0 - outside, v = 0; j < pattern.height + outside; j+=spacing, v++){
 		
@@ -75,10 +95,10 @@ function grid(){
 
 			dot(x,y);
 
-			pattern.dots[u][v] = {
+			pattern.dots[u].push({
 				x: x,
 				y: y
-			}
+			})
 			numDots++;
 		}
 	}
