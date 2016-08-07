@@ -17,8 +17,7 @@ var pattern = {
 		setTimeout(function(){
 			this.width = document.getElementById("pattern").offsetWidth;
 			document.getElementById("patternCanvas").width = this.width;
-			console.log(this.width + " " + document.getElementById("pattern").offsetWidth);
-		}, 500);
+		}, 300);
 	},
 	update: function(){
 		doTheThing();
@@ -31,7 +30,6 @@ function onResize(){
 	window.addEventListener("resize", function(){
 		if(resizePass){
 			resizePass = false
-			console.log(document.getElementById("pattern").offsetWidth + " " + pattern.c.offsetHeight);
 			pattern.width = document.getElementById("pattern").offsetWidth;
 			document.getElementById("patternCanvas").width = pattern.width;
 			pattern.update();
