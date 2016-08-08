@@ -77,7 +77,7 @@ function grid(){
 
 	var spacing = 100+Math.floor(50*pattern.attributes.density);
 	var border = (spacing/2)*pattern.attributes.order;
-	var outside = 100;
+	var outside = 2*spacing;
 	var xinterval, yinterval;
 
 	pattern.dots = [];
