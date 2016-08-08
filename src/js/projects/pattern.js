@@ -7,23 +7,24 @@ var pattern = {
 	height: 600,
 	dots: [],
 	attributes: {
-		order: 29,
-		density: 50,
+		order: .29,
+		density: 1,
 		r: 165,
 		g: 68,
 		b: 80,
 		rgbVariance: 133,
-		gradient: 31,
+		gradient: 31
 	},
 	init: function(){
 		this.c = document.getElementById("patternCanvas");
-		this.ctx = this.c.getContext("2d");
+		this.ctx = pattern.c.getContext("2d");
+		
 
 		setTimeout(function(){
 			this.width = document.getElementById("pattern").offsetWidth;
 			document.getElementById("patternCanvas").width = this.width;
-			pattern.update();
-		}, 300);
+			this.doTheThing();
+		}, 500);
 	},
 	update: function(){
 		doTheThing();
@@ -255,7 +256,7 @@ function tangent(){
 
 
 
-var doTheThing = function(){
+function doTheThing(){
 	grid();
 	findNeighbors();
 	drawPattern();
