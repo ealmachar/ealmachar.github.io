@@ -8,12 +8,12 @@ var pattern = {
 	dots: [],
 	attributes: {
 		order: .29,
-		density: 1,
-		r: 165,
-		g: 68,
-		b: 80,
-		rgbVariance: 133,
-		gradient: 31
+		density: 0,
+		r: 241,
+		g: 115,
+		b: 61,
+		rgbVariance: 20,
+		gradient: 17
 	},
 	init: function(){
 		this.c = document.getElementById("patternCanvas");
@@ -194,8 +194,18 @@ function drawTriangle (start, first, second){
 	green = rgb.g + Math.floor(Math.random()*rgb.rgbVariance - rgb.rgbVariance/2);
 	blue = rgb.b + Math.floor(Math.random()*rgb.rgbVariance - rgb.rgbVariance/2);
 
-	var color = "rgb(" + rgbValid(red) + "," + rgbValid(green) + "," + rgbValid(blue) + ")"
+	var gradVariance = Math.random()*rgb.rgbVariance - rgb.rgbVariance/2;
 	
+	var gradr = applyGradient(rgbValid(red), start.x) + gradVariance;
+	var gradg = applyGradient(rgbValid(green), start.x) + gradVariance;
+	var gradb = applyGradient(rgbValid(blue), start.x) + gradVariance;
+
+	
+	var color = "rgb(";
+	color += rgbValid(gradr) + ",";
+	color += rgbValid(gradg) + ",";
+	color += rgbValid(gradb) + ")";
+
 	ctx.fillStyle = color;
 
 	ctx.beginPath();
@@ -210,7 +220,15 @@ function drawTriangle (start, first, second){
 function rgbValid(color){
 	color = color > 0 ? color : 0;
 	color = color > 255? 255 : color;
-	return color;
+	return Math.floor(color);
+}
+
+function applyGradient(color, start){
+	var g = pattern.attributes.gradient/10;
+	var x = 1-start/pattern.width;
+	var result = color * (1/(g*g*x+1)) + (125 * (g*g*x)/100);
+	return result;
+
 }
 
 function tangent(){
