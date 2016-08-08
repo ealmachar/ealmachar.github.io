@@ -18,13 +18,13 @@ var pattern = {
 	init: function(){
 		this.c = document.getElementById("patternCanvas");
 		this.ctx = pattern.c.getContext("2d");
-		
 
 		setTimeout(function(){
 			this.width = document.getElementById("pattern").offsetWidth;
 			document.getElementById("patternCanvas").width = this.width;
-			this.doTheThing();
-		}, 500);
+			
+			this.update();
+		}.bind(pattern), 500);
 	},
 	update: function(){
 		doTheThing();
