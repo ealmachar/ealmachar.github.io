@@ -7,7 +7,7 @@
 		<div flex layout layout-align="center center" style="max-width:100px">
 			<span class="md-body-1">Chaos/Order</span>
 		</div>
-		<md-slider flex min="0" max="100" ng-model="pattern.order" aria-label="red" ng-change="pattern.update('order')"></md-slider>
+		<md-slider flex min="0" max="100" ng-model="pattern.order" aria-label="red" ng-change="pattern.update()"></md-slider>
 		<md-input-container>
 		<input flex type="number" ng-model="pattern.order" aria-label="red" aria-controls="red-slider">
 		</md-input-container>
@@ -16,9 +16,54 @@
 		<div flex layout layout-align="center center" style="max-width:100px">
 			<span class="md-body-1">Dense/Sparse</span>
 		</div>
-		<md-slider flex min="0" max="100" ng-model="pattern.density" aria-label="red" ng-change="pattern.update('density')"></md-slider>
+		<md-slider flex min="0" max="100" ng-model="pattern.density" aria-label="red" ng-change="pattern.update()"></md-slider>
 		<md-input-container>
 		<input flex type="number" ng-model="pattern.density" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+	<md-slider-container>
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">R</span>
+		</div>
+		<md-slider flex min="0" max="255" ng-model="pattern.r" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="pattern.r" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+	<md-slider-container>
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">G</span>
+		</div>
+		<md-slider flex min="0" max="255" ng-model="pattern.g" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="pattern.g" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+	<md-slider-container>
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">B</span>
+		</div>
+		<md-slider flex min="0" max="255" ng-model="pattern.b" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="pattern.b" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+	<md-slider-container>
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">RGB Variance</span>
+		</div>
+		<md-slider flex min="0" max="255" ng-model="pattern.rgbVariance" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="pattern.rgbVariance" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+	<md-slider-container>
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">Gradient</span>
+		</div>
+		<md-slider flex min="0" max="100" ng-model="pattern.gradient" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="pattern.gradient" aria-label="red" aria-controls="red-slider">
 		</md-input-container>
 	</md-slider-container>
 </div>

@@ -7,8 +7,13 @@ var pattern = {
 	height: 600,
 	dots: [],
 	attributes: {
-		order: 0,
-		density: 1
+		order: 29,
+		density: 50,
+		r: 165,
+		g: 68,
+		b: 80,
+		rgbVariance: 133,
+		gradient: 31,
 	},
 	init: function(){
 		this.c = document.getElementById("patternCanvas");
@@ -17,7 +22,7 @@ var pattern = {
 		setTimeout(function(){
 			this.width = document.getElementById("pattern").offsetWidth;
 			document.getElementById("patternCanvas").width = this.width;
-			this.update();
+			pattern.update();
 		}, 300);
 	},
 	update: function(){
@@ -181,11 +186,14 @@ function drawTriangle (start, first, second){
 	var ctx = pattern.ctx;
 
 	var red, green, blue;
-	red = Math.floor(Math.random()*100+155);
-	green = Math.floor(Math.random()*150);
-	blue = Math.floor(Math.random()*100+50);
+	
+	var rgb = pattern.attributes;
 
-	var color = "rgb(" + red + "," + green + "," + blue + ")"
+	red = rgb.r + Math.floor(Math.random()*rgb.rgbVariance - rgb.rgbVariance/2);
+	green = rgb.g + Math.floor(Math.random()*rgb.rgbVariance - rgb.rgbVariance/2);
+	blue = rgb.b + Math.floor(Math.random()*rgb.rgbVariance - rgb.rgbVariance/2);
+
+	var color = "rgb(" + rgbValid(red) + "," + rgbValid(green) + "," + rgbValid(blue) + ")"
 	
 	ctx.fillStyle = color;
 
@@ -196,6 +204,12 @@ function drawTriangle (start, first, second){
 	//ctx.closePath();
 	ctx.fill();
 	//ctx.stroke();
+}
+
+function rgbValid(color){
+	color = color > 0 ? color : 0;
+	color = color > 255? 255 : color;
+	return color;
 }
 
 function tangent(){
