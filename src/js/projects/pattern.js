@@ -3,7 +3,7 @@
 var pattern = {
 	c: null,
 	ctx: null,
-	width: 1000,//function(){return document.getElementById("pattern").offsetWidth}(),
+	width: 1000,
 	height: 600,
 	dots: [],
 	attributes: {
@@ -75,7 +75,7 @@ function grid(){
 	var y, ymax, ymin;
 	var numDots = 0;
 
-	var spacing = 50+Math.floor(50*pattern.attributes.density);
+	var spacing = 100+Math.floor(50*pattern.attributes.density);
 	var border = (spacing/2)*pattern.attributes.order;
 	var outside = 100;
 	var xinterval, yinterval;
