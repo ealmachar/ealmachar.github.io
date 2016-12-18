@@ -1,4 +1,4 @@
-app.controller('mainBodyController', ['$scope', '$ function($scope){
+app.controller('mainBodyController', ['$scope', function($scope){
 	
 	$scope.tab = 'resume';
 	
