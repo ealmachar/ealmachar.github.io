@@ -10,12 +10,17 @@ app.controller('mainBodyController', ['$scope', function($scope){
 	$scope.show = function(page){
 		$scope.tab = page;
 		$scope.template = $scope.templates[$scope.tab];
-		console.log("SHOW");
+		console.log($scope.template);
 	}
 	
 	$scope.testLoad = function(){
 		console.log($scope.tab + " " + "load complete");
 	}
+	
+	$scope.$watch('template', function() {
+        alert('hey, template has changed!');
+		console.log($scope.template));
+    });
 	
 	$scope.template = $scope.templates[$scope.tab];
 	
