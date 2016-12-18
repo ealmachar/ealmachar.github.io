@@ -1,6 +1,6 @@
 app.service('patternService', function(){
-
-	this.pattern = {
+	var self = this;
+	var pattern = {
 		c: null,
 		ctx: null,
 		width: 1000,
@@ -26,7 +26,7 @@ app.service('patternService', function(){
 				document.getElementById("patternCanvas").width = pattern.width;
 				
 				pattern.update();
-			}.bind(this), 500);
+			}.bind(self), 500);
 		},
 		update: function(){	
 			if(pattern.updatePass){
@@ -39,8 +39,10 @@ app.service('patternService', function(){
 					pattern.updatePass = true;
 				}, 100);
 			}
-		}.bind(this)
+		}.bind(self)
 	}
+	
+	this.pattern = pattern;
 	
 	var resizePass = true;
 
@@ -59,7 +61,7 @@ app.service('patternService', function(){
 	}
 
 //	loadFunctions.push(pattern.init.bind(pattern))
-//	loadFunctions.push(onResize)
+	loadFunctions.push(onResize)
 
 	var dot = function(x, y){
 		
@@ -78,6 +80,7 @@ app.service('patternService', function(){
 
 
 	var grid = function(){
+		console.log(pattern);
 		var pattern = pattern;
 
 		var x, xmax, xmin;
