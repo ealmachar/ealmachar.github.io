@@ -19,7 +19,7 @@ app.controller('mainBodyController', ['$scope', function($scope){
 	
 	$scope.$watch('template', function() {
         alert('hey, template has changed!');
-		console.log($scope.template));
+		console.log($scope.template);
     });
 	
 	$scope.template = $scope.templates[$scope.tab];
