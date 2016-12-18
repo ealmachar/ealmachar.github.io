@@ -18,7 +18,7 @@ app.service('patternService', function(){
 		updatePass: true,
 		init: function(){
 			pattern.c = document.getElementById("patternCanvas");
-			console.log(pattern);
+			console.log(document.getElementById("patternCanvas"));
 			pattern.ctx = pattern.c.getContext("2d");
 
 			setTimeout(function(){
@@ -60,8 +60,8 @@ app.service('patternService', function(){
 		});
 	}
 
-	loadFunctions.push(pattern.init.bind(pattern))
-	loadFunctions.push(onResize)
+//	loadFunctions.push(pattern.init.bind(pattern))
+//	loadFunctions.push(onResize)
 
 	var dot = function(x, y){
 		
