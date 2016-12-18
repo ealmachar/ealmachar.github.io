@@ -1,4 +1,4 @@
-app.controller('mainBodyController', ['$scope', function($scope){
+app.controller('mainBodyController', ['$scope', '$ function($scope){
 	
 	$scope.tab = 'resume';
 	
@@ -14,11 +14,9 @@ app.controller('mainBodyController', ['$scope', function($scope){
 	}
 	
 	$scope.loadPattern = function(){
-		console.log("ONLOAD");
 		if($scope.tab == 'pattern'){
-			console.log("LOADED");
-			$scope.pattern.init();
-			$scope.pattern.update();
+			$rootScope.pattern.init();
+			$rootScope.pattern.update();
 		}
 	}
 	
@@ -30,7 +28,7 @@ app.controller('patternController', ['$scope', function($scope){
 	
 
 
-	$scope.pattern = {
+	$rootScope.pattern = {
 		c: null,
 		ctx: null,
 		width: 1000,
