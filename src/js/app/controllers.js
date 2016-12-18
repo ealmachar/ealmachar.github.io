@@ -1,4 +1,4 @@
-app.controller('mainBodyController', ['$scope', function($scope){
+app.controller('mainBodyController', ['$scope', '$rootScope', function($scope, $rootScope){
 	
 	$scope.tab = 'resume';
 	
@@ -24,7 +24,7 @@ app.controller('mainBodyController', ['$scope', function($scope){
 	
 }]);
 
-app.controller('patternController', ['$scope', function($scope){
+app.controller('patternController', ['$scope', '$rootScope', function($scope, $rootScope){
 	
 
 
