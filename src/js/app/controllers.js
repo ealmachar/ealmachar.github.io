@@ -1,4 +1,4 @@
-app.controller('mainBodyController', ['$scope', '$rootScope', function($scope, $rootScope){
+app.controller('mainBodyController', ['$scope', 'patternService', function($scope, patternService){
 	
 	$scope.tab = 'resume';
 	
@@ -15,8 +15,8 @@ app.controller('mainBodyController', ['$scope', '$rootScope', function($scope, $
 	
 	$scope.loadPattern = function(){
 		if($scope.tab == 'pattern'){
-			$rootScope.pattern.init();
-			$rootScope.pattern.update();
+			patternService.pattern.init();
+			patternService.pattern.update();
 		}
 	}
 	
@@ -24,6 +24,7 @@ app.controller('mainBodyController', ['$scope', '$rootScope', function($scope, $
 	
 }]);
 
+/*
 app.controller('patternController', ['$scope', '$rootScope', function($scope, $rootScope){
 	
 
@@ -286,3 +287,4 @@ app.controller('patternController', ['$scope', '$rootScope', function($scope, $r
 	};
 	
 }]);
+*/
