@@ -191,12 +191,6 @@ app.service('patternService', function(){
 			});
 		});
 	}
-
-	var rgbValid = function(color){
-		color = color > 0 ? color : 0;
-		color = color > 255? 255 : color;
-		return Math.floor(color);
-	}
 	
 	var drawTriangle = function(start, first, second){
 
@@ -206,8 +200,19 @@ app.service('patternService', function(){
 		
 		var rgb = pattern.attr;
 		
-		var applyGradient = applyGradient;
-		var rgbValid = rgbValid;
+		var applyGradient = function(color, start){
+			var g = pattern.attr.gradient.value/10;
+			var x = 1-start/pattern.width;
+			var result = color * (1/(g*g*x+1)) + (125 * (g*g*x)/100);
+			return result;
+		}
+		
+		var rgbValid = function(color){
+			color = color > 0 ? color : 0;
+			color = color > 255? 255 : color;
+			return Math.floor(color);
+		};
+		
 		var rgbVar = pattern.attr.rgbVariance.value;
 
 		red = rgb.r.value + Math.floor(Math.random()*rgbVar - rgbVar/2);
@@ -235,14 +240,6 @@ app.service('patternService', function(){
 		//ctx.closePath();
 		ctx.fill();
 		//ctx.stroke();
-	}
-
-	var applyGradient = function(color, start){
-		var g = pattern.attr.gradient.value/10;
-		var x = 1-start/pattern.width;
-		var result = color * (1/(g*g*x+1)) + (125 * (g*g*x)/100);
-		return result;
-
 	}
 
 	var doTheThing = function(){
