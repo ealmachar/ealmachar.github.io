@@ -1,6 +1,6 @@
 app.service('patternService', function(){
-	var self = this;
-	var pattern = {
+
+	this.pattern = {
 		c: null,
 		ctx: null,
 		width: 1000,
@@ -26,7 +26,7 @@ app.service('patternService', function(){
 				document.getElementById("patternCanvas").width = pattern.width;
 				
 				pattern.update();
-			}.bind(self), 500);
+			}.bind(this), 500);
 		},
 		update: function(){	
 			if(pattern.updatePass){
@@ -39,10 +39,8 @@ app.service('patternService', function(){
 					pattern.updatePass = true;
 				}, 100);
 			}
-		}.bind(self)
+		}.bind(this)
 	}
-	
-	this.pattern = pattern;
 	
 	var resizePass = true;
 
