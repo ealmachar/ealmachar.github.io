@@ -1,4 +1,21 @@
-<div id="pattern" class="bodyContainer">
+
+<div id="pattern" class="bodyContainer" ng-controller="patternController">
+	<div>
+		<canvas id="patternCanvas" height="600" style="border:1px solid #000000;"></canvas>
+	</div>
+	<md-button class="md-raised" ng-click="pattern.update()">Redraw</md-button>
+	<md-slider-container ng-repeat="(attr, subattr) in pattern.attr">
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">{{subattr.name}}</span>
+		</div>
+		<md-slider flex min="{{subattr.min}}" max="{{subattr.max}}" step="{{subattr.step}}" ng-model="subattr.value" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="subattr.value" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+</div>
+
+<!--<div id="pattern" class="bodyContainer">
 	<div>
 		<canvas id="patternCanvas" height="600" style="border:1px solid #000000;"></canvas>
 	</div>
@@ -66,4 +83,4 @@
 		<input flex type="number" ng-model="pattern.gradient" aria-label="red" aria-controls="red-slider">
 		</md-input-container>
 	</md-slider-container>
-</div>
+</div>-->
