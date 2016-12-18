@@ -1,6 +1,6 @@
 app.service('patternService', function(){
 	var self = this;
-	var pattern = {
+	this.pattern = {
 		c: null,
 		ctx: null,
 		width: 1000,
@@ -42,7 +42,7 @@ app.service('patternService', function(){
 		}.bind(self)
 	}
 	
-	this.pattern = pattern;
+	var pattern = this.pattern;
 	
 	var resizePass = true;
 
