@@ -13,14 +13,6 @@ app.controller('mainBodyController', ['$scope', function($scope){
 		console.log($scope.template);
 	}
 	
-	$scope.testLoad = function(){
-		console.log($scope.tab + " " + "load complete");
-	}
-	
-	$scope.$watch('template', function() {
-        alert('hey, template has changed!'); console.log($scope.template);
-    });
-	
 	$scope.loadPattern = function(){
 		console.log("ONLOAD");
 		if($scope.tab == 'pattern'){
