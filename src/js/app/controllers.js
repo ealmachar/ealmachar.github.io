@@ -21,7 +21,9 @@ app.controller('mainBodyController', ['$scope', function($scope){
 app.controller('patternController', ['$scope', function($scope){
 	
 	$scope.loadPattern = function(){
+		console.log("ONLOAD");
 		if($scope.tab == 'pattern'){
+			console.log("LOADED");
 			$pattern.init();
 			$pattern.update();
 		}
