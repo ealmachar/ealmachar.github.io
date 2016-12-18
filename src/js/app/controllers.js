@@ -23,7 +23,7 @@ app.controller('patternController', ['$scope', function($scope){
 	$scope.loadPattern = function(){
 		if($scope.tab == 'pattern'){
 			$pattern.init();
-			$pattern.update();
+			//$pattern.update();
 		}
 	}
 
@@ -44,6 +44,7 @@ app.controller('patternController', ['$scope', function($scope){
 		},
 		updatePass: true,
 		init: function(){
+			console.log("TEST");
 			$scope.pattern.c = document.getElementById("patternCanvas");
 			$scope.pattern.ctx = $scope.pattern.c.getContext("2d");
 
