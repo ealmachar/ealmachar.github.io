@@ -1,6 +1,10 @@
 app.service('patternService', function(){
-	var self = this;
-	this.pattern = {
+
+	var pattern = {};
+
+	this.pattern = pattern;
+
+	pattern = {
 		c: null,
 		ctx: null,
 		width: 1000,
@@ -17,37 +21,35 @@ app.service('patternService', function(){
 		},
 		updatePass: true,
 		init: function(){
-			pattern.c = document.getElementById("patternCanvas");
+			this.c = document.getElementById("patternCanvas");
 			console.log(document.getElementById("patternCanvas"));
-			pattern.ctx = pattern.c.getContext("2d");
+			console.log(this.c);
+			this.ctx = this.c.getContext("2d");
 
 			setTimeout(function(){
-				pattern.width = document.getElementById("pattern").offsetWidth;
-				document.getElementById("patternCanvas").width = pattern.width;
+				this.width = document.getElementById("pattern").offsetWidth;
+				document.getElementById("patternCanvas").width = this.width;
 				
-				pattern.update();
-			}.bind(self), 500);
+				this.update();
+			}, 500);
 		},
 		update: function(){	
-			if(pattern.updatePass){
+			if(this.updatePass){
 
 				doTheThing();
 
-				pattern.updatePass = false;
+				this.updatePass = false;
 
 				setTimeout(function(){
-					pattern.updatePass = true;
+					this.updatePass = true;
 				}, 100);
 			}
-		}.bind(self)
+		}
 	}
-	
-	var pattern = this.pattern;
-	
-	var resizePass = true;
 
 	var onResize = function(){
 		window.addEventListener("resize", function(){
+			var resizePass = true;
 			if(resizePass){
 				resizePass = false
 				pattern.width = document.getElementById("pattern").offsetWidth;
@@ -80,9 +82,6 @@ app.service('patternService', function(){
 
 
 	var grid = function(){
-		console.log(pattern);
-		var pattern = pattern;
-
 		var x, xmax, xmin;
 		var y, ymax, ymin;
 		var numDots = 0;
@@ -129,8 +128,6 @@ app.service('patternService', function(){
 		var neighborsFound;
 		
 		var m, n;
-		
-		var pattern = pattern;
 		
 		var dots = pattern.dots;
 		
@@ -198,8 +195,6 @@ app.service('patternService', function(){
 
 	var drawTriangle = function(start, first, second){
 
-		var pattern = pattern;
-		
 		var ctx = pattern.ctx;
 
 		var red, green, blue;
