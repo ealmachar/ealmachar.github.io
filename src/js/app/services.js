@@ -192,6 +192,12 @@ app.service('patternService', function(){
 		});
 	}
 
+	var rgbValid = function(color){
+		color = color > 0 ? color : 0;
+		color = color > 255? 255 : color;
+		return Math.floor(color);
+	}
+	
 	var drawTriangle = function(start, first, second){
 
 		var ctx = pattern.ctx;
@@ -229,12 +235,6 @@ app.service('patternService', function(){
 		//ctx.closePath();
 		ctx.fill();
 		//ctx.stroke();
-	}
-
-	var rgbValid = function(color){
-		color = color > 0 ? color : 0;
-		color = color > 255? 255 : color;
-		return Math.floor(color);
 	}
 
 	var applyGradient = function(color, start){
