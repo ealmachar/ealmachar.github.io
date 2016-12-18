@@ -18,6 +18,7 @@ app.service('patternService', function(){
 		updatePass: true,
 		init: function(){
 			pattern.c = document.getElementById("patternCanvas");
+			console.log(pattern);
 			pattern.ctx = pattern.c.getContext("2d");
 
 			setTimeout(function(){
