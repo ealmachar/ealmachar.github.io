@@ -26,8 +26,9 @@ app.service('patternService', function(){
 				this.width = document.getElementById("pattern").offsetWidth;
 				document.getElementById("patternCanvas").width = this.width;
 				
+				console.log(this);
 				this.update();
-			}, 500);
+			}.bind(this), 500);
 		},
 		update: function(){	
 			if(this.updatePass){
