@@ -21,12 +21,6 @@ app.controller('mainBodyController', ['$scope', function($scope){
         alert('hey, template has changed!'); console.log($scope.template);
     });
 	
-	$scope.template = $scope.templates[$scope.tab];
-	
-}]);
-
-app.controller('patternController', ['$scope', function($scope){
-	
 	$scope.loadPattern = function(){
 		console.log("ONLOAD");
 		if($scope.tab == 'pattern'){
@@ -35,6 +29,14 @@ app.controller('patternController', ['$scope', function($scope){
 			$pattern.update();
 		}
 	}
+	
+	$scope.template = $scope.templates[$scope.tab];
+	
+}]);
+
+app.controller('patternController', ['$scope', function($scope){
+	
+
 
 	$scope.pattern = {
 		c: null,
