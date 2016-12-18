@@ -13,7 +13,9 @@ app.controller('mainBodyController', ['$scope', function($scope){
 		console.log("SHOW");
 	}
 	
-
+	$scope.testLoad = function(){
+		console.log($scope.tab + " " + "load complete");
+	}
 	
 	$scope.template = $scope.templates[$scope.tab];
 	
