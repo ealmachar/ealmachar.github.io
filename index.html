@@ -27,8 +27,6 @@ window.onload = function() {
   <script src="src/js/app/app.js"></script>
   <script src="src/js/app/controllers.js"></script>
   
-  <script src="src/js/projects/pattern.js"></script>
-  
   <link rel="stylesheet" href="src/css/styles.css">
   <link rel="stylesheet" href="src/css/jquery-ui.min.css">
   <link rel="stylesheet" href="src/css/bootstrap.min.css">
@@ -38,7 +36,7 @@ window.onload = function() {
 <body id="body" ng-app="angularApp" ng-cloak>
 <div id="header" class="bodyContainer">
 	<div id="portrait">
-		<img src="Edson.jpg" alt="linkedin">
+		<img src="src/images/Edson.jpg" alt="linkedin">
 	</div>
 	<div>
 		<p>Hi, i'm Edson Almachar. I received my B.S. in Computer Science from the University of Nevada, Reno.</p>
@@ -57,17 +55,17 @@ window.onload = function() {
 	<div style="margin: 0 auto; display:flex; width:360px;">
 	  <div class="box">
 	    <a href="http://www.linkedin.com/pub/edson-almachar/8b/507/687" target="_blank" title="LinkedIn">
-	      <img src="linkedin.png" alt="linkedin">
+	      <img src="src/images/linkedin.png" alt="linkedin">
 		</a>
 	  </div>
 	  <div class="box">
 	    <a href="https://github.com/ealmachar" target="_blank" title="GitHub">
-	      <img src="github.png" alt="github">
+	      <img src="src/images/github.png" alt="github">
 		</a>
       </div>
 	  <div class="box">
 	    <a href="http://unrncr.github.io/" target="_blank" title="Senior Project Website">
-	      <img src="ncrlogo.png" alt="github">
+	      <img src="src/images/ncrlogo.png" alt="github">
 		</a>
       </div>
 	</div>
@@ -84,8 +82,22 @@ window.onload = function() {
 
 	</hr>
 	<div>
-		<div ng-include="template" onload="mainLoaded()"></div>
-		
+		<div ng-include="template" onload="loadPattern()"></div>
+<!--<div id="pattern" class="bodyContainer" ng-controller="patternController">
+	<div>
+		<canvas id="patternCanvas" height="600" style="border:1px solid #000000;"></canvas>
+	</div>
+	<md-button class="md-raised" ng-click="pattern.update()">Redraw</md-button>
+	<md-slider-container ng-repeat="(attr, subattr) in pattern.attr">
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">{{subattr.name}}</span>
+		</div>
+		<md-slider flex min="{{subattr.min}}" max="{{subattr.max}}" step="{{subattr.step}}" ng-model="subattr.value" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="subattr.value" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+</div>-->
 	</div>
 
 
