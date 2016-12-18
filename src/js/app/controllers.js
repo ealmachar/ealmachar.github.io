@@ -10,6 +10,7 @@ app.controller('mainBodyController', ['$scope', function($scope){
 	$scope.show = function(page){
 		$scope.tab = page;
 		$scope.template = $scope.templates[$scope.tab];
+		console.log("SHOW");
 	}
 	
 
