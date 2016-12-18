@@ -1,10 +1,6 @@
 app.service('patternService', function(){
 
-	var pattern = {};
-
-	this.pattern = pattern;
-
-	pattern = {
+	var pattern = {
 		c: null,
 		ctx: null,
 		width: 1000,
@@ -47,6 +43,8 @@ app.service('patternService', function(){
 		}
 	}
 
+	this.pattern = pattern;
+	
 	var onResize = function(){
 		window.addEventListener("resize", function(){
 			var resizePass = true;
