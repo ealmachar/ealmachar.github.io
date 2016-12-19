@@ -13,13 +13,13 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 		$scope.tab = page;
 		$scope.template = $scope.templates[$scope.tab];
 	}
-	
+	/*
 	$scope.loadPattern = function(){
 		if($scope.tab == 'pattern'){
 			patternService.pattern.init();
 			patternService.pattern.update();
 		}
-	}
+	}*/
 
 	$scope.template = $scope.templates[$scope.tab];
 
