@@ -18,21 +18,18 @@ app.service('patternService', function(){
 		updatePass: true,
 		init: function(){
 			this.c = document.getElementById("patternCanvas");
-			console.log(document.getElementById("patternCanvas"));
-			console.log(this.c);
 			this.ctx = this.c.getContext("2d");
 
 			setTimeout(function(){
 				this.width = document.getElementById("pattern").offsetWidth;
 				document.getElementById("patternCanvas").width = this.width;
 				
-				console.log(this);
 				this.update();
 			}.bind(this), 500);
 		},
-		update: function(){	
+		update: function(){
 			if(this.updatePass){
-
+console.log(this);
 				doTheThing();
 
 				this.updatePass = false;

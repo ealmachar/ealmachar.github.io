@@ -17,7 +17,6 @@ app.controller('mainBodyController', ['$scope', 'patternService', function($scop
 	
 	$scope.loadPattern = function(){
 		if($scope.tab == 'pattern'){
-			console.log(patternService.pattern);
 			patternService.pattern.init();
 			patternService.pattern.update();
 		}
