@@ -29,7 +29,6 @@ app.service('patternService', function(){
 		},
 		update: function(){
 			if(this.updatePass){
-console.log(this);
 				doTheThing();
 
 				this.updatePass = false;
