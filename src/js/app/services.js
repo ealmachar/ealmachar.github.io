@@ -36,7 +36,7 @@ console.log(this);
 
 				setTimeout(function(){
 					this.updatePass = true;
-				}, 100);
+				}.bind(this), 100);
 			}
 		}
 	}
