@@ -2,6 +2,8 @@ app.controller('mainBodyController', ['$scope', 'patternService', function($scop
 	
 	$scope.tab = 'resume';
 	
+	$scope.pattern = patternService.pattern;
+	
 	$scope.templates = {
 		resume: 'src/html/resume.html',
 		pattern: 'src/html/pattern.html'
