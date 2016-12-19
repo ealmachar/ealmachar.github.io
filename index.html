@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="angularApp" ng-cloak>
 
 <script>
 loadFunctions = [];
@@ -25,6 +25,7 @@ window.onload = function() {
   <script src="src/js/angular-material.min.js"></script>
   
   <script src="src/js/app/app.js"></script>
+  <script src="src/js/app/config.js"></script>
   <script src="src/js/app/controllers.js"></script>
   <script src="src/js/app/services.js"></script>
   
@@ -34,7 +35,8 @@ window.onload = function() {
   <link rel="stylesheet" href="src/css/angular-material.min.css">
 
 </head>
-<body id="body" ng-app="angularApp" ng-cloak>
+<body id="body" ng-controller="backgroundController">
+<div id="subBackground">
 <div id="header" class="bodyContainer">
 	<div id="portrait">
 		<img src="src/images/Edson.jpg" alt="linkedin">
@@ -45,7 +47,6 @@ window.onload = function() {
 		<p>My main experiences as a programmer are still limited to a junior level. However, my experiences in programming have peered into the fields of Image Processing and Web Development.</p>
 		
 		<p>I've mainly used C++ and Javascript in my projects throughout school with some experience with other languages like Python and other web technologies like JQuery, AngularJS, D3 and Twitter Bootstrap.</p>
-		<hr></hr>
 	</div>
 </div>
 
@@ -72,7 +73,7 @@ window.onload = function() {
 	</div>
 </div>
 
-<div id="main" class="bodyContainer" ng-controller="mainBodyController">
+<div id="main" class="bodyContainer" style="padding: 0px" ng-controller="mainBodyController">
 
 
 	<ul class="nav nav-tabs">
@@ -89,6 +90,7 @@ window.onload = function() {
 
 </div>
 
+</div>
 </body>
 
 

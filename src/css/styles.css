@@ -1,21 +1,30 @@
+
+html{
+  background-color: transparent !important;
+}
+
 body {
-  background-color: #F5F8FA;
+  background-image: url('../../src/images/pexels-photo-97517.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /*background-size: cover;*/
+  background-position: center 0px;
 }
 
 .bodyContainer {
   position: relative;
   
-  width: 80%;
+  width: 90%;
   
-  margin-top: 200px;
-  margin: 50px auto;
-
-  background-color: #EEEEEE;
+  margin: 200px auto 50px auto;
+  padding: 60px 30px;
+  
+  background-color: rgba(238, 238, 238, 0.90);
   border-radius: 5px;
 }
 
 #header {
-  padding: 10px;
+  margin: 50px auto;
 }
 
 #portrait {
@@ -25,13 +34,23 @@ body {
 
 #links {
   display: block;
-  margin: 0 auto;
-  padding: 30px 0;
+
 }
 
 #resume {
   display: block;
-  padding: 30px;
+
+  margin: 50px auto;
+  width: 100%;
+  background-color: rgba(238, 238, 238, 0);
+}
+
+#subBackground{
+  width: 70%;
+  margin: 50px auto 50px auto;
+  padding: 1px 0;
+  /*background-image: url('../../src/images/crissXcross.png');*/
+  background-color: rgba(50, 50, 50, 0.5);
 }
 
 .date {

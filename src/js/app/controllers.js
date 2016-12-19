@@ -22,8 +22,23 @@ app.controller('mainBodyController', ['$scope', 'patternService', function($scop
 		}
 	}
 	
+	
+	
 	$scope.template = $scope.templates[$scope.tab];
 	
+}])
+
+.controller('backgroundController',['$scope', '$window', function($scope, $window){
+	var imageHeight = 1590;
+	var body = document.body;
+	
+
+	$window.onscroll = function() {
+		var referenceHeight = body.scrollHeight - window.innerHeight;
+		var percentage = body.scrollTop/referenceHeight;
+		var imageOffset = percentage * (imageHeight - window.innerHeight);
+		body.style.backgroundPosition = "center -" + imageOffset + "px";
+	};
 }]);
 
 /*
