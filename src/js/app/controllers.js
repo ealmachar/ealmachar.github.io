@@ -23,7 +23,7 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 
 	$scope.template = $scope.templates[$scope.tab];
 
-	var imageHeight = 1590;
+	var imageHeight = 1193;
 	var body = document.body;
 	
 
