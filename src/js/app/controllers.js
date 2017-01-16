@@ -34,12 +34,13 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 	
 	if(isMobile)
 		document.getElementById("body").style.backgroundSize = "cover";
-	
-	$window.onscroll = function() {
-		var referenceHeight = body.scrollHeight - window.innerHeight;
-		var percentage = body.scrollTop/referenceHeight;
-		var imageOffset = percentage * (imageHeight - window.innerHeight);
-		body.style.backgroundPosition = "center -" + imageOffset + "px";
-	};
+	else{
+		$window.onscroll = function() {
+			var referenceHeight = body.scrollHeight - window.innerHeight;
+			var percentage = body.scrollTop/referenceHeight;
+			var imageOffset = percentage * (imageHeight - window.innerHeight);
+			body.style.backgroundPosition = "center -" + imageOffset + "px";
+		};
+	}
 	
 }]);
