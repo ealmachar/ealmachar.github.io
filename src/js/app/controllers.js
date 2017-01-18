@@ -1,6 +1,4 @@
 app.controller('mainBodyController', ['$scope', '$window', function($scope, $window){
-
-	
 	// navigation bar button contents
 	$scope.contents = [
 		{name: "About Me", id: "aboutmeHeader"},
@@ -38,6 +36,8 @@ app.controller('mainBodyController', ['$scope', '$window', function($scope, $win
 	
 	// on document load, run chained css animations
 	document.body.onload = function(){
+		var end = time.getTime();
+		console.log("Time to load: " + (end - start) + ", start: " + start + ", end: " + end);
 		document.getElementById("background").className = "backgroundShow";
 		setTimeout(function(){
 			document.getElementById('navigation').className = "navAnimate";	

@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html ng-app="angularApp" ng-cloak>
-
 <script>
-loadFunctions = [];
-
-window.onload = function() {
-	loadFunctions.forEach(function(fcn, i){
-		fcn();
-	});
-};
+var time = new Date();
+var start = time.getTime();
 </script>
-
 <head>
 
   <script src="src/js/jquery.js"></script>
@@ -29,7 +22,6 @@ window.onload = function() {
   <link rel="stylesheet" href="src/css/styles.css">
   <link rel="stylesheet" href="src/css/jquery-ui.min.css">
   <link rel="stylesheet" href="src/css/angular-material.min.css">
-  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 
 </head>
@@ -101,7 +93,7 @@ window.onload = function() {
 				<h2>Edson Almachar</h2>
 				<div class="subcomponent">
 					<span class="title-span">Phone: 775-815-3720</span>
-					<span class="title-span">E-mail: eoa775 "at" live.com</span>
+					<span class="title-span">E-mail: eoa775 at live.com</span>
 					<span class="title-span">Reno, NV</span>
 				</div>
 			</center>
@@ -227,9 +219,6 @@ window.onload = function() {
 		</div>
 	</div>
 </body>
-
-
-
 </html>
 
 
