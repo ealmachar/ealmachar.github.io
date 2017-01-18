@@ -55,7 +55,7 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 		};
 	}
 	
-	angular.element(document).ready(function () {
+	document.body.onload = function(){
 		document.getElementById('whitebackground').className += " whitebackgroundanimate";
 		setTimeout(function(){
 			document.getElementById('navigation').className = "navAnimate";	
@@ -67,6 +67,6 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 				},500);
 			}, 750);
 		}, 750)
-    });
+    };
 	
 }]);
