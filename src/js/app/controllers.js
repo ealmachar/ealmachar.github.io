@@ -22,6 +22,18 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 	}*/
 
 	$scope.template = $scope.templates[$scope.tab];
+	
+	$scope.contents = [
+		{name: "About Me", id: "aboutmeHeader"},
+		{name: "Links", id: "linksHeader"},
+		{name: "Resume", id: "resumeHeader"}
+	];
+	
+	$scope.scrollTo = function(id){
+		jQuery('html,body').animate({
+		scrollTop: jQuery('#' + id).offset().top -window.innerHeight/3},
+		'slow');
+	}
 
 	var imageHeight = 1193;
 	var body = document.body;
@@ -42,5 +54,19 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 			body.style.backgroundPosition = "center -" + imageOffset + "px";
 		};
 	}
+	
+	angular.element(document).ready(function () {
+		document.getElementById('whitebackground').className += " whitebackgroundanimate";
+		setTimeout(function(){
+			document.getElementById('navigation').className = "navAnimate";	
+			setTimeout(function(){
+				document.getElementById('subBackground').className = "subBackgroundAnimate";
+				setTimeout(function(){
+					angular.element(".bodyContainer").find("*").addClass("visible");
+					angular.element("h2").addClass("visible");
+				},500);
+			}, 750);
+		}, 750)
+    });
 	
 }]);

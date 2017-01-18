@@ -1,6 +1,14 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 html{
   background-color: transparent !important;
+}
+
+md-toolbar{
+	margin-top:300px;
 }
 
 body {
@@ -9,22 +17,49 @@ body {
   background-attachment: fixed;
   /*background-size: cover;*/
   background-position: center 0px;
+  
+  overflow-y: scroll;
 }
+
+#whitebackground{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.whitebackgroundanimate{
+  -webkit-animation-name: fadeOut; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: fadeOut;
+  animation-duration: 1s;
+}
+
 
 .bodyContainer {
   position: relative;
   
-  width: 90%;
+  width: 100%;
   
-  margin: 200px auto 50px auto;
+  margin: 0px auto 50px auto;
   padding: 60px 30px;
   
   background-color: rgba(238, 238, 238, 0.90);
-  border-radius: 5px;
+  /*border-radius: 5px;*/
+}
+
+.bodyContainer *, h2 {
+  opacity: 0;
+}
+
+.visible{
+  opacity: 1;
+  -webkit-animation-name: fadeIn; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 0.5s; /* Safari 4.0 - 8.0 */
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
 }
 
 #header {
-  margin: 50px auto;
 }
 
 #portrait {
@@ -40,17 +75,150 @@ body {
 #resume {
   display: block;
 
-  margin: 50px auto;
-  width: 100%;
-  background-color: rgba(238, 238, 238, 0);
+  /*margin: 50px auto;*/
+  /*width: 100%;*/
+  /*background-color: rgba(238, 238, 238, 0);*/
 }
 
 #subBackground{
-  width: 70%;
-  margin: 50px auto 50px auto;
+  width: 50%;
+  margin: 0px auto 0px auto;
   padding: 1px 0;
   /*background-image: url('../../src/images/crissXcross.png');*/
   background-color: rgba(50, 50, 50, 0.5);
+}
+
+.subBackgroundPreAnimate{
+  display: none;
+}
+
+.subBackgroundAnimate{
+  display: block;
+  -webkit-animation-name: moveRight; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 0.5s; /* Safari 4.0 - 8.0 */
+  animation-name: moveRight;
+  animation-duration: 0.5s;
+}
+
+#navleftbuffer{
+  width: 25%;
+}
+
+#navholder{
+  width: 100px;
+  float:right;
+}
+
+#navigation{
+  position: fixed;
+  width: 100px;
+  height: 200%;
+  padding-top: 101px;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(20, 20, 20, 0.8);
+}
+
+.navPreanimate{
+  display: none;
+}
+
+.navAnimate{
+  display: inline;
+  -webkit-animation-name: moveDown; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: moveDown;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes moveDown {
+    from {
+		top: -100%;
+		opacity: 0;
+	}
+    to {
+		top: 0px;
+		opacity: 1;
+	}
+}
+
+@keyframes moveDown {
+    from {
+		top: -100%;
+		opacity: 0;
+	}
+    to {
+		top: 0px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeOut {
+    from {  background-color: rgba(255, 255, 255, 1);}
+    to {  background-color: rgba(255, 255, 255, 0);}
+}
+
+@keyframes fadeOut {
+    from {  background-color: rgba(255, 255, 255, 1);}
+    to {  background-color: rgba(255, 255, 255, 0);}
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+
+@keyframes fadeIn {
+	from { opacity: 0;}
+    to { opacity: 1;}
+}
+
+@-webkit-keyframes moveRight {
+    from {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-ms-transform: scale(0, 1); /* IE 9 */
+		-webkit-transform: scale(0, 1); /* Safari */
+		transform: scale(0, 1);
+		opacity: 0;
+	}
+    to {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-ms-transform: scale(1, 1); /* IE 9 */
+		-webkit-transform: scale(1, 1); /* Safari */
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+
+@keyframes moveRight {
+    from {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-webkit-transform: scale(0, 1); /* Safari */
+		transform: scale(0, 1);
+		opacity: 0;
+	}
+    to {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-webkit-transform: scale(1, 1); /* Safari */
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+
+.navbutton{
+  width: 100%;
+  height: 50px;
+  margin: 0px								!important;
+  border-radius: 0px						!important;
+  /*background: rgba(221, 234, 255, 0.80)		!important;*/
+}
+
+.navbutton:hover{
+  /*background: rgba(221, 234, 255, 1)		!important;*/
 }
 
 .date {

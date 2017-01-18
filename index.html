@@ -27,19 +27,37 @@ window.onload = function() {
   <script src="src/js/app/app.js"></script>
   <script src="src/js/app/config.js"></script>
   <script src="src/js/app/controllers.js"></script>
-  <script src="src/js/app/services.js"></script> <!--only needed for pattern.js implementation-->
-  
+  <script src="src/js/app/services.js"></script>
+
   <link rel="stylesheet" href="src/css/styles.css">
   <link rel="stylesheet" href="src/css/jquery-ui.min.css">
-  <link rel="stylesheet" href="src/css/bootstrap.min.css">
   <link rel="stylesheet" href="src/css/angular-material.min.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 
 </head>
 <body id="body" ng-controller="mainBodyController">
-	<div id="subBackground">
+	<div id="whitebackground"></div>
+	<div style="height:2000px;position:absolute;left:0px;top:0px;"></div>
+	<div>
+		<div id="navleftbuffer">
+			<div id="navholder">
+				<div id="navigation" class="navPreanimate">
+					<button class="navbutton md-primary" ng-repeat="content in contents" ng-click="scrollTo(content.id)" md-button>{{content.name}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="subBackground" class="subBackgroundPreAnimate">
+		<md-toolbar id="aboutmeHeader">
+			<div class="md-toolbar-tools">
+				<h2 class="md-flex">About Me</h2>
+			</div>
+		</md-toolbar>
 		<div id="header" class="bodyContainer">
 			<div id="portrait">
-				<img src="src/images/Edson.jpg" alt="linkedin">
+				<img src="src/images/edson2.jpg" alt="linkedin">
 			</div>
 			<div>
 				<p>Hi, i'm Edson Almachar. I received my B.S. in Computer Science from the University of Nevada, Reno.</p>
@@ -49,23 +67,25 @@ window.onload = function() {
 				<p>I've mainly used C++ and Javascript in my projects throughout school with some experience with other languages like Python and other web technologies like JQuery, AngularJS, D3 and Twitter Bootstrap.</p>
 			</div>
 		</div>
-
+	
+		<md-toolbar id="linksHeader">
+			<div class="md-toolbar-tools">
+				<h2 class="md-flex">Links</h2>
+			</div>
+		</md-toolbar>
 		<div id="links" class="bodyContainer">
-			<center>
-				<h2>Links</h2>
-			</center>
-			<div style="margin: 0 auto; display:flex; width:360px;">
-			  <div class="box" style="background-color: #9cdfed;">
+			<div style="margin: 0 auto; width:360px;" layout="row">
+			  <div class="box" md-colors="{background: 'blue-100'}">
 				<a href="http://www.linkedin.com/pub/edson-almachar/8b/507/687" target="_blank" title="LinkedIn">
 				  <img src="src/images/linkedin.png" alt="linkedin">
 				</a>
 			  </div>
-			  <div class="box" style="background-color: #9cdfed;">
+			  <div class="box" md-colors="{background: 'blue-100'}">
 				<a href="https://github.com/ealmachar" target="_blank" title="GitHub">
 				  <img src="src/images/github.png" alt="github">
 				</a>
 			  </div>
-			  <div class="box" style="background-color: #9cdfed;">
+			  <div class="box" md-colors="{background: 'blue-100'}">
 				<a href="http://unrncr.github.io/" target="_blank" title="Senior Project Website">
 				  <img src="src/images/ncrlogo.png" alt="github">
 				</a>
@@ -73,12 +93,140 @@ window.onload = function() {
 			</div>
 		</div>
 
-		<div id="main" class="bodyContainer" style="padding: 0px">
-			<div>
-				<div ng-include="template" onload="loadPattern()"></div>
+		<md-toolbar id="resumeHeader">
+			<div class="md-toolbar-tools">
+				<h2 class="md-flex">Resume</h2>
+			</div>
+		</md-toolbar>
+		<div id="resume" class="bodyContainer">
+			<center>
+				<h2>Edson Almachar</h2>
+				<div class="subcomponent">
+					<span class="title-span">Phone: 775-815-3720</span>
+					<span class="title-span">E-mail: eoa775 "at" live.com</span>
+					<span class="title-span">Reno, NV</span>
+				</div>
+			</center>
+			<h2 class="title">Education</h2>
+			<div class="subcomponent">
+				<ul>
+					<li>University of Nevada, Reno</li>
+					<li>Bachelor or Science, Computer Science<div class="date">May 2014</div></li>
+					<li>Minor in Mathematics</li>
+				</ul>
+			</div>
+			<h2 class="title">Example Projects</h2>
+			<div class="subcomponent">
+				<ul>
+					<li class="subtitle">Image Processing Series
+						<p class="subcomponent">
+						Programmed and implemented multiple image processing programs utilizing concepts learned in Data Structures, Image Processing, and Pattern Recognition which include histogram equalization, convolution, bayesian classifiers, and fourier/wavelet transformations in C++.
+						</p>
+					</li>
+					<li class="subtitle">"Robot Hertz"
+						<p class="subcomponent">
+						Programmed a 3D-world video game project to creatively showcase concepts learned in classes Simulation Physics and Game Development Pipeline in Python using the Ogre3D engine
+						</p>
+					</li>
+					
+					<li class="subtitle">Reports and Database Implementation of UNR's NeoCortical Simulator
+						<p class="subcomponent">
+						Designed and Implemented a client-side Web Application for the University's NCS project to provide D3 based graphical reports for ongoing processes and websocket based data streaming
+						</p>
+					</li>
+				</ul>
+			</div>
+			<h2 class="title">Work Experience</h2>
+			<div class="subcomponent">
+				<ul>
+					<li class="subtitle">Software Developer - UNR's Brain Computation Lab<div class="date">May 2014 - Nov 2014</div>
+					<p class="subcomponent">
+					- Continued senior project: Constructed Reporting and Graphing interface through SVG manipulation using D3.js and data processing using Angular.js
+					<br/>
+					- Constructed backend data streaming service using Flask and WebSockets.py
+					<br/>
+					- Managed project merging of NCR and NCB using Grunt.js
+					</p>
+				</ul>
+				<ul>
+					<li class="subtitle">Volunteer Work<div class="date">Dec 2014 - Dec 2015</div>
+					<p class="subcomponent">
+						<ul>
+							<li>- Volunteering for UNR's Brainlab as a volunteer software engineer</li>
+						</ul>
+					</p>
+				</ul>
+				<ul>
+					<li class="subtitle">Web Developer - RDM Infinity<div class="date">Dec 2015 - current</div>
+					<p class="subcomponent">
+						- Programmed handheld barcode scanning and inventory management systems onto iOS using Javascript, HTML, CSS, and jQuery Mobile
+						<br/>
+						- Interfaced with legacy PICK database systems through a central PHP server
+						<br/>
+						- Used AJAX to manage device to server and database communication
+					</p>
+				</ul>
+			</div>
+			<h2 class="title">Publications</h2>
+				<div class="subcomponent">
+				<ul>
+					<li class="subtitle">NeoCortical Repository and Reports: Database and Reports for NCS<div class="date">October 2014</div>
+					<p class="subcomponent">
+					A Repository Service and Graphical Reporting Interface is devised to serve as a front-end means of interaction with the NeoCortical Simulator - SEDE 2014 - 
+					<a href="https://docs.google.com/file/d/0BwMp7za2w1poR2NWM3AtelZpR1E/preview" target="_blank">Link</a>
+					</p>
+				</ul>
+			</div>
+			<h2 class="title">Computer Development</h2>
+			<div class="subcomponent">
+				<ul>
+					<li class="subtitle">Languages
+						<ul>
+							<li>C++/C (Intermediate Proficiency)</li>
+							<li>Javascript (Intermediate Proficiency)</li>
+							<li>Python (Beginning Proficiency)</li>
+							<li>PHP (Beginning Proficiency</li>
+						</ul>
+					</li>
+					<li class="subtitle">Web Technologies
+						<ul>
+							<li>HTML5</li>
+							<li>CSS</li>
+							<li>jQuery, jQueryUI, jQuery Mobile</li>
+							<li>AngularJS and Angular Material</li>
+							<li>GruntJS</li>
+							<li>D3.js</li>
+							<li>Twitter Bootstrap</li>
+						</ul>
+					</li>
+					<li class="subtitle">Operating Systems
+						<ul>
+							<li>Windows</li>
+							<li>Linux (Ubuntu)</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<h2 class="title">Attributes</h2>
+			<div class="subcomponent">
+				<ul>
+					<li class="subtitle">
+						<ul>
+							<li>- Understanding of computer components, both hardware and software</li>
+							<li>- Understanding of software architectural systems and unit testing</li>
+							<li>- Passion for Science and Technology and a curiosity to learn more about field of Computer Science</li>
+							<li>- Loves working with a team, or independently, great communication skills</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div style="margin-top:50px;">
+				<a href="AlmacharEdson-resume.pdf" download>Download Resume</a>
+			</div>
+			<div style="margin-top:50px;">
+				Background: https://www.pexels.com/
 			</div>
 		</div>
-
 	</div>
 </body>
 
