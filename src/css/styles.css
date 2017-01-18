@@ -4,34 +4,40 @@
 }
 
 html{
-  background-color: transparent !important;
+  /*background-color: transparent !important;*/
 }
 
 md-toolbar{
 	margin-top:300px;
 }
 
-body {
+body{
+  background-color: transparent;
+  overflow-y: scroll;
+}
+
+#background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
   background-image: url('../../src/images/pexels-photo-97517.jpeg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center 0px;
-  overflow-y: scroll;
+  z-index: -1;
 }
 
-#whitebackground{
-  position: fixed;
-  width: 100%;
-  height: 100%;
+.backgroundHide{
+  opacity: 0;
 }
 
-.whitebackgroundanimate{
-  -webkit-animation-name: fadeOut;
-  -webkit-animation-duration: 1s;
-  animation-name: fadeOut;
-  animation-duration: 1s;
+.backgroundShow{
+  opacity: 1;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
 }
-
 
 .bodyContainer {
   position: relative;
@@ -42,14 +48,13 @@ body {
   padding: 60px 30px;
   
   background-color: rgba(238, 238, 238, 0.90);
-  /*border-radius: 5px;*/
 }
 
 .bodyContainer *, h2 {
   opacity: 0;
 }
 
-.visible{
+.bodyContainerShow{
   opacity: 1;
   -webkit-animation-name: fadeIn;
   -webkit-animation-duration: 0.5s;
@@ -57,7 +62,8 @@ body {
   animation-duration: 0.5s;
 }
 
-#header {
+md-toolbar{
+  opacity: 0.9;
 }
 
 #portrait {
@@ -67,22 +73,16 @@ body {
 
 #links {
   display: block;
-
 }
 
 #resume {
   display: block;
-
-  /*margin: 50px auto;*/
-  /*width: 100%;*/
-  /*background-color: rgba(238, 238, 238, 0);*/
 }
 
 #subBackground{
   width: 50%;
   margin: 0px auto 0px auto;
-  padding: 1px 0;
-  /*background-image: url('../../src/images/crissXcross.png');*/
+  padding: 1px 0px;
   background-color: rgba(50, 50, 50, 0.5);
 }
 
@@ -129,6 +129,10 @@ body {
   animation-duration: 1s;
 }
 
+
+/*
+Keyframes used for navigation bar move down
+*/
 @-webkit-keyframes moveDown {
     from {
 		top: -100%;
@@ -151,15 +155,10 @@ body {
 	}
 }
 
-@-webkit-keyframes fadeOut {
-    from {  background-color: rgba(255, 255, 255, 1);}
-    to {  background-color: rgba(255, 255, 255, 0);}
-}
 
-@keyframes fadeOut {
-    from {  background-color: rgba(255, 255, 255, 1);}
-    to {  background-color: rgba(255, 255, 255, 0);}
-}
+/*
+Keyframes used for background fadein and bodycontainer fadein
+*/
 
 @-webkit-keyframes fadeIn {
     from { opacity: 0;}
@@ -170,6 +169,11 @@ body {
 	from { opacity: 0;}
     to { opacity: 1;}
 }
+
+
+/*
+Keyframes used for bodycontainer moveright and fadein
+*/
 
 @-webkit-keyframes moveRight {
     from {
@@ -208,13 +212,9 @@ body {
 .navbutton{
   width: 100%;
   height: 50px;
-  margin: 0px								!important;
+  margin: 0px								!important; /* important because of angular material css*/
   border-radius: 0px						!important;
-  /*background: rgba(221, 234, 255, 0.80)		!important;*/
-}
 
-.navbutton:hover{
-  /*background: rgba(221, 234, 255, 1)		!important;*/
 }
 
 .date {

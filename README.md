@@ -1,3 +1,8 @@
 # ealmachar.github.io
 
-My website..
+Website
+
+using:
+- AngularJS
+- Angular Material
+- CSS + Animations
