@@ -113,7 +113,7 @@ body {
   position: fixed;
   width: 100px;
   height: 200%;
-  padding-top: 101px;
+  padding-top: 100px;
   top: 0;
   z-index: 1;
   background-color: rgba(20, 20, 20, 0.8);

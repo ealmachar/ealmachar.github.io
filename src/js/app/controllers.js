@@ -31,7 +31,7 @@ app.controller('mainBodyController', ['$scope', '$window', 'patternService', fun
 	
 	$scope.scrollTo = function(id){
 		jQuery('html,body').animate({
-		scrollTop: jQuery('#' + id).offset().top -window.innerHeight/3},
+		scrollTop: jQuery('#' + id).offset().top - 100},
 		'slow');
 	}
 
