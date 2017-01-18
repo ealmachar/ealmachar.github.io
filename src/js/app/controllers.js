@@ -12,7 +12,7 @@ app.controller('mainBodyController', ['$scope', '$window', function($scope, $win
 		scrollTop: jQuery('#' + id).offset().top - 100},
 		'slow');
 	}
-
+/*
 	var imageHeight = 1193;
 	var body = document.body;
 	
@@ -32,22 +32,6 @@ app.controller('mainBodyController', ['$scope', '$window', function($scope, $win
 			document.getElementById("background").style.backgroundPosition = "center -" + imageOffset + "px";
 		};
 	}
-	
-	
-	// on document load, run chained css animations
-	document.body.onload = function(){
-		var end = time.getTime();
-		console.log("Time to load: " + (end - start) + ", start: " + start + ", end: " + end);
-		document.getElementById("background").className = "backgroundShow";
-		setTimeout(function(){
-			document.getElementById('navigation').className = "navAnimate";	
-			setTimeout(function(){
-				document.getElementById('subBackground').className = "subBackgroundAnimate";
-				setTimeout(function(){
-					angular.element(".bodyContainer").find("*").addClass("bodyContainerShow");
-					angular.element("h2").addClass("bodyContainerShow");
-				},500);
-			}, 750);
-		}, 750)
-    };
+	*/
+
 }]);

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
+
 <html ng-app="angularApp" ng-cloak>
+<div id="parallax1" class="parallaxParent">
+<div id="background" class="backgroundHide"></div>
+</div>
+
 <script>
 var time = new Date();
 var start = time.getTime();
@@ -7,13 +12,17 @@ var start = time.getTime();
 <head>
 
   <script src="src/js/jquery.js"></script>
-  <script src="src/js/jqueryui.js"></script>
   
   <script src="src/js/angular.min.js"></script>
   <script src="src/js/angular-animate.min.js"></script>
   <script src="src/js/angular-aria.min.js"></script>
   <script src="src/js/angular-messages.min.js"></script>
   <script src="src/js/angular-material.min.js"></script>
+  
+  <script src="src/js/TweenMax.min.js"></script>
+  <script src="src/js/ScrollMagic.js"></script>
+  <script src="src/js/animation.gsap.js"></script>
+  <script src="src/js/debug.addIndicators.js"></script>
   
   <script src="src/js/app/app.js"></script>
   <script src="src/js/app/config.js"></script>
@@ -23,18 +32,18 @@ var start = time.getTime();
   <link rel="stylesheet" href="src/css/jquery-ui.min.css">
   <link rel="stylesheet" href="src/css/angular-material.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+  
 </head>
 
+
+
 <body id="body" ng-controller="mainBodyController">
-	<div id="background" class="backgroundHide"></div>
-	<div style="height:2000px;position:absolute;left:0px;top:0px;"></div>
-	<div>
-		<div id="navleftbuffer">
-			<div id="navholder">
-				<div id="navigation" class="navPreanimate">
-					<button class="navbutton md-primary" ng-repeat="content in contents" ng-click="scrollTo(content.id)" md-button>{{content.name}}</button>
-				</div>
+	<div id="navleftbuffer">
+		<div id="navholder">
+			<div id="navigation" class="navPreanimate">
+				<button class="navbutton md-primary" ng-repeat="content in contents" ng-click="scrollTo(content.id)" md-button>{{content.name}}</button>
 			</div>
 		</div>
 	</div>
@@ -141,9 +150,7 @@ var start = time.getTime();
 				<ul>
 					<li class="subtitle">Volunteer Work<div class="date">Dec 2014 - Dec 2015</div>
 					<p class="subcomponent">
-						<ul>
-							<li>- Volunteering for UNR's Brainlab as a volunteer software engineer</li>
-						</ul>
+						- Volunteering for UNR's Brainlab as a volunteer software engineer
 					</p>
 				</ul>
 				<ul>
@@ -211,15 +218,40 @@ var start = time.getTime();
 				</ul>
 			</div>
 			<div style="margin-top:50px;">
-				<a href="AlmacharEdson-resume.pdf" download>Download Resume</a>
+				<span><a href="AlmacharEdson-resume.pdf" download>Download Resume</a></span>
 			</div>
 			<div style="margin-top:50px;">
-				Background: https://www.pexels.com/
+				<span>Background: https://www.pexels.com/</span>
 			</div>
 		</div>
 	</div>
 </body>
 </html>
 
+<script>
+// init controller
+var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "1000%"}});
 
+// build scenes
+new ScrollMagic.Scene({triggerElement: "#parallax1"})
+				.setTween("#parallax1 > div", {y: "-20%", ease: Linear.easeNone})
+				.addTo(controller);
+				
+// on document load, run chained css animations
+window.onload = function(){
+	var end = time.getTime();
+	console.log("Time to load: " + (end - start) + ", start: " + start + ", end: " + end);
+	angular.element('#background').removeClass('backgroundHide').addClass('backgroundShow');
+	setTimeout(function(){
+		document.getElementById('navigation').className = "navAnimate";	
+		setTimeout(function(){
+			angular.element('#subBackground').removeClass('subBackgroundPreAnimate').addClass('subBackgroundAnimate');
+			setTimeout(function(){
+				angular.element(".bodyContainer").children().addClass("bodyContainerShow");
+				angular.element("h2").addClass("bodyContainerShow");
+			},500);
+		}, 750);
+	}, 750)
+};
+</script>
 
