@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="angularApp" ng-cloak>
+
+<script>
+loadFunctions = [];
+
+window.onload = function() {
+	loadFunctions.forEach(function(fcn, i){
+		fcn();
+	});
+};
+</script>
+<head>
+
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/jqueryui.js"></script>
+  
+  <script src="src/js/angular.min.js"></script>
+  <script src="src/js/angular-animate.min.js"></script>
+  <script src="src/js/angular-aria.min.js"></script>
+  <script src="src/js/angular-messages.min.js"></script>
+  <script src="src/js/angular-material.min.js"></script>
+  
+  <script src="src/js/app/app.js"></script>
+  <script src="src/js/app/config.js"></script>
+  <script src="src/js/app/controllers.js"></script>
+  <script src="src/js/app/services.js"></script>
+  
+  <link rel="stylesheet" href="src/css/styles.css">
+  <link rel="stylesheet" href="src/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="src/css/angular-material.min.css">
+
+</head>
+<body id="body" ng-controller="mainBodyController">
+
+
+<div id="pattern" class="bodyContainer"><!-- ng-controller="patternController">-->
+	<div>
+		<canvas id="patternCanvas" height="600" style="border:1px solid #000000;"></canvas>
+	</div>
+	<md-button class="md-raised" ng-click="pattern.update()">Redraw</md-button>
+	<md-slider-container ng-repeat="(attr, subattr) in pattern.attr">
+		<div flex layout layout-align="center center" style="max-width:100px">
+			<span class="md-body-1">{{subattr.name}}</span>
+		</div>
+		<md-slider flex min="{{subattr.min}}" max="{{subattr.max}}" step="{{subattr.step}}" ng-model="subattr.value" aria-label="red" ng-change="pattern.update()"></md-slider>
+		<md-input-container>
+		<input flex type="number" ng-model="subattr.value" aria-label="red" aria-controls="red-slider">
+		</md-input-container>
+	</md-slider-container>
+</div>
+</body>
+</html>
