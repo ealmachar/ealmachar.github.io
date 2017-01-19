@@ -267,3 +267,7 @@ ul {
   
   border-radius: 5px;
 }
+
+#parallax1{
+  left: -100px;
+}

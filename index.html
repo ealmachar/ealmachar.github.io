@@ -230,7 +230,7 @@ var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "
 
 // build scenes
 new ScrollMagic.Scene({triggerElement: "#parallax1"})
-				.setTween("#parallax1 > div", {y: "-20%", ease: Linear.easeNone})
+				.setTween("#parallax1 > div", {y: "-10%", ease: Linear.easeNone})
 				.addTo(controller);
 				
 // on document load, run chained css animations
@@ -249,5 +249,18 @@ window.onload = function(){
 		}, 750);
 	}, 750)
 };
+
+// toggle between background-size: 'cover' and '' to compensate for background.width < window.width
+window.onresize = function(){
+	var background = document.getElementById('background');
+	if(window.innerWidth > 1773 && background.style.backgroundSize == ''){
+		background.style.backgroundSize = 'cover';
+		console.log('going to cover');
+	}
+	else if(window.innerWidth <= 1773 && background.style.backgroundSize == 'cover'){
+		background.style.backgroundSize = '';
+		console.log('leaving cover');
+	}
+}
 </script>
 
