@@ -267,3 +267,61 @@ ul {
   
   border-radius: 5px;
 }
+
+.project{
+  position: relative;
+  width: 100%;
+  height: 75px;
+  
+  overflow: hidden;
+  
+  margin-bottom: 20px;
+}
+
+.projImage{
+  
+  height: 100%;
+  margin-left: 150px;
+  
+  /*
+  position: absolute;
+  top: 0px;
+  left: 150px;
+*/
+  
+  opacity: 0.7;
+}
+
+.projectTitle{
+  float: left;
+  height: 100%;
+  width: 150px;
+  
+  text-align: right;
+  padding-right: 10px;
+
+  background-color: rgba(238, 238, 238, 0.90);
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif				!important; /*override angular material css*/
+}
+
+a:link     {color: rgba(0,0,0,0.87);}
+a:visited  {color: rgba(0,0,0,0.87);}
+a:active   {color: rgba(0,0,0,0.87);}
+
+#solarsystem{
+	background-image: url('../../src/images/solarsystem.png');
+	background-position: -75px center;
+}
+
+#pattern{
+	background-image: url('../../src/images/pattern.png');
+	background-position: right center;
+}
+
+#reports{
+	background-image: url('../../src/images/reports.png');
+	background-position: left bottom;
+}
+
+

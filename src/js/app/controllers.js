@@ -3,6 +3,7 @@ app.controller('mainBodyController', ['$scope', '$window', function($scope, $win
 	$scope.contents = [
 		{name: "About Me", id: "aboutmeHeader"},
 		{name: "Links", id: "linksHeader"},
+		{name: "Portfolio", id: "portfolioHeader"},
 		{name: "Resume", id: "resumeHeader"}
 	];
 	
