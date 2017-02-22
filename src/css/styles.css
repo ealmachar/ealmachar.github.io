@@ -264,8 +264,10 @@ ul {
   height: 100px;
   margin: 10px 10px;
   padding: 5px 5px;
-  
-  border-radius: 5px;
+}
+
+a img{
+  opacity: 0.8;
 }
 
 .project{
