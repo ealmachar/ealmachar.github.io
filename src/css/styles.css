@@ -6,11 +6,16 @@ html, body {
 	font-family: 'Roboto', sans-serif;
 }
 
+body{
+	opacity: 0;
+	
+	transition: opacity 1s;
+}
+
 #division1{
 	position: relative;
 	height: 100%;
 	width: 100%;
-	/*background-color: rgba(215, 246, 255, 1);*/
 	
 	overflow: hidden;
 }
@@ -25,7 +30,6 @@ html, body {
 	overflow: hidden;
 	
 	background-color: rgba(200, 200, 200, 1);
-	z-index: 1;
 }
 
 #division3{
@@ -65,6 +69,7 @@ html, body {
 	min-height: 25%;
 	width: 75%;
 	min-width: 350px;
+	max-width: 1000px;
 	
 	padding-top: 100px;
 	padding-bottom: 200px;
@@ -196,64 +201,6 @@ html, body {
 	0% {transform: rotate(0deg);}
 	100% {transform: rotate(36deg);}
 }
-/*
-#knob6{
-	position: fixed;
-	top: 40%;
-	left: 30%;
-	width: 1800px;
-	height: 1800px;
-	
-	opacity: 1;
-	
-	animation-name: twist6;
-	animation-duration: 100s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-
-@keyframes twist6{
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(-27.692deg);}
-}
-
-#knob7{
-	position: fixed;
-	top: 30%;
-	left: -40%;
-	width: 1800px;
-	height: 1800px;
-	
-	opacity: 1;
-	
-	animation-name: twist7;
-	animation-duration: 100s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-
-@keyframes twist7{
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(27.692deg);}
-}
-*/
-/*
-#knob5Cover1{
-	position: absolute;
-	width: 100%;
-	height: 400px;
-	bottom: -400px;
-	background-color: rgba(240, 240, 240, 1);
-}
-
-#knob5Cover2{
-	position: absolute;
-	width: 400px;
-	height: 150%;
-	top: 0px;
-	right: -400px;
-	background-color: rgba(240, 240, 240, 1);
-}*/
 
 #aboutmesvg{
 	position: absolute;
@@ -312,6 +259,17 @@ html, body {
 
 .project.show{
 	opacity: 1;
+}
+
+.projectTitle{
+}
+
+.projectTitleBorder{
+	position: absolute;
+	width: 100%;
+	height: 45px;
+	
+	background-color: rgba(250, 250, 250, 1);;
 }
 
 .projectTextContainer{

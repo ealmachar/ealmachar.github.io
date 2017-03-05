@@ -1,7 +1,7 @@
 
 
 
-
+// bottom left small
 var gear1 = {
 	gearNum: '1',
 	radius: 30,
@@ -13,6 +13,7 @@ var gear1 = {
 	startingAngle: 0
 }
 
+// bottom left large
 var gear2 = {
 	gearNum: '2',
 	radius: 40,
@@ -24,6 +25,7 @@ var gear2 = {
 	startingAngle: 30
 }
 
+// upper right large
 var gear3 = {
 	gearNum: '3',
 	radius: 50,
@@ -35,6 +37,7 @@ var gear3 = {
 	startingAngle: 40
 }
 
+// upper right small
 var gear4 = {
 	gearNum: '4',
 	radius: 15,
@@ -46,6 +49,7 @@ var gear4 = {
 	startingAngle: 60
 }
 
+// transparent center
 var gear5 = {
 	gearNum: '5',
 	radius: 400,
@@ -67,26 +71,23 @@ var background = $('#d1back');
 
 function init(){
 	$('.project').mouseenter(function(){
-		$(this).addClass('show');
-		$(this).find('.projectText').addClass('show');
-	})
-	.mouseleave(function(){
-		$(this).removeClass('show');
-		$(this).find('.projectText').removeClass('show');
-	});
-	
-	$('.project').mouseenter(function(){
-		$(this).find('path').each(function(){
+		var obj = $(this);
+		obj.addClass('show');
+		obj.find('.projectText').addClass('show');
+		obj.find('path').each(function(){
 			this.style.strokeDashoffset = '0';
 		});
-	});
-
-	$('.project').mouseleave(function(){
-		$(this).find('path').each(function(){
+	})
+	.mouseleave(function(){
+		var obj = $(this);
+		obj.removeClass('show');
+		obj.find('.projectText').removeClass('show');
+		obj.find('path').each(function(){
 			var num = $(this).attr('class').charAt(5);
 			this.style.strokeDashoffset = strokeDashoffsets['w' + num];
 		});
 	});
+
 
 	makeGear(gear1);
 	makeGear(gear2);
@@ -94,16 +95,16 @@ function init(){
 	makeGear(gear4);
 	makeGear(gear5);
 
+	makeWire('1', true);
+	makeWire('2', true);
+	makeWire('3', true);
+	
+	makeBackground();
+
 	makeProjectWire('1');
 	makeProjectWire('2');
 	makeProjectWire('3');
 	makeProjectWire('4');
-
-	makeBackground();
-
-	makeWire('1', true);
-	makeWire('2', true);
-	makeWire('3', true);
 
 	animate();
 }
@@ -142,7 +143,7 @@ function makeGear(properties){
 	if(gearNum == null)
 		return
 	
-	var fill = 'white';//'rgba(183, 65, 14, .3)';
+	var fill = 'white';
 
 	var centerx = parseInt($('#knob' + gearNum).css('width')) / 2;
 	var centery = parseInt($('#knob' + gearNum).css('height')) / 2;
@@ -202,13 +203,25 @@ function makeGear(properties){
 		d += ag1	
 	}
 
-	$('#spoke' + gearNum).attr({d: d, fill: fill});
+	$('#spoke' + gearNum)
+	.attr('d', d)
+	.css({
+		fill: fill,
+		stroke: 'grey',
+		strokeWidth: 2
+	});
 
 	if(innerRadius > 0){
-		var innercircle = $('#circle' + gearNum)
-		innercircle.attr('r', innerRadius);
-		innercircle.attr('cx', centerx);
-		innercircle.attr('cy', centery);
+		$('#circle' + gearNum)
+		.attr({
+			r: innerRadius,
+			cx: centerx,
+			cy: centery})
+		.css({
+			fill: fill,
+			stroke: 'grey',
+			strokeWidth: 2
+			});
 	}
 }
 
@@ -233,6 +246,7 @@ function makeWire(wireNum, init){
 	
 	height = parseInt($('#wire' + wireNum).parent().css('height'))/2.5;
 	
+	// long center wire
 	if(wireNum == '1'){
 		y = 40;
 		x = parseInt($('#wire' + wireNum).parent().css('width')) * (1 - 1/5);
@@ -251,6 +265,8 @@ function makeWire(wireNum, init){
 		
 		d = m + l1 + a + l2;
 	}
+	
+	// left center wire
 	else if(wireNum == '2'){
 		y = 80;
 		
@@ -265,6 +281,8 @@ function makeWire(wireNum, init){
 		
 		d = m + l2;
 	}
+	
+	// right center wire
 	else if(wireNum == '3'){
 		y = 60;
 		
@@ -280,8 +298,15 @@ function makeWire(wireNum, init){
 		d = m + l2;
 	}
 	
-	$('#wire' + wireNum).attr('d', d);
+	$('#wire' + wireNum)
+	.attr('d', d)
+	.css({
+		fill: "none",
+		stroke: "grey",
+		strokeWidth: 2
+	});
 	
+	// prepare animations for wire 2 and 3
 	if(wireNum != '1' && init){
 		var obj = $('#wire' + wireNum).get(0);
 
@@ -393,12 +418,20 @@ function makeBackground(){
 		
 		// wires within cpu1's width
 		else if(step*(i + 1) > cpu1x && step*(i + 1) < (cpu1x + cpu1width)){
+			
+			// initial calculations
 			if(toggle3){
+				
+				// count how many wires we need to render first
 				for(var h = i, j = 0; step*(h + 1) < (cpu1x + cpu1width); h++, j++);
+				
+				// start at the middle minus half-1 of the total amount of wires we need to render
 				i6 = cpu1x + cpu1width/2 - (((j-1)/2)*step/2);
+				
+				// incrementer
 				i7 = j - 1;
-				toggle3 = false;
 
+				toggle3 = false;
 			}
 
 			m = 'M ' + (i6 + (step/2)*i7) + ' ' + 0;
@@ -460,6 +493,8 @@ function makeBackground(){
 		svg += '<path id="backwirex' + i + '" d="' + d + '" fill="none" stroke="' + lineColor + '" stroke-width="' + lineWidth + '"></path>';
 	}
 	
+	numPaths = i;
+	
 	i2 = 0;
 	toggle = true;
 	var numypaths = 0;
@@ -470,7 +505,6 @@ function makeBackground(){
 		d = '';
 		
 		if(toggle){
-			
 			for(var j = 0; step*(j + 1) < cpu1height; j++);
 			i3 = cpu1y + cpu1height/2 - (((j-1)/2)*step/2);
 			i2 = j -1;
@@ -529,6 +563,9 @@ function makeBackground(){
 	}
 	
 	svg += '<rect x="' + cpu1x + '" y="' + cpu1y + '" width="' + cpu1width + '" height="' + cpu1height + '"' +
+		' fill="' + backgroundColor + '" stroke-width="' + lineWidth + '" stroke="' + lineColor + '" />'
+		
+	svg += '<rect x="' + (cpu1x + cpu1width/4) + '" y="' + (cpu1y + cpu1height/4) + '" width="' + (cpu1width/2) + '" height="' + (cpu1height/2) + '"' +
 		' fill="' + backgroundColor + '" stroke-width="' + lineWidth + '" stroke="' + lineColor + '" />'
 	
 	svg += '<rect x="' + cpu2x + '" y="' + cpu2y + '" width="' + cpu2width + '" height="' + cpu2height + '"' +
@@ -625,7 +662,9 @@ function makeProjectWire(wireNum){
 	
 	d += m + l1 + a1 + l2 + a2 + l3 + a3 + l4;
 
-	$('.pwire' + wireNum).attr('d', d).each(function(i){
+	$('.pwire' + wireNum)
+	.attr('d', d)
+	.each(function(i){
 		var length;
 		var key = 'w' + wireNum;
 		
@@ -640,6 +679,9 @@ function makeProjectWire(wireNum){
 
 		this.getBoundingClientRect();
 
+		this.style.fill = "none";
+		this.style.stroke = "white";
+		this.style.strokeWidth = '2';
 		this.style.transition = 'stroke-dashoffset 0.25s linear';
 	});
 }
@@ -661,6 +703,10 @@ window.onresize = function(){
 
 window.onscroll = function(){
 	//background.css('transform', 'translateY(' + document.body.scrollTop*.8 + 'px)');
+}
+
+window.onload = function(){
+	$('body').css('opacity', '1');
 }
 
 
