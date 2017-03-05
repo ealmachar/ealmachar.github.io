@@ -88,7 +88,6 @@ function init(){
 		});
 	});
 
-	
 	makeGear(gear1);
 	makeGear(gear2);
 	makeGear(gear3);
@@ -545,7 +544,6 @@ function makeBackground(){
 	
 	parent.empty();
 	parent.append(svg);
-	console.log(parent);
 }
 
 
