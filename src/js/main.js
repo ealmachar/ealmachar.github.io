@@ -57,38 +57,76 @@ var gear5 = {
 	startingAngle: 15
 }
 
-/*
-var gear6 = {
-	gearNum: '6',
-	radius: 800,
-	innerRadius: 0,
-	numSpokes: 13,
-	spokeLength: 100,
-	spokeWidthAngle: 8,
-	spokeSlant: 15,
-	startingAngle: 15
+// keep track of three wires in center to animate them
+var wires = {};
+
+// store strokedashoffsets of wires in center
+var strokeDashoffsets = {};
+
+var background = $('#d1back');
+
+function init(){
+	$('.project').mouseenter(function(){
+		$(this).addClass('show');
+		$(this).find('.projectText').addClass('show');
+	})
+	.mouseleave(function(){
+		$(this).removeClass('show');
+		$(this).find('.projectText').removeClass('show');
+	});
+	
+	$('.project').mouseenter(function(){
+		$(this).find('path').each(function(){
+			this.style.strokeDashoffset = '0';
+		});
+	});
+
+	$('.project').mouseleave(function(){
+		$(this).find('path').each(function(){
+			var num = $(this).attr('class').charAt(5);
+			this.style.strokeDashoffset = strokeDashoffsets['w' + num];
+		});
+	});
+
+	
+	makeGear(gear1);
+	makeGear(gear2);
+	makeGear(gear3);
+	makeGear(gear4);
+	makeGear(gear5);
+
+	makeProjectWire('1');
+	makeProjectWire('2');
+	makeProjectWire('3');
+	makeProjectWire('4');
+
+	makeBackground();
+
+	makeWire('1', true);
+	makeWire('2', true);
+	makeWire('3', true);
+
+	animate();
 }
 
-var gear7 = {
-	gearNum: '7',
-	radius: 800,
-	innerRadius: 0,
-	numSpokes: 13,
-	spokeLength: 100,
-	spokeWidthAngle: 8,
-	spokeSlant: 15,
-	startingAngle: 15
+
+
+function animate(){
+	for(var wire in wires){
+		if(wire == 'wire2'){
+			wires[wire].progress -= 1;
+			wires[wire].progress = wires[wire].progress < -wires[wire].length ? wires[wire].length : wires[wire].progress;
+			wires[wire].obj.style.strokeDashoffset = wires[wire].progress;
+		}
+		else if(wire == 'wire3'){
+			wires[wire].progress += toRads(2);
+			wires[wire].progress %= Math.PI*2;
+			wires[wire].obj.style.strokeDashoffset = Math.sin(wires[wire].progress) * wires[wire].length;
+		}
+	}
+	requestAnimationFrame(animate);
 }
 
-*/
-
-makeGear(gear1);
-makeGear(gear2);
-makeGear(gear3);
-makeGear(gear4);
-makeGear(gear5);
-//makeGear(gear6);
-//makeGear(gear7);
 
 function makeGear(properties){
 	
@@ -175,7 +213,7 @@ function makeGear(properties){
 	}
 }
 
-var wires = {};
+
 
 
 function makeWire(wireNum, init){
@@ -246,37 +284,32 @@ function makeWire(wireNum, init){
 	$('#wire' + wireNum).attr('d', d);
 	
 	if(wireNum != '1' && init){
-	var obj = $('#wire' + wireNum).get(0);
+		var obj = $('#wire' + wireNum).get(0);
 
-	var length;
-	var key = 'wire' + wireNum;
+		var length;
+		var key = 'wire' + wireNum;
 
-	length = obj.getTotalLength();
+		length = obj.getTotalLength();
 
-	if(wireNum == '2')
-		length *= .8;
-	else if(wireNum == '3')
-		length *= .2;
-	
-	obj.style.strokeDasharray = length + ' ' + length;
-	obj.style.strokeDashoffset = length;
-	
-	wires[key] = {};
-	wires[key].length = length;
-	wires[key].obj = obj;
-	
-	if(wireNum == '1')
-		wires[key].progress = length;
-	else
-		wires[key].progress = 0;
+		if(wireNum == '2')
+			length *= .8;
+		else if(wireNum == '3')
+			length *= .2;
+		
+		obj.style.strokeDasharray = length + ' ' + length;
+		obj.style.strokeDashoffset = length;
+		
+		wires[key] = {};
+		wires[key].length = length;
+		wires[key].obj = obj;
+		
+		if(wireNum == '1')
+			wires[key].progress = length;
+		else
+			wires[key].progress = 0;
 
 
-	obj.getBoundingClientRect();
-/*
-	obj.style.transition = 'stroke-dashoffset 2.5s linear';
-	
-	obj.style.strokeDashoffset = '0';
-	*/
+		obj.getBoundingClientRect();
 	}
 }
 
@@ -347,9 +380,6 @@ function makeBackground(){
 	for(; step*(i + 1) < cpu2x + cpu2width; i++){
 	
 		d = '';
-		
-		
-		
 		l = '';
 		
 		// wires left of cpu1
@@ -518,82 +548,10 @@ function makeBackground(){
 	console.log(parent);
 }
 
-makeBackground();
 
 
-
-
-
-function init(){
-	$('.project').mouseenter(function(){
-		$(this).addClass('show');
-		$(this).find('.projectText').addClass('show');
-	})
-	.mouseleave(function(){
-		$(this).removeClass('show');
-		$(this).find('.projectText').removeClass('show');
-	});
-}
-
-init();
-
-
-
-
-
-
-
-function animate(){
-	for(var wire in wires){
-		if(wire == 'wire2'){
-			wires[wire].progress -= 1;
-			wires[wire].progress = wires[wire].progress < -wires[wire].length ? wires[wire].length : wires[wire].progress;
-			wires[wire].obj.style.strokeDashoffset = wires[wire].progress;
-		}
-		else if(wire == 'wire3'){
-			wires[wire].progress += toRads(2);
-			wires[wire].progress %= Math.PI*2;
-			wires[wire].obj.style.strokeDashoffset = Math.sin(wires[wire].progress) * wires[wire].length;
-		}
-	}
-	requestAnimationFrame(animate);
-}
-
-
-animate();
-
-
-makeWire('1', true);
-makeWire('2', true);
-makeWire('3', true);
-
-
-
-
-
-
-var projectWire1 = {
-	wireNum: '1'
-}
-
-var projectWire2 = {
-	wireNum: '2'
-}
-
-var projectWire3 = {
-	wireNum: '3'
-}
-
-var projectWire4 = {
-	wireNum: '4'
-}
-
-var strokeDashoffsets = {};
-
-
-
-function makeProjectWire(properties){
-	var wireNum = properties.wireNum || null;
+// wires that "cling" onto the project image links
+function makeProjectWire(wireNum){
 	
 	if(wireNum == null)
 		return;
@@ -688,23 +646,8 @@ function makeProjectWire(properties){
 	});
 }
 
-$('.project').mouseenter(function(){
-	$(this).find('path').each(function(){
-		this.style.strokeDashoffset = '0';
-	});
-});
 
-$('.project').mouseleave(function(){
-	$(this).find('path').each(function(){
-		var num = $(this).attr('class').charAt(5);
-		this.style.strokeDashoffset = strokeDashoffsets['w' + num];
-	});
-});
 
-makeProjectWire(projectWire1);
-makeProjectWire(projectWire2);
-makeProjectWire(projectWire3);
-makeProjectWire(projectWire4);
 
 
 window.onresize = function(){
@@ -716,48 +659,17 @@ window.onresize = function(){
 	makeBackground();
 }
 
-var background = $('#d1back');
+
 
 window.onscroll = function(){
 	//background.css('transform', 'translateY(' + document.body.scrollTop*.8 + 'px)');
 }
 
-/*
-
-var backline1 = $('#backline1');
-var backline2 = $('#backline2');
-var milliseconds = 2000;
-var elapsed = 0;
-var start = 0;
-
-var backlineAngle = 0;
-
-var knob = $('#knob1');
-
-var i = 0;
-var matrix;
-
-function animate(){
-	backlineAngle ++;
-	backline1.attr('transform', 'rotate(' + backlineAngle + ' 50 50)' )
-	backline2.attr('transform', 'rotate(' + -backlineAngle + ' 50 50)' )
-	
-	elapsed = performance.now() - start;
-	start = performance.now();
-	
-	i++;
-	if(i == 4){
-		matrix = knob.css('transform')
-		console.log(matrix);
-	}
-	
-	requestAnimationFrame(animate);
-}
-
-animate();
-
-*/
 
 function toRads(num){
 	return num * Math.PI / 180;
 }
+
+
+init();
+
