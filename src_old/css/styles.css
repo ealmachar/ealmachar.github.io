@@ -1,0 +1,329 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+button, md-toolbar {
+  font-family: 'Open Sans', sans-serif				!important; /*override angular material css*/
+}
+
+html{
+  background-color: transparent 					!important; /*override angular material css*/
+}
+
+md-toolbar{
+  margin-top:300px;
+}
+
+body{
+  background-color: transparent;
+  overflow-y: scroll;
+}
+
+#background {
+  position: fixed;
+  height: 200%;
+  width: 100%;
+  background-image: url('../../src/images/background.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center 0px;
+  z-index: -1;
+}
+
+.backgroundHide{
+  opacity: 0;
+}
+
+.backgroundShow{
+  opacity: 1;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+}
+
+.bodyContainer {
+  position: relative;
+  
+  width: 100%;
+  
+  margin: 0px auto 50px auto;
+  padding: 60px 30px;
+  
+  background-color: rgba(238, 238, 238, 0.90);
+  font-family: 'Lora', serif							!important;
+}
+
+.bodyContainer li, .bodyContainer p, .bodyContainer span{
+  /*font-size: 20px; */
+}
+
+.bodyContainer > *, h2 {
+  opacity: 0;
+}
+
+.bodyContainerShow{
+  opacity: 1;
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+}
+
+md-toolbar{
+  opacity: 0.9;
+}
+
+#portrait {
+  float: left;
+  margin-right: 10px;
+}
+
+#links {
+  display: block;
+}
+
+#resume {
+  display: block;
+}
+
+#subBackground{
+  width: 50%;
+  margin: 0px auto 0px auto;
+  padding: 1px 0px;
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+.subBackgroundPreAnimate{
+  display: none;
+}
+
+.subBackgroundAnimate{
+  display: block;
+  -webkit-animation-name: moveRight;
+  -webkit-animation-duration: 0.5s;
+  animation-name: moveRight;
+  animation-duration: 0.5s;
+}
+
+#navleftbuffer{
+  width: 25%;
+}
+
+#navholder{
+  width: 100px;
+  float:right;
+}
+
+#navigation{
+  position: fixed;
+  width: 100px;
+  height: 200%;
+  padding-top: 100px;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(20, 20, 20, 0.8);
+}
+
+.navPreanimate{
+  display: none;
+}
+
+.navAnimate{
+  display: inline;
+  -webkit-animation-name: moveDown;
+  -webkit-animation-duration: 1s;
+  animation-name: moveDown;
+  animation-duration: 1s;
+}
+
+
+/*
+Keyframes used for navigation bar move down
+*/
+@-webkit-keyframes moveDown {
+    from {
+		top: -100%;
+		opacity: 0;
+	}
+    to {
+		top: 0px;
+		opacity: 1;
+	}
+}
+
+@keyframes moveDown {
+    from {
+		top: -100%;
+		opacity: 0;
+	}
+    to {
+		top: 0px;
+		opacity: 1;
+	}
+}
+
+
+/*
+Keyframes used for background fadein and bodycontainer fadein
+*/
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+
+@keyframes fadeIn {
+	from { opacity: 0;}
+    to { opacity: 1;}
+}
+
+
+/*
+Keyframes used for bodycontainer moveright and fadein
+*/
+
+@-webkit-keyframes moveRight {
+    from {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-webkit-transform: scale(0, 1);
+		transform: scale(0, 1);
+		opacity: 0;
+	}
+    to {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-webkit-transform: scale(1, 1);
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+
+@keyframes moveRight {
+    from {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-webkit-transform: scale(0, 1);
+		transform: scale(0, 1);
+		opacity: 0;
+	}
+    to {
+		-webkit-transform-origin: 0% 0%;
+		transform-origin: 0% 0%;
+		-webkit-transform: scale(1, 1);
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+}
+
+.navbutton{
+  width: 100%;
+  height: 50px;
+  margin: 0px								!important; /* important because of angular material css*/
+  border-radius: 0px						!important;
+
+}
+
+.date {
+  float: right;
+  margin-right: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.subcomponent {
+  display: block;
+  margin-top: 20px;
+  margin-left: 0px;
+}
+
+.title {
+  margin-top: 40px;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 40px;
+}
+
+.title-span {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 10px 10px;
+  padding: 5px 5px;
+}
+
+a img{
+  opacity: 0.8;
+}
+
+.project{
+  position: relative;
+  width: 100%;
+  height: 75px;
+  
+  overflow: hidden;
+  
+  margin-bottom: 20px;
+}
+
+.projImage{
+  
+  height: 100%;
+  margin-left: 150px;
+  
+  /*
+  position: absolute;
+  top: 0px;
+  left: 150px;
+*/
+  
+  opacity: 0.7;
+}
+
+.projectTitle{
+  float: left;
+  height: 100%;
+  width: 150px;
+  
+  text-align: right;
+  padding-right: 10px;
+
+  background-color: rgba(238, 238, 238, 0.90);
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif				!important; /*override angular material css*/
+}
+
+a:link     {color: rgba(0,0,0,0.87);}
+a:visited  {color: rgba(0,0,0,0.87);}
+a:active   {color: rgba(0,0,0,0.87);}
+
+#solarsystem{
+	background-image: url('../../src/images/solarsystem.png');
+	background-position: -75px center;
+}
+
+#pattern{
+	background-image: url('../../src/images/pattern.png');
+	background-position: right center;
+}
+
+#reports{
+	background-image: url('../../src/images/reports.png');
+	background-position: left bottom;
+}
+
+
