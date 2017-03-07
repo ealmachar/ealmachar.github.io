@@ -287,7 +287,7 @@ body{
 	position: absolute;
 	top: 0px;
 	left: 0;
-	width: 50%;
+	width: 40%;
 	height: 100%;
 	
 	background-color: rgba(240, 240, 240, 1);
@@ -295,31 +295,31 @@ body{
 
 .projectText{
 	position: absolute;
-	width: 80%;
+	width: 75%;
 
 	top: 20px;
-	left: 5%;
+	left: 10%;
 	
 	transition: left 0.5s;
 }
 
 .projectText.show{
-	left: 15%;
+	left: 25%;
 }
 
 .projectImage{
 	position: absolute;
 	top: 0px;
-	left: 50%;
-	width: 50%;
+	left: 40%;
+	width: 60%;
 	height: 100%;
 }
 
 .projectWireContainer{
 	position: absolute;
 	top: 0px;
-	left: 50%;
-	width: 50%;
+	left: 40%;
+	width: 60%;
 	height: 100%;
 }
 
