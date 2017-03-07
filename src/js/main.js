@@ -528,12 +528,13 @@ function makeBackground(){
 	
 
 	var start, duration;
-	for(i = 0; i < numPaths; i += 3){
+	var radius = 4;
+	for(i = 0; i < numPaths; i += 4){
 		
-		start = Math.random()*3 + 1;
-		duration = Math.random()*10 + 5;
+		start = Math.random()*30 + 0;
+		duration = Math.random()*30 + 30;
 		
-		svg += '<circle id="circlex' + i + '" r="5" cx="0" cy="0" fill="' + lineColor + '" />'
+		svg += '<circle id="circlex' + i + '" r="' + radius + '" cx="0" cy="0" fill="' + lineColor + '" />'
 
 		svg += '<animateMotion ' +
 			   'xlink:href="#circlex' + i + '"' +
@@ -547,10 +548,10 @@ function makeBackground(){
 	
 	for(i = 0; i < numypaths; i += 3){
 		
-		start = Math.random()*3 + 1;
-		duration = Math.random()*10 + 5;
+		start = Math.random()*30 + 0;
+		duration = Math.random()*30 + 30;
 
-		svg += '<circle id="circley' + i + '" r="5" cx="0" cy="0" fill="' + lineColor + '" />'
+		svg += '<circle id="circley' + i + '" r="' + radius + '" cx="0" cy="0" fill="' + lineColor + '" />'
 
 		svg += '<animateMotion ' +
 			   'xlink:href="#circley' + i + '"' +
