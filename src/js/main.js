@@ -531,8 +531,8 @@ function makeBackground(){
 	var radius = 4;
 	for(i = 0; i < numPaths; i += 4){
 		
-		start = Math.random()*10 + 0;
-		duration = Math.random()*45 + 15;
+		start = Math.random()*30 + 5;
+		duration = Math.random()*45 + 30;
 		
 		svg += '<circle id="circlex' + i + '" r="' + radius + '" cx="0" cy="0" fill="' + lineColor + '" />'
 
@@ -548,8 +548,8 @@ function makeBackground(){
 	
 	for(i = 0; i < numypaths; i += 3){
 		
-		start = Math.random()*10 + 0;
-		duration = Math.random()*45 + 15;
+		start = Math.random()*30 + 5;
+		duration = Math.random()*45 + 30;
 
 		svg += '<circle id="circley' + i + '" r="' + radius + '" cx="0" cy="0" fill="' + lineColor + '" />'
 
