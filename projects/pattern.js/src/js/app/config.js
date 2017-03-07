@@ -1,3 +1,0 @@
-app.config(function($mdThemingProvider) {
-
-});

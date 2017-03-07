@@ -226,6 +226,17 @@ body{
 	background-color: rgba(175, 175, 175, 1);
 }
 
+#div2banner2{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	
+	width: 75px;
+	height: 100%;
+	
+	background-color: rgba(125, 125, 125, 1);
+}
+
 
 #div2title{
 	position: relative;
