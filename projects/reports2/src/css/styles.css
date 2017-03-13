@@ -1,0 +1,68 @@
+body, html{
+	width: 100%;
+	height: 100%;
+	
+	margin: 0px;
+	
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+svg{
+	width: 100%;
+	height: 100%;
+}
+
+.dot, .line, .bar{
+	/*transition: fill 0.25s;*/
+}
+
+
+.dot.red, .bar.red{
+	fill: red !important;
+}
+
+#hover{
+	position: absolute;
+	top: 10%;
+	right: 10%;
+	
+	font-family: 'Raleway', sans-serif;
+}
+
+#barGraphContainer{
+	position: absolute;
+	
+	left: 10%;
+	top: 0px;
+	
+	width: 80%;
+	height: 33.33%;
+	
+	background-color: rgba(50, 0, 0, 0.2);
+}
+
+#scatterPlotContainer{
+	position: absolute;
+	
+	left: 10%;
+	top: 33.33%;
+	
+	width: 80%;
+	height: 33.33%;
+	
+	background-color: rgba(0, 0, 50, 0.2);
+}
+
+#lineGraphContainer{
+	position: absolute;
+	
+	left: 10%;
+	top: 66.66%;
+	
+	
+	width: 80%;
+	height: 33.33%;
+	
+	background-color: rgba(0, 50, 0, 0.2);
+}
+

@@ -29,7 +29,7 @@ body{
 	
 	overflow: hidden;
 	
-	background-color: rgba(200, 200, 200, 1);
+	background-color: rgba(220, 220, 220, 1);
 }
 
 #division3{
@@ -255,13 +255,13 @@ body{
 .project{
 	position: relative;
 	width: 80%;
-	height: 150px;
+	height: 125px;
 		
 	min-width: 350px;
 	max-width: 1000px;
 	
 	padding: 0px 0px;
-	margin: 100px auto;
+	margin: 40px auto;
 
 	box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
 	
@@ -357,6 +357,13 @@ body{
 	
 	background-image: url('../images/4.jpg');
 }
+
+#image5{
+	background-position: center center;
+	
+	background-image: url('../images/5.jpg');
+}
+
 
 #links{
 	width: 280px;
