@@ -364,6 +364,12 @@ body{
 	background-image: url('../images/5.jpg');
 }
 
+#image6{
+	background-position: center center;
+	
+	background-image: url('../images/6.jpg');
+}
+
 
 #links{
 	width: 280px;
