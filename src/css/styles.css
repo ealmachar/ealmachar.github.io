@@ -359,7 +359,7 @@ body{
 }
 
 #image5{
-	background-position: center center;
+	background-position: center bottom;
 	
 	background-image: url('../images/5.jpg');
 }
