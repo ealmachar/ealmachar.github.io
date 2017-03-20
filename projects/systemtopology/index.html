@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link type="text/css" rel="stylesheet" href="src/css/styles.css"></link>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+</head>
+
+<body>
+<div id="toolbox">
+	<div id="instructions">
+		<ul>
+			<li>Drag components around</li>
+			<li>Click on buttons to create/resolve paths</li>
+			<li>Click on paths to re-resolve, click again to delete</li>
+		</ul>
+		<div id="close"><i class="material-icons">close</i></div>
+	</div>
+	<div id="toolbar">
+		<div class="toolbar_segment">
+			<div class="toolbar_label"><span>Square Component</span></div>
+			<div class="toolbar_input">
+				<input id="square_text" class="toolbar_inputfield" placeholder="Component Text" maxlength="30"></input>
+				<div id="add_square" class="toolbar_button"><span>ADD</span></div>
+			</div>
+		</div>
+		<div class="toolbar_segment">
+			<div class="toolbar_label"><span>Round Component</span></div>
+			<div class="toolbar_input">
+				<input id="round_text" class="toolbar_inputfield" placeholder="Component Text" maxlength="30"></input>
+				<div id="add_round" class="toolbar_button"><span>ADD</span></div>
+			</div>
+		</div>
+	</div>
+</div>
+<svg id="container"></svg>
+</body>
+
+	<script type="text/javascript" src="src/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="src/js/d3.min.js"></script>
+	<script type="text/javascript" src="src/js/main.js"></script>
+	
+</html>

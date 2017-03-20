@@ -1,0 +1,44 @@
+html, body{
+	background-color: rgba(235, 235, 235, 1);
+}
+
+#content{
+	width: 50%;
+	max-width: 700px;
+	
+	margin: 100px auto 200px auto;
+	padding: 120px 100px;
+	
+	font-family: 'Roboto', Verdana;
+	
+	background-color: rgba(245, 245, 245, 1);
+}
+
+.showcase_group{
+	width: 100%;
+	
+	display: flex;
+}
+
+.group1{
+	width: 50%;
+}
+
+.group2{
+	width: 100%;
+}
+
+.group3{
+	width: 100%;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.showcase_group_child{
+	margin: 0 10px;
+}
+.showcase_group_child > img{
+	width: 100%;
+}
