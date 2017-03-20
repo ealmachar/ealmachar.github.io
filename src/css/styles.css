@@ -370,6 +370,12 @@ body{
 	background-image: url('../images/6.jpg');
 }
 
+#image7{
+	background-position: center top;
+	background-size: cover;
+	background-image: url('../images/7.jpg');
+}
+
 
 #links{
 	width: 280px;
