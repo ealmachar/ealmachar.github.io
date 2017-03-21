@@ -14,6 +14,11 @@ html, body{
 	background-color: rgba(245, 245, 245, 1);
 }
 
+#border{
+	margin-top: 20px;
+	border-top: 1px solid rgba(100, 100, 100, 1);
+}
+
 .showcase_group{
 	width: 100%;
 	
