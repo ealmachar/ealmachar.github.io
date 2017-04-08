@@ -1,0 +1,68 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  background-color: #f0f0f0; }
+
+svg {
+  width: 100%;
+  height: 100%; }
+
+#vismain-left, #vismain-right {
+  position: absolute;
+  top: 5%;
+  height: 90%;
+  width: 47.5025%; }
+
+#vismain-left {
+  left: 1.665%;
+  background-color: white; }
+
+#vismain-right {
+  right: 1.665%;
+  background-color: #f0f0f0; }
+
+#visright-up, #visright-down {
+  position: absolute;
+  left: 0px;
+  height: 48.335%;
+  width: 100%; }
+
+#visright-up {
+  top: 0px;
+  background-color: #f0f0f0; }
+
+#visright-down {
+  top: 51.665%;
+  background-color: white; }
+
+#visrightup-left, #visrightup-right {
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 48.335%; }
+
+#visrightup-left {
+  left: 0px;
+  background-color: #f0f0f0; }
+
+#visrightup-right {
+  right: 0px;
+  background-color: white;
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
+#visrightupleft-up, #visrightupleft-down {
+  position: absolute;
+  width: 100%;
+  height: 48.5%; }
+
+#visrightupleft-up {
+  top: 0px;
+  background-color: white; }
+
+#visrightupleft-down {
+  bottom: 0px;
+  background-color: white; }
+
+/*# sourceMappingURL=styles.css.map */

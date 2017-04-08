@@ -1,0 +1,94 @@
+$body_background: rgba(240, 240, 240, 1);
+$maincomponent_background: rgba(255, 255, 255, 1);
+$main_padding_horizontal: 3.33%;
+$main_padding_vertical: 3.33%;
+
+html, body{
+	height: 100%;
+	width: 100%;
+
+	margin: 0px;
+
+	background-color: $body_background;
+}
+
+svg{
+	width: 100%;
+	height: 100%;
+}
+
+#vismain-left, #vismain-right{
+	position: absolute;
+
+	top: 5%;
+
+	height: 90%;
+	width: 50% - $main_padding_horizontal/2 - $main_padding_horizontal/4;
+}
+
+#vismain-left{
+	left: 0% + $main_padding_horizontal/2;
+	background-color: $maincomponent_background;
+}
+
+#vismain-right{
+	right: 0% + $main_padding_horizontal/2;
+	background-color: $body_background;
+}
+
+#visright-up, #visright-down{
+	position: absolute;
+
+	left: 0px;
+
+	height: 50% - $main_padding_vertical/2;
+	width: 100%;
+}
+
+#visright-up{
+	top: 0px;
+	background-color: $body_background;
+}
+
+#visright-down{
+	top: 50% + $main_padding_vertical/2;
+	background-color: $maincomponent_background;
+}
+
+#visrightup-left, #visrightup-right{
+	position: absolute;
+	
+	top: 0px;
+	
+	height: 100%;
+	width: 50% - $main_padding_horizontal/2;
+}
+
+#visrightup-left{
+	left: 0px;
+	background-color: $body_background;
+}
+
+#visrightup-right{
+	right: 0px;
+	background-color: $maincomponent_background;
+	
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#visrightupleft-up, #visrightupleft-down{
+	position: absolute;
+	width: 100%;
+	height: 48.5%;
+}
+
+#visrightupleft-up{
+	top: 0px;
+	background-color: $maincomponent_background;
+}
+
+#visrightupleft-down{
+	bottom: 0px;
+	background-color: $maincomponent_background;
+}
