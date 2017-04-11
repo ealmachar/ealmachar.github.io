@@ -32,6 +32,28 @@ svg{
 
 #vismain-left{
 	left: 0% + $main_padding_horizontal/2;
+	background-color: $body_background;
+}
+
+#vismainleft-up, #vismainleft-down{
+	position: absolute;
+	width: 100%;
+}
+
+#vismainleft-up{
+	top: 0px;
+	height: 5em;
+	background-color: $maincomponent_background;
+	
+	color: $text_color;
+	
+	overflow-x: hidden;
+}
+
+#vismainleft-down{
+	top: 6em;
+	width: 100%;
+	height: calc(100% - 6em);
 	background-color: $maincomponent_background;
 }
 
@@ -149,15 +171,13 @@ svg{
 	overflow-x: hidden;
 }
 
-#visrightupright-down > div:first-child{
+#visrightupright-down > div:first-child, #vismainleft-up > div:first-child{
 	margin-top: 5px;
-	width: 500px;
 }
 
-#visrightupright-down > div{
-	
-
+#visrightupright-down > div, #vismainleft-up > div{
 	margin-left: 10px;
+	width: 200%;
 }
 
 #panel-docksline, #panel-idline{
@@ -170,7 +190,7 @@ svg{
 	width: 200%;
 	
 	top: 0px;
-	left: 40%;
+	left: 20%;
 }
 
 #panel-activity-total{

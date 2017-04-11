@@ -17,6 +17,23 @@ svg {
 
 #vismain-left {
   left: 1.665%;
+  background-color: #f0f0f0; }
+
+#vismainleft-up, #vismainleft-down {
+  position: absolute;
+  width: 100%; }
+
+#vismainleft-up {
+  top: 0px;
+  height: 5em;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+  overflow-x: hidden; }
+
+#vismainleft-down {
+  top: 6em;
+  width: 100%;
+  height: calc(100% - 6em);
   background-color: white; }
 
 #vismain-right {
@@ -102,12 +119,12 @@ svg {
   color: rgba(0, 0, 0, 0.8);
   overflow-x: hidden; }
 
-#visrightupright-down > div:first-child {
-  margin-top: 5px;
-  width: 500px; }
+#visrightupright-down > div:first-child, #vismainleft-up > div:first-child {
+  margin-top: 5px; }
 
-#visrightupright-down > div {
-  margin-left: 10px; }
+#visrightupright-down > div, #vismainleft-up > div {
+  margin-left: 10px;
+  width: 200%; }
 
 #panel-docksline, #panel-idline {
   position: relative; }
@@ -116,7 +133,7 @@ svg {
   position: absolute;
   width: 200%;
   top: 0px;
-  left: 40%; }
+  left: 20%; }
 
 #panel-activity-total {
   color: green; }
@@ -131,8 +148,8 @@ svg {
   position: absolute;
   top: 20px;
   left: 10%;
-  font-size: 14px;
-  display: none; }
+  opacity: 0.2;
+  font-size: 14px; }
 
 #panel-checkout {
   color: blue; }
