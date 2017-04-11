@@ -2,6 +2,8 @@ $body_background: rgba(240, 240, 240, 1);
 $maincomponent_background: rgba(255, 255, 255, 1);
 $main_padding_horizontal: 3.33%;
 $main_padding_vertical: 3.33%;
+$subcomponent_padding: 1%;
+$text_color: rgba(0, 0, 0, .8);
 
 html, body{
 	height: 100%;
@@ -9,6 +11,8 @@ html, body{
 
 	margin: 0px;
 
+	font-family: Roboto, Verdana;
+	
 	background-color: $body_background;
 }
 
@@ -41,7 +45,7 @@ svg{
 
 	left: 0px;
 
-	height: 50% - $main_padding_vertical/2;
+	height: 50% - $main_padding_vertical/3;
 	width: 100%;
 }
 
@@ -51,7 +55,7 @@ svg{
 }
 
 #visright-down{
-	top: 50% + $main_padding_vertical/2;
+	top: 50% + $main_padding_vertical/3;
 	background-color: $maincomponent_background;
 }
 
@@ -61,7 +65,7 @@ svg{
 	top: 0px;
 	
 	height: 100%;
-	width: 50% - $main_padding_horizontal/2;
+	width: 50% - $subcomponent_padding;
 }
 
 #visrightup-left{
@@ -71,16 +75,13 @@ svg{
 
 #visrightup-right{
 	right: 0px;
-	background-color: $maincomponent_background;
-	
-	overflow-y: scroll;
-	overflow-x: hidden;
+	background-color: $body_background;
 }
 
 #visrightupleft-up, #visrightupleft-down{
 	position: absolute;
 	width: 100%;
-	height: 48.5%;
+	height: 50% - $subcomponent_padding;
 }
 
 #visrightupleft-up{
@@ -90,5 +91,115 @@ svg{
 
 #visrightupleft-down{
 	bottom: 0px;
+	width: 100%;
 	background-color: $maincomponent_background;
+}
+
+#visrightupleft-downheader{
+	height: 1.5em;
+	top: 0px;
+	width: 90%;
+	
+	display: flex;
+	
+	cursor: default;
+	
+	margin: 0 auto;
+}
+
+#visrightupleft-downheader span{
+	width: 14.28%;
+	text-align: center;
+	
+	padding-top: 3px;
+	
+	color: $text_color;
+}
+
+#visrightupleft-downgraph{
+	height: calc(100% - 1.5em);
+	bottom: 0px;
+	width: 100%;
+}
+
+
+
+#visrightupright-up, #visrightupright-down{
+	position: absolute;
+	width: 100%;
+}
+
+#visrightupright-up{
+	top: 0px;
+	height: calc(100% - 5.5em - 7px);
+	background-color: $maincomponent_background;
+	
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#visrightupright-down{
+	bottom: 0px;
+	height: 5.5em;
+	background-color: $maincomponent_background;
+
+	color: $text_color;
+	
+	
+	overflow-x: hidden;
+}
+
+#visrightupright-down > div:first-child{
+	margin-top: 5px;
+	width: 500px;
+}
+
+#visrightupright-down > div{
+	
+
+	margin-left: 10px;
+}
+
+#panel-docksline, #panel-idline{
+	position: relative;
+}
+
+#panel-installation, #panel-area{
+	position: absolute;
+	
+	width: 200%;
+	
+	top: 0px;
+	left: 40%;
+}
+
+#panel-activity-total{
+	color: green;
+}
+
+#panel-activity-start{
+	color: blue;
+}
+
+#panel-activity-end{
+	color: orange;
+}
+
+#panel-linehover{
+	position: absolute;
+	top: 20px;
+	left: 10%;
+
+	opacity: 0.2;
+	
+	font-size: 14px;
+
+}
+
+#panel-checkout{
+	color: blue;
+}
+
+#panel-checkin{
+	color: orange;
 }
