@@ -1,0 +1,308 @@
+@mixin myboxshadow{
+	box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+body{
+	position: absolute;
+	margin: 0px;
+	
+	width: 100%;
+	height: 100%;
+	
+	font-family: "Open Sans", Verdana, Sans Serif;
+}
+
+canvas{
+	position: fixed;
+
+	left: 0px;
+}
+
+#canvas_container{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#main{
+	position: relative;
+	
+	width: 100%;
+	height: 100%;
+	
+	pointer-events: none;
+}
+
+#buffer{
+	position: relative;
+	width: 100%;
+	height: 15%;
+	
+	margin-bottom: 5%;
+	box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 6px 6px 6px 0 rgba(0, 0, 0, 0.05);
+	
+	background-color: white;
+}
+
+#projects{
+	position: relative;
+	
+	width: 95%;
+	
+	margin-top: 5%;
+	padding: 50px 0;
+
+	@include myboxshadow;
+	
+	background-color: white;
+}
+
+
+
+
+
+
+
+#main-top, #main-middle, #main-bot{
+	position: relative;
+	width: 100%;
+
+	left: 0;
+	
+	background-color: white;
+}
+
+#main-top{
+	height: 15%;
+	
+	@include myboxshadow;
+	
+	pointer-events: auto;
+}
+
+#main-bot{
+	height: 15%;
+	
+	@include myboxshadow;
+	
+	pointer-events: auto;
+}
+
+#main-middle{
+	height: 70%;
+	
+	opacity: 0.2;
+}
+
+
+
+#main-plate{
+	position: absolute;
+	width: 80%;
+	
+	bottom: 20%;
+	left: 50%;
+	
+	transform: translate(-50%, 0);
+
+	background-color: white;
+	
+	@include myboxshadow;
+	
+	z-index: 1;
+}
+
+#main-text{
+	margin: 20px 50px;
+}
+
+#main-name{
+	display: inline-block;
+	padding-bottom: 15px;
+	margin: 10px 0px 12px 0px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+	
+	font-size: 24px;
+}
+
+#main-title{
+	display: block;
+	margin-bottom: 30px;
+	
+	font-size: 20px;
+}
+
+.plate-fixed{
+	position: fixed;
+//	top: 0px;
+	
+//	height: 20px;
+}
+
+
+#main-links{
+	position: absolute;
+	bottom: 20px;
+	right: 50px;
+	
+	pointer-events: auto;
+	
+	opacity: 0.8;
+}
+
+#main-links > a{	
+	display: inline-block;
+	margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.stripe{
+	position: absolute;
+	height: calc(100% - 100px);
+	width: 30%;
+	
+	min-width: 300px;
+	
+	top: 50px;
+	left: 50%;
+
+	@include myboxshadow;
+	
+	background-color: #8fb7c3;;
+}
+
+
+.pblock{
+	display: block;
+	position: relative;
+	
+	height: 150px;
+	width: 80%;
+	
+	min-width: 500px;
+	max-width: 900px;
+	
+	margin: 50px auto;
+	
+	cursor: pointer;
+	
+	transition: all 0.25s;
+}
+
+.pblock:hover{
+	@include myboxshadow;
+	background-color: rgba(245, 245, 245, 1);
+}
+
+
+.projectTextConainter{
+	margin-left: 50px;
+}
+
+.projectText{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 60%;
+	height: 100%;
+}
+
+.ptitle{
+	display: inline-block;
+	margin-top: 20px;
+//	border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+	
+	font-size: 24px;
+}
+
+.pdes{
+	display: block;
+	margin-top: 20px;
+	
+	font-size: 14px;
+}
+
+.projectImage{
+	position: absolute;
+	top: 0;
+	left: 60%;
+	width: 40%;
+	height: 100%;
+	
+	background-position: center center;
+	background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footer{
+	position: relative;
+	width: 100%;
+	
+	pointer-events: none;
+	
+	z-index: 1;
+}
+
+
+#footer-1{
+	width: 100%;
+	height: 100px;
+
+//	background-color: rgba(50, 50, 50, 0.5);
+}
+
+#footer-2{
+	width: 100%;
+	height: 50px;
+
+	pointer-events: auto;
+	
+	background-color: rgba(100, 100, 100, 1);
+}
+
+#footer-3{
+	width: 100%;
+	height: 100px;
+
+	pointer-events: auto;
+	
+	background-color: rgba(50, 50, 50, 1);
+}
+
+
+
+
+a:link     {color: rgba(0,0,0,0.87);}
+a:visited  {color: rgba(0,0,0,0.87);}
+a:active   {color: rgba(0,0,0,0.87);}
