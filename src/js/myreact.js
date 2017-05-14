@@ -8,7 +8,7 @@
 		{
 			title: 'Man made satellites',
 			des: ['SVG: D3js'],
-			link: 'http://ealmachar.github.io/projects/satellitevis/index.html',
+			link: 'http://ealmachar.github.io/projects/satellitevis-canvas/index.html',
 			image: 'src/images/9.jpg'
 		},
 		{
