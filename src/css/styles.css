@@ -25,15 +25,12 @@ canvas {
   width: 100%;
   height: 15%;
   margin-bottom: 5%;
-  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 6px 6px 6px 0 rgba(0, 0, 0, 0.05);
   background-color: white; }
 
 #projects {
   position: relative;
-  width: 95%;
-  margin-top: 5%;
+  width: 100%;
   padding: 50px 0;
-  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.05);
   background-color: white; }
 
 #main-top, #main-middle, #main-bot {
