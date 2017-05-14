@@ -241,7 +241,7 @@ function vis(){
 					.attr('stroke', white)
 					.attr('fill', 'none')
 					.style('opacity', region[reg].opacity)
-					.on("mouseover", function(sat, i, e) {
+					.on("mouseenter", function(sat, i, e) {
 						var id = e[0].id.split('_')[1];
 
 						region[id].svg
@@ -256,7 +256,7 @@ function vis(){
 						cursorWindowObj.show();
 						cursorWindowObj.populate(id);
 					})
-					.on("mouseout", function(sat, i, e) {
+					.on("mouseleave", function(sat, i, e) {
 						var id = e[0].id.split('_')[1];
 						region[id].svg
 							.style('opacity', region[id].opacity)
