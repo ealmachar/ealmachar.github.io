@@ -4,7 +4,7 @@ var nextCol;
 var app = new _app;
 
 window.onload = function(){
-	app.onload();
+//	app.onload();
 };
 
 function _app(){
@@ -27,6 +27,8 @@ function _app(){
 		this._pattern.resize(true);
 //		this._pattern.pulse();
 	};
+	
+	this.onload();
 }
 
 function pattern(app){
@@ -47,8 +49,7 @@ function pattern(app){
 	var height, width;
 	var mousex, mousey;
 	
-	var rx = 50;
-	var ry = Math.cos(30 * Math.PI / 180) * rx;
+	var rx, ry;
 	
 	var patternObj;
 	var patternArr;
@@ -90,6 +91,16 @@ function pattern(app){
 	}
 	
 	function initPattern(){
+		console.log(width);
+		if(width < 500){
+			
+			rx = 100;
+		}
+		else{
+			rx = 50;
+		}
+		ry = Math.cos(30 * Math.PI / 180) * rx;
+		
 		var rows = Math.ceil( height / ry ) + 1;
 		var cols = Math.ceil( width / (rx - rx/4*1.1) ) + 1;
 		
