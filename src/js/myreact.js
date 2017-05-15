@@ -25,7 +25,7 @@
 		},
 		{
 			title: 'N-body solarsystem simulation',
-			des: ['WebGL: THREEjs'],
+			des: ['WebGL: THREEjs', 'Inspired by Mass Effect!'],
 			link: 'http://ealmachar.github.io/projects/solarsystem/index.html',
 			image: 'src/images/2.jpg'
 		},
