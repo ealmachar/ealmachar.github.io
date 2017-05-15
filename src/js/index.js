@@ -1,23 +1,15 @@
 
-var nextCol;
 
 var app = new _app;
 
-window.onload = function(){
-//	app.onload();
-};
-
-
-
 function _app(){
 	this._engine = new engine(this);
-	this._pattern = new pattern(this);
-//	this._hlistener = new hlistener(this);
+	this._splash = new splash(this);
+
 	
 	var events = () => {
 		$(window).resize(() => {
-			this._pattern.resize();
-//			this._hlistener.resize();
+			this._splash.resize();
 		})
 	}
 	
@@ -25,337 +17,316 @@ function _app(){
 		events();
 		
 		this._engine.begin();
-		
-		this._pattern.resize(true);
-//		this._pattern.pulse();
 	};
 	
 	this.onload();
 }
 
-function pattern(app){
-	var parent = d3.select('#canvas_container');
+function splash(app){
+	var parent = d3.select('#splash');
 	
-	var canvas = parent.append('canvas');
-		
-	var hiddenCanvas = parent.append('canvas')
-		.style('opacity', '0')
-		.on('mousemove', mousemove)
-		.on('mouseleave', mouseleave);
-	
-	var ctx = canvas.node().getContext('2d');
-	var hctx = hiddenCanvas.node().getContext('2d');
-	
-	var body = $('body');
+	var svg = parent.append('svg')
+		.attr('width', '100%')
+		.attr('height', '100%');
 	
 	var height, width;
-	var mousex, mousey;
 	
-	var rx, ry;
+	var top = [], bot = [];
 	
-	var patternObj;
-	var patternArr;
-	
-	var prevHex = null;
-	var currentHex = null;
-	
-	var fluctuation = 0;
+	var left, midleft, midright, right;
+	var nameg, titleg, nametxt, titletxt;
+	var github, linkedin;
+	var region = 0;
 	
 	function setDimensions(hack){
-		
-		/*
-		reason for 'hack'
-		
-		For some reason, changing canvas dimensions, once
-		after one iteration of RequestAnimationFrame
-		will improve performance
-		of canvas function: context.fill()
-		by almost 2x
-		*/
-		
-		
-		var buffer = hack ? 1 : 0;
-		height = parseInt( parent.style('height') ) * (1 - 0.0) + buffer;
+
+		height = parseInt( parent.style('height') );
 		width = parseInt( parent.style('width') );
-
-		canvas
-			.attr('width', width)
-			.attr('height', height);
-			
-		hiddenCanvas
-			.attr('width', width)
-			.attr('height', height);
 		
-		ctx.imageSmoothingEnabled = false;
-		ctx.lineCap = 'square';
+		top[0] = width * .07;
+		top[1] = width * .1;
+		top[2] = width * .25;
 		
-		hiddenCanvas.imageSmoothingEnabled = false;
+		bot[0] = width * .75;
+		bot[1] = width * .9;
+		bot[2] = width * .93;
 	}
 	
-	function initPattern(){
-		if(mobilecheck()){
-			rx = 150;
-		}
-		else{
-			rx = 50;
-		}
-		console.log(rx);
-		ry = Math.cos(30 * Math.PI / 180) * rx;
-		
-		var rows = Math.ceil( height / ry ) + 1;
-		var cols = Math.ceil( width / (rx - rx/4*1.1) ) + 1;
-		
-		nextCol = 1;
-		patternObj = {};
-		patternArr = [];
-		
-		for(var i = 0; i < cols; i++){
-			
-			patternArr.push([]);
-			
-			for(var j = 0; j < rows; j++){
-
-
-				var hiddenColor = genColor();
-				var hexObj = new hex(i, j, hiddenColor);
-
-				patternArr[i].push(hexObj);
-				patternObj[hiddenColor] = hexObj;
-			}
-		}
+	function initDefs(){
+		svg.append('defs')
+			.append('filter')
+			.attr('id', 'feoffset')
+			.attr('width', 50)
+			.attr('height', 50)
+			.append('feOffset')
+			.attr('in', 'SourceGraphic')
 	}
-
-	function hex(i, j, hcolor){
-		var x, y;
-		var color, r, g, b, a = 1;
+	
+	function initSplash(){
+		var name = 'Edson_Almachar';
+		var title = 'Frontend_Web_Developer';
 		
-		var delay = 200;
-
-		this.selected = false;
-		this.selectNeighborDelay = 0;
-		this.intensity = 0;
-		this.pulse = false;
+		left = svg.append('path')
+			.attr('class', 'region_color1')
+			.on('mouseenter', select1)
+			.on('mouseleave', selectnone);
 		
-		var phase = Math.random() * Math.PI * 2, flucMod = 0.15;
+		midleft = svg.append('path')
+			.attr('class', 'region_color2')
+			.on('mouseenter', select1)
+			.on('mouseleave', selectnone);
 		
-		x = i * (rx - rx/4*1.1);// + rx/2;
-		y = j * ry + ry/2;
-		y -= i % 2 == 1 ? ry/2 : 0;
+		midright = svg.append('path')
+			.attr('class', 'region_color1')
+			.on('mouseenter', select2)
+			.on('mouseleave', selectnone);
 		
-		var check = _check.bind(this);
-		
-		color = initColor();
-		
-		function xweight(i){
-			var min = -0.25;
-			var max = 0.85;
+		right = svg.append('path')
+			.attr('class', 'region_color2')
+			.on('mouseenter', select2)
+			.on('mouseleave', selectnone);
 			
-			var interval = max - min;
-
-			return 1 - (( j * ry / height ) * interval + min);
+		nameg = svg.append('g');
+		
+		nametxt = nameg.append('text')
+			.attr('class', 'region_color1')
+			.attr('text-anchor', 'middle')
+			.style('font-size', '24px')
+			.style('font-family', 'Rubik Mono One')
+			.style('pointer-events', 'none');
+		
+		for(var i = 0; i < name.length; i++){
+			nametxt.append('tspan')
+				.text(name[i]);
+			nametxt.append('tspan')
+				.text(' ');
 		}
 		
-		function randomCol(max){
-			var variance = 0.2;
-			return max + ( Math.random() * max * variance ) - ( max * variance ) / 2;
-		}
-		
-		function _check(a){
-			var color = a;
-			if(this.intensity > 0){
-				color += (255 - a) * this.intensity;
-			}
-			
-			color += color * flucMod * Math.sin(fluctuation + phase);
-			
-			return Math.max( Math.min( Math.floor(color), 255 ), 0 );
-		}
-		
-		
-		function initColor(){
-			r = randomCol(0) * xweight(i);
-			g = randomCol(190) * xweight(i);
-			b = randomCol(255) * xweight(i);
-
-			return 'rgba(' + check(r) + ', ' + check(g) + ', ' + check(b) + ', ' + a + ')';
-		}
-		
-		function draw(ctx, hidden){
-			var rxhalf = rx/2;
-			var ryhalf = ry/2;
-			var ryquar = ry/4;
-			
-			var inner = 0.96;
-
-			ctx.fillStyle = hidden ? hcolor : color;
-
-			if(!hidden){
-				rxhalf *= inner;
-				ryhalf *= inner;
-				ryquar *= inner;
-			}
-
-			ctx.beginPath();
-			ctx.moveTo(x - ryquar, y - ryhalf);
-			ctx.lineTo(x - rxhalf, y);
-			ctx.lineTo(x - ryquar, y + ryhalf);
-			ctx.lineTo(x + ryquar, y + ryhalf);
-			ctx.lineTo(x + rxhalf, y);
-			ctx.lineTo(x + ryquar, y - ryhalf);
-			ctx.closePath();
-			ctx.fill();
-		}
-		
-		this.tick = function(ctx, hidden, time){
-			
-			time = isNaN(time) ? 0 : time;
-			
-			if(this.selected){
-				this.intensity = 1;
-				this.selectNeighborDelay = delay;
-			}
-			
-			color = 'rgba(' + check(r) + ', ' + check(g) + ', ' + check(b) + ', ' + a + ')';
-			
-			if(this.intensity > 0 && !hidden){
-				this.intensity -= time*0.002;
-				this.intensity = Math.max(this.intensity, 0);
-			}
-
-			
-			if(this.selectNeighborDelay > 0){
-				this.selectNeighborDelay -= time;
-				this.selectNeighborDelay = Math.max(this.selectNeighborDelay, 0);
-				
-				if(this.selectNeighborDelay == 0){
-					
-					if(Math.random() > 0.5 || this.intensity <= 0.5 || this.pulse){
-
-						if(patternArr[i][j - 1]){
-							patternArr[i][j - 1].intensity = 0.5;
-							patternArr[i][j - 1].selectNeighborDelay = 200;
-						}
-						if(this.pulse){
-							this.pulse = false;
-						}
-					}
+		nametxt.selectAll('tspan')
+			.attr('dx', function(d, i){
+				var dx;
+				if(i % 2 == 0){
+					dx = 0;
 				}
-			}
+				else{
+					dx = -1*.8;
+				}
+				return dx + 'em';
+			})
+		
+		titleg = svg.append('g');
+		
+		titletxt = titleg.append('text')
+			.attr('class', 'region_color2')
+			.attr('text-anchor', 'middle')
+			.style('font-size', '24px')
+			.style('font-family', 'Rubik Mono One')
+			.style('pointer-events', 'none');
 			
-			draw(ctx, hidden);
-		}
-	}
-	
-	function drawPattern(time){
-		for(var hex in patternObj){
-			patternObj[hex].tick(ctx, false, time);
-			patternObj[hex].selected = false;
-		}
-	}
-	
-	function drawHiddenCanvas(){
-		for(var hex in patternObj){
-			patternObj[hex].tick(hctx, true);
-		}
-	}
-		
-	function mousemove(){
+		for(var i = 0; i < title.length; i++){
+			titletxt.append('tspan')
+				.text(title[i]);
+			titletxt.append('tspan')
+				.text(' ');
 
-		mousex = d3.event.layerX || d3.event.offsetX;
-		mousey = d3.event.layerY || d3.event.offsetY;
+		}
+		
+		titletxt.selectAll('tspan')
+			.attr('dx', function(d, i){
+				var dx;
+				if(i % 2 == 0){
+					dx = 0;
+				}
+				else{
+					dx = -1*.8;
+				}
+				return dx + 'em';
+			})
+		
+		githubg = svg.append('g')
+		
+		github = githubg.append('image')
+			.attr('class', 'region_color1')
+			.attr('xlink:href', 'src/images/github.svg')
+			.attr('width', 30)
+			.attr('height', 30)
+			.on('click', () => document.getElementById('githublink').click())
+			.style('cursor', 'pointer');
+		
+		
+		linkeding = svg.append('g')
+		
+		linkedin = linkeding.append('image')
+			.attr('class', 'region_color1')
+			.attr('xlink:href', 'src/images/linkedin.svg')
+			.attr('width', 30)
+			.attr('height', 30)
+			.on('click', () => document.getElementById('linkedinlink').click())
+			.style('cursor', 'pointer');
+	}
+	
+	function drawLines(){
+		
+		left.attr('d', () => {
+			return 'M' + 0 + ' ' + 0 +
+				'L' + 0 + ' ' + height +
+				'L' + bot[0] + ' ' + height +
+				'L' + top[0] + ' ' + 0;
+		})
+		midleft.attr('d', () => {
+			return 'M' + top[0] + ' ' + 0 +
+				'L' + bot[0] + ' ' + height +
+				'L' + bot[1] + ' ' + height +
+				'L' + top[1] + ' ' + 0;
+		})
+		
+		midright.attr('d', () => {
+			return 'M' + top[1] + ' ' + 0 +
+				'L' + bot[1] + ' ' + height +
+				'L' + bot[2] + ' ' + height +
+				'L' + top[2] + ' ' + 0
+		})
+		
+		right.attr('d', () => {
+			return 'M' + top[2] + ' ' + 0 +
+				'L' + bot[2] + ' ' + height +
+				'L' + width + ' ' + height +
+				'L' + width + ' ' + 0
+		})
+	}
+	
+	function placetext(){
+		var nameangle = Math.atan2(height, bot[2] - top[2]) * 180 / Math.PI;
+		var titleangle = Math.atan2(height, bot[0] - top[0]) * 180 / Math.PI;
+		var namex = (bot[2]-top[2])/2 + top[2] + 10;
+		var namey = height/2;
+		
+		var titlex = (bot[0]-top[0])/2 + top[0];// - 35;
+		var titley = height/2;
+		
+		var gitx = (bot[2]-top[2])*3/4 + top[2];
+		var gity = height*3/4;
+		
+		nametxt
+			.attr('x', namex)
+			.attr('y', namey);
+			
+		titletxt
+			.attr('x', titlex)
+			.attr('y', titley);
+			
+		nameg
+			.attr('transform', 'rotate(' + nameangle + ' ' + namex + ',' + namey + ')');
+			
+		titleg
+			.attr('transform', 'rotate(' + titleangle + ' ' + titlex + ',' + titley + ') translate(0, 25)');
+		
+		github
+			.attr('x', gitx)
+			.attr('y', gity - 35);
+		
+		github
+			.attr('transform', 'rotate(' + nameangle + ' ' + gitx + ',' + gity + ')')
+			.attr('data-transform', 'rotate(' + nameangle + ' ' + gitx + ',' + gity + ')');
+			
+		linkedin
+			.attr('x', gitx + 40)
+			.attr('y', gity - 35);
+			
+		linkedin
+			.attr('transform', 'rotate(' + nameangle + ' ' + gitx + ',' + gity + ')')
+			.attr('data-transform', 'rotate(' + nameangle + ' ' + gitx + ',' + gity + ')');
+	}
 
-		var color = hctx.getImageData(mousex, mousey - body.scrollTop(), 1, 1).data;
-		
-		currentHex = patternObj['rgb(' + color[0] + ',' + color[1] + ',' + color[2] + ')'];
-		
-		if(currentHex){
-			currentHex.selected = true;
-		}
+	
+	function select1(){
+		region = 1;
 	}
 	
-	function mouseleave(){
-		if(currentHex){
-			currentHex = null;
-		}
+	function select2(){
+		region = 2;
 	}
 	
-	this.pulse = function(){
-		patternArr.forEach(function(d, i){
-			d[d.length-1].selected = true;
-			d[d.length-1].pulse = true;
-		});
+	function selectnone(){
+		if(region == 1){
+			resettxt(titletxt);
+		}
+		else if(region == 2){
+			resettxt(nametxt);
+			reseticons();
+		}
+		region = 0;
 	}
 	
-	this.tick = function(time){
-		ctx.clearRect(0, 0, width, height);
+	function wiggle(text, region){
+		var rand;
+		text.selectAll('tspan')
+			.attr('dy', function(d, i){
+				if(i % 2 == 0){
+					rand = Math.random()*0.5;
+					if(region == 2)
+						rand *= -1;
+				}
+				else{
+					rand = -rand;
+				}
+					
+				return rand + 'em';
+			});
+	}
 	
-		if(currentHex){
-			currentHex.selected = true;
+	function wiggleicons(){
+		var githuboffset = Math.random()*5;
+		var linkedinoffset = Math.random()*5;
+		
+		github
+			.attr('transform', github.attr('data-transform') + 'translate(0 ' + -githuboffset + ')');
+			
+		linkedin
+			.attr('transform', linkedin.attr('data-transform') + 'translate(0 ' + -linkedinoffset + ')');
+	}
+	
+	function resettxt(text){
+		text.selectAll('tspan')
+			.attr('dy', 0);
+	}
+	
+	function reseticons(){
+		github
+			.attr('transform', github.attr('data-transform'));
+			
+		linkedin
+			.attr('transform', linkedin.attr('data-transform'));
+	}
+	
+	this.tick = function(){
+		if(region == 1){
+			wiggle(titletxt, 1);
 		}
-		
-		fluctuation += 2 * Math.PI / 180;
-		fluctuation %= Math.PI * 2;
-		
-		drawPattern(time);
+		else if(region == 2){
+			wiggle(nametxt, 2);
+			wiggleicons();
+		}
 	}
 	
 	this.resize = function(hack){
-		setDimensions(hack);
-		initPattern();
-		drawHiddenCanvas();
+		setDimensions();
+		drawLines();
+		placetext();
 	};
 	
 	
 	(() => {
-		this.resize();
+		setDimensions();
+		initDefs();
+		initSplash();
+		drawLines();
+		placetext();
 	})();
 }
 
-function hlistener(app){
-	var plate = $('#main-plate');
-	var text = $('#main-text');
-	var name = $('#main-name');
-	var title = $('#main-title');
-	var body = $('body');
-
-	var top = parseInt(plate.css('top'));
-	var sticky = false;
-
-	$(window).scroll(function(){
-		if(body.scrollTop() > top){
-			//plate.addClass('plate-fixed');
-			plate.css({
-				position: 'fixed',
-				top: 0,
-				bottom: 'auto'
-			});
-			
-			text.css({
-				margin: '10px 50px'
-			});
-			
-			name.css({
-				marginTop: 0,
-				marginBottom: 0,
-				paddingBottom: 5,
-				borderBottomWidth: 0
-			});
-			
-			title.css({
-				display: 'none'
-			});
-		}
-		else{
-			plate.attr('style', '');
-			name.attr('style', '');
-			title.attr('style', '');
-		}
-		
-	});
-	
-	this.resize = function(){
-		top = parseInt(plate.css('top'));
-	}
+function rand(low, high){
+	return Math.random() * (high - low) + low;
 }
 
 function engine(app){
@@ -365,53 +336,25 @@ function engine(app){
 	var average = [];
 	
 	var i = 1;
+	var acc = 0;
 	
 	function animate(time){
-//		if(i > 0){
-			requestAnimationFrame(animate);
+		requestAnimationFrame(animate);
 
-//		}
-		
+		time = isNaN(time) ? 0 : time;
+		acc += time - prev;
 
-		a = performance.now();
-		app._pattern.tick(time - prev);
-		b = performance.now();
-//		console.log(b - a);
-
-		if(average.length < 10)
-			average.push(b-a);
-		else{
-			var sum = 0;
-			average.forEach((d)=>{sum += d});
-//			console.log(sum/average.length);
-			average = [];
+		if(acc > 60){
+			app._splash.tick(time - prev);
+			acc = 0;
 		}
-	
 
-//		console.log(time - prev);
 		prev = time;
 	}
 	
 	this.begin = function(){
 		animate();
 	}
-}
-
-// http://stackoverflow.com/a/15804183
-function genColor(){ 
-
-	var ret = [];
-	
-	if(nextCol < 16777215){ 
-		ret.push(nextCol & 0xff); // R 
-		ret.push((nextCol & 0xff00) >> 8); // G 
-		ret.push((nextCol & 0xff0000) >> 16); // B
-		nextCol += 100; 
-	}
-
-	var col = "rgb(" + ret.join(',') + ")";
-	
-	return col;
 }
 
 // http://stackoverflow.com/questions/11381673/detecting-a-mobile-browser

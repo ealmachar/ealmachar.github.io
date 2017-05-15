@@ -7,7 +7,7 @@
 	var data = [
 		{
 			title: 'Man made satellites',
-			des: ['SVG: D3js', 'Canvas'],
+			des: ['SVG: D3js'],
 			link: 'http://ealmachar.github.io/projects/satellitevis-canvas/index.html',
 			image: 'src/images/9.jpg'
 		},
@@ -36,18 +36,6 @@
 			image: 'src/images/7.jpg'
 		},
 		{
-			title: 'Animated/mouse-interactable pattern',
-			des: ['Canvas'],
-			link: 'http://ealmachar.github.io/projects/animatedpattern/index.html',
-			image: 'src/images/11.jpg'
-		},
-		{
-			title: 'Configurable pattern',
-			des: ['Canvas'],
-			link: 'http://ealmachar.github.io/projects/pattern/index.html',
-			image: 'src/images/4.jpg'
-		},
-		{
 			title: 'Radial svg menu',
 			des: ['SVG'],
 			link: 'http://ealmachar.github.io/projects/svg-site/index.html',
@@ -70,7 +58,13 @@
 			des: ['SVG: D3js'],
 			link: 'http://ealmachar.github.io/projects/reports/reports.html',
 			image: 'src/images/3.jpg'
-		}
+		},
+		{
+			title: 'Pattern',
+			des: ['Canvas'],
+			link: 'http://ealmachar.github.io/projects/pattern/index.html',
+			image: 'src/images/4.jpg'
+		},
 	]
 	
 	const e = React.createElement;
