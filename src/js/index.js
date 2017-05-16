@@ -302,10 +302,10 @@ function splash(app){
 	}
 	
 	this.tick = function(){
-		if(region == 1 || region1start){
+		if(region == 1){// || region1start){
 			wiggle(titletxt, 1);
 		}
-		if(region == 2 || region2start){
+		if(region == 2){// || region2start){
 			wiggle(nametxt, 2);
 			wiggleicons();
 		}
