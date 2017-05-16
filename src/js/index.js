@@ -36,7 +36,7 @@ function splash(app){
 	var left, midleft, midright, right;
 	var nameg, titleg, nametxt, titletxt;
 	var github, linkedin;
-	var region = 0;
+	var region = 0, region1start = true, region2start = true;
 	
 	function setDimensions(hack){
 
@@ -241,10 +241,12 @@ function splash(app){
 	
 	function select1(){
 		region = 1;
+		region1start = false;
 	}
 	
 	function select2(){
 		region = 2;
+		region2start = false;
 	}
 	
 	function selectnone(){
@@ -300,10 +302,10 @@ function splash(app){
 	}
 	
 	this.tick = function(){
-		if(region == 1){
+		if(region == 1 || region1start){
 			wiggle(titletxt, 1);
 		}
-		else if(region == 2){
+		if(region == 2 || region2start){
 			wiggle(nametxt, 2);
 			wiggleicons();
 		}
