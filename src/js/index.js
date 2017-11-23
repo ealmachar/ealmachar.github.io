@@ -162,8 +162,7 @@ function splash(app){
 		
 		firstntxt = firstng.append('text')
 			.attr('class', 'region_color2 splash_text')
-			.attr('text-anchor', 'middle')
-			.attr('alignment-baseline', 'middle');
+			.attr('text-anchor', 'middle');
 		
 		for(var i = 0; i < firstn.length; i++){
 			firstntxt.append('tspan')
@@ -190,17 +189,15 @@ function splash(app){
 		
 		lastntxt = lastng.append('text')
 			.attr('class', 'region_color1 splash_text splash_text-down')
-			.attr('text-anchor', 'middle')
-			.attr('alignment-baseline', 'middle');
+			.attr('text-anchor', 'middle');
 			
 		for(var i = 0; i < lastn.length; i++){
 			lastntxt.append('tspan')
 				.text(lastn[i])
-				.attr('alignment-baseline', 'middle');
+				.attr('alignment-baseline', 'baseline');
 			lastntxt.append('tspan')
 				.text(' ')
-				.attr('alignment-baseline', 'middle');
-
+				.attr('alignment-baseline', 'baseline');
 		}
 		
 		lastntxt.selectAll('tspan')
@@ -220,6 +217,8 @@ function splash(app){
 		github = githubg.append('image')
 			.attr('class', 'region_color1 linkicon')
 			.attr('xlink:href', 'src/images/github.svg')
+			.attr('width', '30px')
+			.attr('height', '30px')
 			.on('click', () => document.getElementById('githublink').click());
 		
 		
@@ -228,11 +227,13 @@ function splash(app){
 		linkedin = linkeding.append('image')
 			.attr('class', 'region_color1 linkicon')
 			.attr('xlink:href', 'src/images/linkedin.svg')
+			.attr('width', '30px')
+			.attr('height', '30px')
 			.on('click', () => document.getElementById('linkedinlink').click());
 	}
 
 	
-	function placeIcons(){
+	function placeText(){
 		
 		firstntxt
 			.attr('x', width/2)
@@ -240,15 +241,27 @@ function splash(app){
 			
 		lastntxt
 			.attr('data-x', width/2)
-			.attr('data-y', 3*height/4);
-			
-		github
-			.attr('x', 'calc(100% - 100px)')
-			.attr('y', 'calc(50% - 35px)');
-			
-		linkedin
-			.attr('x', 'calc(100% - 60px)')
-			.attr('y', 'calc(50% - 35px)');
+			.attr('data-y', 9.7*height/10);
+		
+		if(width > height){
+			github
+				.attr('x', width - 100)
+				.attr('y', height/2 - 35);
+				
+			linkedin
+				.attr('x', width - 60)
+				.attr('y', height/2 - 35);
+		}
+		else{
+			github
+				.attr('x', width - 40)
+				.attr('y', height/2 - 35*2);
+				
+			linkedin
+				.attr('x', width - 40)
+				.attr('y', height/2 - 35);
+
+		}
 	}
 	
 	function wiggle(bassMod){
@@ -348,7 +361,7 @@ function splash(app){
 	
 	this.resize = function(hack){
 		setDimensions();
-		placeIcons();
+		placeText();
 	};
 	
 	
@@ -356,7 +369,7 @@ function splash(app){
 		setDimensions();
 		initDefs();
 		initSplash();
-		placeIcons();
+		placeText();
 	})();
 }
 
