@@ -4,7 +4,11 @@
 
 $blue: rgba(220, 245, 255, 1);
 $purple: rgba(128, 0, 128, 1);
+
+$darkerblue: rgba(200, 225, 235, 1);
 $darkerpurple: rgba(100, 0, 100, 1);
+
+$lighterpurple: rgba(140, 0, 140, 1);
 
 body{
 	position: absolute;
@@ -23,18 +27,6 @@ body{
 	
 	width: 100%;
 	height: 100%;
-}
-
-#buffer{
-	position: relative;
-	width: 100%;
-	height: 15%;
-
-	@include myboxshadow;
-	
-	background-color: $darkerpurple;
-	
-	z-index: 1;
 }
 
 #projects{
@@ -71,6 +63,163 @@ body{
 .region_color2{
 	fill: $blue;
 }
+
+.splash_text{
+	font-size: 55vh;
+	font-family: 'Six Caps';
+	
+	stroke: $blue;
+	stroke-width: 1px;
+	stroke-linecap:butt;
+	stroke-opacity:1;
+	
+	pointer-events: none;
+}
+
+.splash_text-down{
+//	transform-origin: 50% 50%;
+//	transform: rotate(7deg) translate(100px, -100px);
+	
+	stroke: $blue;
+	stroke-width: 3px;
+	stroke-linecap:butt;
+	stroke-opacity:1;
+}
+
+.linkicon{
+	width: 30px;
+	height: 30px;
+	
+	cursor: pointer;
+}
+
+@media (max-aspect-ratio: 1/1) {
+	.splash_text{
+		font-size: 55vw;
+	}
+	
+	.splash_text-down{
+		stroke-width: 0px;
+	}
+	/*
+	.linkicon{
+		width: 5vh;
+		height: 5vh;
+		
+		cursor: pointer;
+		y: 44vh;
+	}
+
+	#githubicon{
+		x: 90vw;
+	}
+
+	#linkedinicon{
+		x: 95vw;
+	}*/
+}
+
+
+
+
+
+
+
+
+
+
+
+#buffer{
+	position: relative;
+	width: 100%;
+	height: 15%;
+
+	min-height: 130px;
+	
+	display: flex;
+	justify-content: center;
+	
+	@include myboxshadow;
+	
+	background-color: $darkerpurple;
+	
+	z-index: 1;
+}
+
+#controls{
+	position: relative;
+	display: flex;
+	height: 100%;
+	
+	justify-content: center;
+	align-items: center;
+	
+	user-select: none;
+}
+
+#controls-volume{
+	display: flex;
+	
+	margin: 1vw 2vw 1vw 1vw;
+}
+
+.controls-icons{
+	padding: 10px;
+
+	color: $darkerblue;
+	background-color: $purple;
+	cursor: pointer;
+}
+
+.controls-icons:hover{
+	color: $blue;
+	background-color: $lighterpurple;
+}
+
+
+
+
+
+
+
+
+
+
+
+#mobilenote{
+
+	display: none;
+
+	width: 100%;
+	
+	margin: 10vh 0;
+	
+	font-size: 3vh;
+	
+	text-align: center;
+}
+
+#mobilenote-head{
+
+	padding: 1vh;
+	font-weight: bold;
+	
+	background-color: orange;
+}
+
+#mobilenote-body{
+	padding: 1vh;
+	
+	background-color: yellow;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -245,3 +394,77 @@ body{
 a:link     {color: rgba(0,0,0,0.87);}
 a:visited  {color: rgba(0,0,0,0.87);}
 a:active   {color: rgba(0,0,0,0.87);}
+
+
+
+
+
+
+/* https://www.w3schools.com/howto/howto_css_custom_checkbox.asp */
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin: 12px 0px;
+    cursor: pointer;
+	
+	color: $darkerblue;
+	
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: $lighterpurple;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
