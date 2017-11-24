@@ -38,8 +38,6 @@ body {
   stroke-opacity: 1; }
 
 .linkicon {
-  width: 30px;
-  height: 30px;
   cursor: pointer; }
 
 @media (max-aspect-ratio: 1 / 1) {
