@@ -1,6 +1,7 @@
 var mobile = false;
 if( mobilecheck() ){
 	$('#mobilenote').css('display', 'block');
+	$('#controls-play-button_container').css('display', 'block');
 	mobile = true;
 }
 
@@ -19,10 +20,19 @@ function _app(){
 			app._splash.resize();
 		})
 		
-		/*
-		$('#musicbutton').click(()=>{
-			app._music.play();
-		});*/
+		
+		$('#controls-play-button').click(function(){
+			var state = $(this).text();
+
+			if(state == 'play_arrow'){
+				$(this).text('pause');
+				app._music.play();
+			}
+			else{
+				$(this).text('play_arrow');
+				app._music.pause();
+			}
+		});
 
 		$('.controls-options-checkbox').change(function(){
 
@@ -58,7 +68,10 @@ function _app(){
 		
 		app._engine.begin();
 		app._music.mute();
-		app._music.play();
+		
+		if(!mobile){
+			app._music.play();
+		}
 	};
 	
 	app.onload();
@@ -248,13 +261,29 @@ function splash(app){
 			.attr('data-y', mobile ? 9*height/10 : 9.7*height/10);
 		
 		if(width > height){
-			github
-				.attr('x', width - 100)
-				.attr('y', height/2 - 35);
+
+			if(!mobile){
+				github
+					.attr('x', width - 100)
+					.attr('y', height/2 - 35);
+					
+				linkedin
+					.attr('x', width - 60)
+					.attr('y', height/2 - 35);
+
+			}
+			else{
+
+				var length = $(github.node()).width();
 				
-			linkedin
-				.attr('x', width - 60)
-				.attr('y', height/2 - 35);
+				github
+					.attr('x', width - length - length/3)
+					.attr('y', height/2 - length - length/8);
+
+				linkedin
+					.attr('x', width - length - length/3)
+					.attr('y', height/2 - 2*length - 2*length/8);
+			}
 		}
 		else{
 
@@ -280,7 +309,6 @@ function splash(app){
 					.attr('x', width - length - length/3)
 					.attr('y', height/2 - 2*length - 2*length/8);
 			}
-
 		}
 	}
 	
@@ -468,11 +496,11 @@ function music(app){
 	analyser.smoothingTimeConstant = .5;
 
 	this.play = function(){
-		if (audio.paused == true) {
-			audio.play();
-		} else {
-			audio.pause();
-		}
+		audio.play();
+	}
+	
+	this.pause = function(){
+		audio.pause();
 	}
 	
 	this.isPaused = function(){
