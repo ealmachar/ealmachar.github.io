@@ -360,7 +360,7 @@ function splash(app){
 		var bassMod, hadMod;
 		
 		if(frequencies){
-		
+
 			var highBassFreqs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 			
 			var highBassSum = highBassFreqs.reduce((a, b) => a + frequencies[b], 0);
@@ -384,6 +384,7 @@ function splash(app){
 			hatMod = hatMod/(highHatMax - highHatMin);
 			
 			hatMod = Math.pow(hatMod, 3);
+			
 		}
 		else{
 			bassMod = 0;
@@ -492,7 +493,10 @@ function music(app){
 	// frequencyBinCount tells you how many values you'll receive from the analyser
 	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 	
-//	analyser.fftSize = 256;
+	if(mobile){
+		//analyser.fftSize = 256;
+	}
+	
 	analyser.smoothingTimeConstant = .5;
 
 	this.play = function(){
@@ -532,14 +536,20 @@ function engine(app){
 	
 	var i = 1;
 	var acc = 0;
-	
+	var average = [];
 	function animate(time){
 		requestAnimationFrame(animate);
 
 		time = isNaN(time) ? 0 : time;
 		acc += time - prev;
-
-		if(acc > 33.3){
+		/*
+		average.push(acc);
+		while(average.length > 20){
+			average.shift();
+		}
+		console.log(average.reduce((a,b)=>a+b)/average.length);
+		*/
+//		if(acc > 33.3){
 			var freqs;
 			if(!app._music.isPaused()){
 				freqs = app._music.getFrequencies();
@@ -550,7 +560,7 @@ function engine(app){
 			}
 			app._splash.tick(freqs);
 			acc = 0;
-		}
+//		}
 
 		prev = time;
 	}
