@@ -537,6 +537,8 @@ function engine(app){
 	var i = 1;
 	var acc = 0;
 	var average = [];
+	var limiter = mobile ? 16.6 : 33.3;
+	
 	function animate(time){
 		requestAnimationFrame(animate);
 
@@ -549,7 +551,7 @@ function engine(app){
 		}
 		console.log(average.reduce((a,b)=>a+b)/average.length);
 		*/
-//		if(acc > 33.3){
+		if(acc > limiter){
 			var freqs;
 			if(!app._music.isPaused()){
 				freqs = app._music.getFrequencies();
@@ -560,7 +562,7 @@ function engine(app){
 			}
 			app._splash.tick(freqs);
 			acc = 0;
-//		}
+		}
 
 		prev = time;
 	}
