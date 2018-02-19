@@ -8,6 +8,8 @@ $purple: rgba(128, 0, 128, 1);
 $darkerblue: rgba(200, 225, 235, 1);
 $darkerpurple: rgba(100, 0, 100, 1);
 
+$darkestpurple: rgba(75, 0, 75, 1);
+
 $lighterpurple: rgba(140, 0, 140, 1);
 
 body{
@@ -99,6 +101,7 @@ body{
 	.splash_text-down{
 		stroke-width: 0px;
 	}
+	
 	/*
 	.linkicon{
 		width: 5vh;
@@ -130,18 +133,25 @@ body{
 #buffer{
 	position: relative;
 	width: 100%;
-	height: 15%;
 
 	min-height: 130px;
 	
-	display: flex;
-	justify-content: center;
+	padding-top: 20px;
+	padding-bottom: 50px;
 	
-	@include myboxshadow;
+	display: block;
+	justify-content: center;
 	
 	background-color: $darkerpurple;
 	
 	z-index: 1;
+}
+
+#controls-title{
+	margin: 10px 0;
+
+	text-align: center;
+	color: $blue;
 }
 
 #controls{
@@ -174,6 +184,61 @@ body{
 	background-color: $lighterpurple;
 }
 
+
+
+
+
+
+
+
+
+
+
+#buffer2{
+	position: relative;
+	width: 100%;
+	height: 15%;
+	
+	background-color: $darkestpurple;
+}
+
+#buffer3{
+	position: relative;
+	width: 100%;
+
+	min-height: 130px;
+	
+	display: flex;
+	justify-content: center;
+	
+	background-color: $darkerpurple;
+	
+	z-index: 1;
+}
+
+#buffer3-text{
+
+	margin: 30vh 0;
+
+	text-align: center;
+
+	font-size: 3vw;
+	font-family: "Raleway";
+	color: $blue;
+}
+
+@media (max-aspect-ratio: 1/1) {
+	#buffer3-text{
+		font-size: 4vh;
+	}
+}
+
+#buffer4{
+	@extend #buffer2;
+	
+	@include myboxshadow;
+	z-index: 1;
+}
 
 
 
