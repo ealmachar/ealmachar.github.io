@@ -2,6 +2,10 @@
 	box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.05);
 }
 
+@mixin bufferboxshadow{
+	box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.2), 0px 0px 32px 2px rgba(0, 0, 0, 0.05);
+}
+
 $blue: rgba(220, 245, 255, 1);
 $purple: rgba(128, 0, 128, 1);
 
@@ -136,15 +140,27 @@ body{
 
 	min-height: 130px;
 	
-	padding-top: 20px;
-	padding-bottom: 50px;
+	padding-top: 8vh;
+	padding-bottom: 10vh;
 	
-	display: block;
+	display: flex;
 	justify-content: center;
 	
 	background-color: $darkerpurple;
 	
 	z-index: 1;
+}
+
+#controls-background{
+	position: relative;
+	display: inline-block;
+	justify-content: center;
+	
+	padding: 30px;
+	
+	background-color: $darkestpurple;
+	
+	@include bufferboxshadow;
 }
 
 #controls-title{
@@ -157,7 +173,6 @@ body{
 #controls{
 	position: relative;
 	display: flex;
-	height: 100%;
 	
 	justify-content: center;
 	align-items: center;
@@ -200,6 +215,9 @@ body{
 	height: 15%;
 	
 	background-color: $darkestpurple;
+	
+	@include bufferboxshadow;
+	z-index: 1;
 }
 
 #buffer3{
@@ -212,8 +230,7 @@ body{
 	justify-content: center;
 	
 	background-color: $darkerpurple;
-	
-	z-index: 1;
+
 }
 
 #buffer3-text{
@@ -236,8 +253,7 @@ body{
 #buffer4{
 	@extend #buffer2;
 	
-	@include myboxshadow;
-	z-index: 1;
+	
 }
 
 
