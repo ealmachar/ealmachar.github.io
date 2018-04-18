@@ -13,10 +13,14 @@ const app = new (class {
 			viz: null,
 			attr: {
 				backgroundColor: '#8D8741',
-				unselectColorDest: '#36A9EB',
+				unselectColorDest: '#20948b',
+				unselectColorSrc: '#5d535e',
+				selectColor: '#de7a22',
+				childselectColor: '#f4cc70'
+				/*unselectColorDest: '#36A9EB',
 				unselectColorSrc: '#6470BD',
 				selectColor: '#70C1B3',
-				childselectColor: '#DAAD86',
+				childselectColor: '#DAAD86'*/
 			}
 		},{
 			url: 'time.json',
@@ -143,11 +147,15 @@ function trafficbytesViz(viz, data){
 			var childIPs;
 			let d = data.colorKey[col].d3obj;
 
-			context.fillStyle = select ? viz.attr.selectColor : ( data.colorKey[col].type == "src" ? viz.attr.unselectColorSrc : viz.attr.unselectColorDest );
+			context.fillStyle = select ?
+				( data.colorKey[col].type == "src" ? viz.attr.selectColor : viz.attr.childselectColor ) :
+				( data.colorKey[col].type == "src" ? viz.attr.unselectColorSrc : viz.attr.unselectColorDest );
 
 			context.fillRect(d.x0, d.y0, d.x1 - d.x0, d.y1 - d.y0);
 
-			context.fillStyle = select ? viz.attr.childselectColor : ( data.colorKey[col].type == "src" ? viz.attr.unselectColorDest : viz.attr.unselectColorSrc );
+			context.fillStyle = select ?
+				( data.colorKey[col].type == "src" ? viz.attr.childselectColor : viz.attr.selectColor ) :
+				( data.colorKey[col].type == "src" ? viz.attr.unselectColorDest : viz.attr.unselectColorSrc );
 
 			if(data.colorKey[col].destIPs)
 				childIPs = data.colorKey[col].destIPs;
@@ -163,6 +171,8 @@ function trafficbytesViz(viz, data){
 		}
 		
 		function updateTooltip(col, x, y, same){
+			var buffer = 10;
+			
 			if(!same) {
 				let d = data.colorKey[col];
 				if(!d) {
@@ -171,17 +181,13 @@ function trafficbytesViz(viz, data){
 				}
 
 				tooltip.select('#tbtooltip-ipname').text(d.name);
-				tooltip.select('#tbtooltip-type').text(d.type);
+				tooltip.select('#tbtooltip-type').text( ( d.type == "src" ? "source" : "destination" ) );
 				tooltip.select('#tbtooltip-value').text(d3.format(".5s")(d.value));
 			}
 			
-			if(x > width/2){
-				x -= $(tooltip.node()).outerWidth();
-			}
-			
-			if(y > height/2){
-				y -= $(tooltip.node()).outerHeight();
-			}
+
+			x -= x > width/2 ? ( $(tooltip.node()).outerWidth() + buffer ) : -buffer;
+			y -= y > height/2 ? ( $(tooltip.node()).outerHeight() + buffer ) : -buffer
 			
 			tooltip.style('display', 'initial')
 				.style('transform', 'translate(' + x + 'px, ' + y+'px)');
@@ -199,7 +205,7 @@ function trafficbytesViz(viz, data){
 			ref.style('display', 'block');
 			
 			ref.select('#tbtooltip-ripname').text(d.name);
-			ref.select('#tbtooltip-rtype').text(d.type);
+			ref.select('#tbtooltip-rtype').text( ( d.type == "src" ? "source" : "destination" ) );
 			ref.select('#tbtooltip-rvalue').text(d3.format(".5s")(d.value));
 		}
 		
@@ -215,8 +221,10 @@ function trafficbytesViz(viz, data){
 		
 		function mouseleave(){
 			tooltip.style('display', 'none');
-			color(currentColor, false);
-			currentColor = null;
+			if(freestate){
+				color(currentColor, false);
+				currentColor = null;
+			}
 		}
 		
 		function rightclick(d, i) {
@@ -374,11 +382,8 @@ function timeBarViz(viz){
 			}
 		}
 
-		var t = d3.transition()
-			.duration(2000);
-		
 		serie.selectAll("rect")
-			.transition(d3.easeCubic(t))
+			.transition(d3.transition())
 			.attr("y", function(d, i) { return (index == null ? 0 : offsets[i]) + y(d[1]); })
 			
 		refbar
