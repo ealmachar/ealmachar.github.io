@@ -13,7 +13,8 @@ const app = new (class {
 			viz: null,
 			attr: {
 				backgroundColor: '#8D8741',
-				unselectColor: '#659DBD',
+				unselectColorDest: '#36A9EB',
+				unselectColorSrc: '#6470BD',
 				selectColor: '#70C1B3',
 				childselectColor: '#DAAD86',
 			}
@@ -106,7 +107,7 @@ function trafficbytesViz(viz, data){
 		root.forEach(function(d){
 			data.colorKey[d.data.colorCode].d3obj = d;
 			
-			context.fillStyle = viz.attr.unselectColor;
+			context.fillStyle = d.data.type == "src" ? viz.attr.unselectColorSrc : viz.attr.unselectColorDest;
 			hcontext.fillStyle = 'rgb(' + d.data.colorCode + ')';
 			
 			context.fillRect(d.x0, d.y0, d.x1 - d.x0, d.y1 - d.y0);
@@ -135,23 +136,24 @@ function trafficbytesViz(viz, data){
 
 			currentColor = col;
 		}
-		
+
 		function color(col, select){
 			if(!data.colorKey[col]) return;
-			
+
 			var childIPs;
 			let d = data.colorKey[col].d3obj;
 
-			context.fillStyle = select ? viz.attr.selectColor : viz.attr.unselectColor;
+			context.fillStyle = select ? viz.attr.selectColor : ( data.colorKey[col].type == "src" ? viz.attr.unselectColorSrc : viz.attr.unselectColorDest );
 
 			context.fillRect(d.x0, d.y0, d.x1 - d.x0, d.y1 - d.y0);
 
-			context.fillStyle = select ? viz.attr.childselectColor : viz.attr.unselectColor;
+			context.fillStyle = select ? viz.attr.childselectColor : ( data.colorKey[col].type == "src" ? viz.attr.unselectColorDest : viz.attr.unselectColorSrc );
 
 			if(data.colorKey[col].destIPs)
 				childIPs = data.colorKey[col].destIPs;
 			else
 				childIPs = data.colorKey[col].srcIPs;
+
 			for(let child in childIPs){
 				let childColor = childIPs[child].colorCode;
 				
@@ -213,6 +215,8 @@ function trafficbytesViz(viz, data){
 		
 		function mouseleave(){
 			tooltip.style('display', 'none');
+			color(currentColor, false);
+			currentColor = null;
 		}
 		
 		function rightclick(d, i) {
