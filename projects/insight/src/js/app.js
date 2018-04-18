@@ -13,14 +13,14 @@ const app = new (class {
 			viz: null,
 			attr: {
 				backgroundColor: '#8D8741',
-				unselectColorDest: '#20948b',
+				/*unselectColorDest: '#20948b',
 				unselectColorSrc: '#5d535e',
 				selectColor: '#de7a22',
-				childselectColor: '#f4cc70'
-				/*unselectColorDest: '#36A9EB',
+				childselectColor: '#f4cc70'*/
+				unselectColorDest: '#36A9EB',
 				unselectColorSrc: '#6470BD',
 				selectColor: '#70C1B3',
-				childselectColor: '#DAAD86'*/
+				childselectColor: '#DAAD86'
 			}
 		},{
 			url: 'time.json',
