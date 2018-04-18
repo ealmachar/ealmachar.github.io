@@ -1,0 +1,65 @@
+
+body{
+	margin: 0;
+}
+
+#container{
+	position: absolute;
+	
+	width: 100%;
+	height: 100%;
+}
+
+#tabs{
+	position: absolute;
+
+	height: 40px;
+	width: 100%;
+}
+
+.viz{
+	position: relative;
+	
+	margin: 0 0 50px 0;
+	
+	width: 100%;
+	height: 100%;
+}
+
+._canvas{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#traffic_bytes{
+
+}
+
+#time{
+	display: flex;
+	height: 50%;
+}
+
+.time-subviz{
+	width: 50%;
+	height: 100%;
+}
+
+.tooltip{
+	position: absolute;
+	
+	display: none;
+	
+	padding: 20px;
+	background-color: white;
+	
+	pointer-events: none;
+	
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1), 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+#tbtooltip-reference{
+	display: none;
+	margin-bottom: 20px;
+}

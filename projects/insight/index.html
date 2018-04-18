@@ -1,0 +1,45 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="src/css/styles.css"></link>
+<head>
+<body>
+
+<div id="container">
+	<div id="traffic_bytes" class="viz"></div>
+	<div id="time" class="viz"></div>
+	<div id="followed" class="viz"></div>
+</div>
+
+<div id="tbtooltip" class="tooltip">
+	<div id="tbtooltip-reference">
+		<div>Reference IP: <span id="tbtooltip-ripname"></span></div>
+		<div>Type: <span id="tbtooltip-rtype"></span></div>
+		<div>Bytes: <span id="tbtooltip-rvalue"></span></div>
+	</div>
+	<div>IP: <span id="tbtooltip-ipname"></span></div>
+	<div>Type: <span id="tbtooltip-type"></span></div>
+	<div>Bytes: <span id="tbtooltip-value"></span></div>
+</div>
+
+<div id="ftooltip" class="tooltip">
+	<div>Action: <span id="ftooltip-action"></span></div>
+	<div>User: <span id="ftooltip-user"></span></div>
+	<div>Time: <span id="ftooltip-time"></span></div>
+	<div>Count: <span id="ftooltip-count"></span></div>
+</div>
+
+<div id="fpietooltip" class="tooltip">
+	<div>User: <span id="fpietooltip-user"></span></div>
+	<div>Success: <span id="fpietooltip-success"></span></div>
+	<div>Failure: <span id="fpietooltip-failure"></span></div>
+	<div>Ratio: <span id="fpietooltip-ratio"></span></div>
+</div>
+
+</body>
+
+	<script type="text/javascript" src="src/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="src/js/d3.min.js"></script>
+
+	<script type="text/javascript" src="src/js/app.js"></script>
+
+<html>
