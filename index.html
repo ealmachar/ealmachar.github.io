@@ -1,79 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Edson's Website!</title>
-	<link type="text/css" rel="stylesheet" href="src/css/styles.css"></link>
-	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik+Mono+One" rel="stylesheet">-->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Six+Caps|Raleway" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<html>
 
+<head>
+	
+	<script src="src_old2/js/jquery.js"></script>
+	<script src="src_old2/js/ScrollMagic.js"></script>
+	<script src="src_old2/js/TweenMax.min.js"></script>
+	<script src="src_old2/js/animation.gsap.js"></script>
+	<script src="src_old2/js/debug.addIndicators.js"></script>
+	
+	
+	<link rel="stylesheet" href="src_old2/css/styles.css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Raleway" rel="stylesheet">
 </head>
 
 <body>
-	
-	<div id="splash">
-		<a id="githublink" href="https://github.com/ealmachar" target="_blank"></a>
-		<a id="linkedinlink" href="https://www.linkedin.com/in/edson-almachar-6875078b" target="_blank"></a>
-	</div>
-	<div id="buffer">
-		<div id="controls-background">
-			<div id="controls-title">
-				Controls for the splash above:
-			</div>
-			<div id="controls">
-				<div id="controls-play-button_container" class="controls-button" style="display: none;">
-					<i id="controls-play-button" class="material-icons controls-icons" style="font-size: 5vh;">play_arrow</i>
-				</div>
-				<div class="controls-button">
-					<i id="controls-volume-button" class="material-icons controls-icons" style="font-size: 5vh;">volume_off</i>
-				</div>
-				<div id="controls-options">
-					<label class="container">Wiggle
-						<input class="controls-options-checkbox" type="checkbox" value="wiggle" checked>
-						<span class="checkmark"></span>
-					</label>
-					<label class="container">Jump
-						<input class="controls-options-checkbox" type="checkbox" value="jump" checked>
-						<span class="checkmark"></span>
-					</label>
-					<label class="container">Stretch
-						<input class="controls-options-checkbox" type="checkbox" value="stretch" checked>
-						<span class="checkmark"></span>
-					</label>
-					
-				</div>
-			</div>
+<div id="division1">
+	<div id="d1parallax">
+		<div id="d1back">
 		</div>
 	</div>
-	<div id="buffer2"></div>
-	<div id="buffer3">
-		<div id="buffer3-text">
-			I'm a Web Developer!
-			<br>
-			Check out some fun stuff I made below.
+	<div id="aboutme">
+		<div id="aboutmesvg">
+			<svg id="wiregroup">
+				<path id="wire1" d=""></path>
+				<circle id="circle" r="5" cx="0" cy="0" fill="grey" />
+					<animateMotion 
+						   xlink:href="#circle"
+						   dur="120s"
+						   begin="0s"
+						   fill="freeze"
+						   repeatCount="indefinite">
+					<mpath xlink:href="#wire1" />
+					</animateMotion>
+				<path id="wire2" d=""></path>
+				<path id="wire3" d=""></path>
+			</svg>
+			<svg id="knob5">
+				<path id="spoke5" class="spoke" d="" ></path>
+				<circle id="circle5" />
+			</svg>
 		</div>
-	</div>
-	<div id="buffer4"></div>
-	<div id="mobilenote">
-		<div id="mobilenote-head">Mobile Detected</div>
-		<div id="mobilenote-body">Please keep in mind that the applications below were intended for browsers!</div>
-	</div>
-	<div id="projects"></div>
-	<div id="footer">
-		<div id="footer-1"></div>
-		<div id="footer-2"></div>
-		<div id="footer-3"></div>
-	</div>
-	<audio id="myAudio" src="src/audio/panda.mp3" loop></audio>
-</body>
-	<script type="text/javascript" src="src/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="src/js/d3.min.js"></script>
+		<div id="aboutmetext">
+			Hi, I'm Edson. I'm a Software Engineer with a passion for web. I love thinking about the future, and how we get there with what we have today. The concepts of Web 2.0 fascinate me, and I love experiencing its manifestation, so its great to see developers push the boundaries of the modern web browser and mold it into a fully functional web application.
+			<br><br>
+			I love clean UI's and figuring out how I can make some of my own. Tinkering with web tools, putting your ideas on the web browser; Its great seeing what web technology can do, and the depth of its potential. The more I learn, the more i'm aware of things there is to learn. There's always more to explore.
+		</div>
+		<div id="knobGroup1">
+			<svg id="knob1">
+				<path id="spoke1" class="spoke" d=""></path>
+				<circle id="circle1"/>
+			</svg>
 
-	<script type="text/javascript" src="src/js/colors.js"></script>
-	<script type="text/javascript" src="src/js/index.js"></script>
+			<svg id="knob2">
+				<path id="spoke2" class="spoke" d=""></path>
+				<circle id="circle2"/>
+			</svg>
+		</div>
+		<div id="knobGroup2">
+			<svg id="knob3">
+				<path id="spoke3" class="spoke" d=""></path>
+				<circle id="circle3"/>
+			</svg>
+			<svg id="knob4">
+				<path id="spoke4" class="spoke" d=""></path>
+			</svg>
+		</div>
+	</div>
+</div>
+<div id="division2">
+	<div id="div2banner"></div>
+	<div id="div2banner2"></div>
+	<div id="div2title">Check out some things i've made</div>
+	<!-- <div class="project">	
+		<a href="http://ealmachar.github.io/projects/systemtopology/index.html" target="_blank">
+			<div class="projectTextContainer">
+				<div class="projectTitleBorder"></div>
+				<div class="projectText"><div>topological system mapper</div><p>SVG: D3js</p></div>
+			</div>
+			<div class="projectWireContainer">
+				<svg class="projectWires">
+					<path class="pwire1" d=""></path>
+					<path class="pwire2" d=""></path>
+					<path class="pwire3" d=""></path>
+					<path class="pwire4" d=""></path>
+				</svg>
+			</div>
+			<div id="image7" class="projectImage"></div>
+		</a>
+	</div>
+	<div class="project">
+		<a href="http://ealmachar.github.io/projects/solarsystem/index.html" target="_blank">
+			<div class="projectTextContainer">
+				<div class="projectTitleBorder"></div>
+				<div class="projectText"><div>n-body solarsystem simulation</div><p>WebGL: THREEjs<br>angularjs</p></div>
+			</div>
+			<div class="projectWireContainer">
+				<svg class="projectWires">
+					<path class="pwire1" d=""></path>
+					<path class="pwire2" d=""></path>
+					<path class="pwire3" d=""></path>
+					<path class="pwire4" d=""></path>
+				</svg>
+			</div>
+			<div id="image2" class="projectImage"></div>
+		</a>
+	</div>
+	<div class="project">	
+		<a href="http://ealmachar.github.io/projects/svg-site/index.html" target="_blank">
+			<div class="projectTextContainer">
+				<div class="projectTitleBorder"></div>
+				<div class="projectText"><div>radial svg menu</div><p>SVG</p></div>
+			</div>
+			<div class="projectWireContainer">
+				<svg class="projectWires">
+					<path class="pwire1" d=""></path>
+					<path class="pwire2" d=""></path>
+					<path class="pwire3" d=""></path>
+					<path class="pwire4" d=""></path>
+				</svg>
+			</div>
+			<div id="image1" class="projectImage"></div>
+		</a>
+	</div>
+	<div class="project">
+		<a href="http://ealmachar.github.io/projects/reports2/index.html" target="_blank">
+			<div class="projectTextContainer">
+				<div class="projectTitleBorder"></div>
+				<div class="projectText"><div>reports2</div><p>SVG: D3js</p></div>
+			</div>
+			<div class="projectWireContainer">
+				<svg class="projectWires">
+					<path class="pwire1" d=""></path>
+					<path class="pwire2" d=""></path>
+					<path class="pwire3" d=""></path>
+					<path class="pwire4" d=""></path>
+				</svg>
+			</div>
+			<div id="image5" class="projectImage"></div>
+		</a>
+	</div>
+	<div class="project">	
+		<a href="http://ealmachar.github.io/projects/linegraph3d/index.html" target="_blank">
+			<div class="projectTextContainer">
+				<div class="projectTitleBorder"></div>
+				<div class="projectText"><div>linegraph3d</div><p>WebGL: THREEjs</p></div>
+			</div>
+			<div class="projectWireContainer">
+				<svg class="projectWires">
+					<path class="pwire1" d=""></path>
+					<path class="pwire2" d=""></path>
+					<path class="pwire3" d=""></path>
+					<path class="pwire4" d=""></path>
+				</svg>
+			</div>
+			<div id="image6" class="projectImage"></div>
+		</a>
+	</div>
+	<div class="project">
+		<a href="http://ealmachar.github.io/projects/reports/reports.html" target="_blank">
+			<div class="projectTextContainer">
+				<div class="projectTitleBorder"></div>
+				<div class="projectText"><div>reports</div><p>SVG: D3js</p></div>
+			</div>
+			<div class="projectWireContainer">
+				<svg class="projectWires">
+					<path class="pwire1" d=""></path>
+					<path class="pwire2" d=""></path>
+					<path class="pwire3" d=""></path>
+					<path class="pwire4" d=""></path>
+				</svg>
+			</div>
+			<div id="image3" class="projectImage"></div>
+		</a>
+	</div>
+	<div class="project">
+		<a href="http://ealmachar.github.io/projects/pattern/index.html" target="_blank">
+			<div class="projectTextContainer">
+				<div class="projectTitleBorder"></div>
+				<div class="projectText"><div>pattern</div><p>Canvas</p></div>
+			</div>
+			<div class="projectWireContainer">
+				<svg class="projectWires">
+					<path class="pwire1" d=""></path>
+					<path class="pwire2" d=""></path>
+					<path class="pwire3" d=""></path>
+					<path class="pwire4" d=""></path>
+				</svg>
+			</div>
+			<div id="image4" class="projectImage"></div>
+		</a>
+	</div> -->
+</div>
+<div id="division3">
+	<div id="links">
+		<a href="https://github.com/ealmachar" target="_blank" title="GitHub">
+			<img src="src_old2/images/github.png" alt="github" height="90" width="90">
+		</a>
+		<a href="https://www.linkedin.com/in/edson-almachar-6875078b" target="_blank" title="LinkedIn">
+			<img src="src_old2/images/linkedin.png" alt="linkedin" height="90" width="90">
+		</a>
+	</div>
+	<div id="bottomBorder"></div>
+</div>
+</body>
+
+<script>
+	var data = [
+		{
+			title: 'Man made satellites',
+			des: ['SVG: D3js'],
+			link: 'http://ealmachar.github.io/projects/satellitevis-canvas/index.html',
+			image: '9.jpg'
+		},
+		{
+			title: 'Iris flower data set',
+			des: ['SVG: D3js'],
+			link: 'http://ealmachar.github.io/projects/flowervis/index.html',
+			image: '10.jpg'
+		},
+		{
+			title: 'Bay area bike station activity',
+			des: ['SVG: D3js'],
+			link: 'http://ealmachar.github.io/projects/datavis/index.html',
+			image: '8.jpg'
+		},
+		{
+			title: 'N-body solarsystem simulation',
+			des: ['WebGL: THREEjs'],
+			link: 'http://ealmachar.github.io/projects/solarsystem/index.html',
+			image: '2.jpg'
+		},
+		{
+			title: 'Topological system mapper',
+			des: ['SVG: D3js'],
+			link: 'http://ealmachar.github.io/projects/systemtopology/index.html',
+			image: '7.jpg'
+		},
+		{
+			title: 'Radial svg menu',
+			des: ['SVG'],
+			link: 'http://ealmachar.github.io/projects/svg-site/index.html',
+			image: '1.jpg'
+		},
+		{
+			title: 'Reports2',
+			des: ['SVG: D3js'],
+			link: 'http://ealmachar.github.io/projects/reports2/index.html',
+			image: '5.jpg'
+		},
+		{
+			title: 'Linegraph3d',
+			des: ['WebGL: THREEjs'],
+			link: 'http://ealmachar.github.io/projects/linegraph3d/index.html',
+			image: '6.jpg'
+		},
+		{
+			title: 'Reports',
+			des: ['SVG: D3js'],
+			link: 'http://ealmachar.github.io/projects/reports/reports.html',
+			image: '3.jpg'
+		},
+		{
+			title: 'Pattern',
+			des: ['Canvas'],
+			link: 'http://ealmachar.github.io/projects/pattern/index.html',
+			image: '4.jpg'
+		},
+	]
+
+	data.forEach(datapoint => {
+		let { title, des, link, image } = datapoint;
+
+		image = './src/images/' + image;
+
+		$('#division2')
+			.append(`
+			<div class="project">
+				<a href="${link}" target="_blank">
+					<div class="projectTextContainer">
+						<div class="projectTitleBorder"></div>
+						<div class="projectText"><div>${title}</div><p>${des[0]}</p></div>
+					</div>
+					<div class="projectWireContainer">
+						<svg class="projectWires">
+							<path class="pwire1" d=""></path>
+							<path class="pwire2" d=""></path>
+							<path class="pwire3" d=""></path>
+							<path class="pwire4" d=""></path>
+						</svg>
+					</div>
+					<div class="projectImage" style="background-image: url(${image});"></div>
+				</a>
+			</div>
+			`)
+	})
 	
-	<script type="text/javascript" src="src/js/react.min.js"></script>
-	<script type="text/javascript" src="src/js/react-dom.min.js"></script>
-	
-	<script type="text/javascript" src="src/js/myreact.js"></script>
+
+	// <div class="project">
+	// 	<a href="http://ealmachar.github.io/projects/pattern/index.html" target="_blank">
+	// 		<div class="projectTextContainer">
+	// 			<div class="projectTitleBorder"></div>
+	// 			<div class="projectText"><div>pattern</div><p>Canvas</p></div>
+	// 		</div>
+	// 		<div class="projectWireContainer">
+	// 			<svg class="projectWires">
+	// 				<path class="pwire1" d=""></path>
+	// 				<path class="pwire2" d=""></path>
+	// 				<path class="pwire3" d=""></path>
+	// 				<path class="pwire4" d=""></path>
+	// 			</svg>
+	// 		</div>
+	// 		<div id="image4" class="projectImage"></div>
+	// 	</a>
+	// </div>
+
+
+
+</script>
+
+<script src="src_old2/js/main.js"></script>
+
+<script>
+
+
+// Internet Explorer 6-11
+var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+// Edge 20+
+var isEdge = !isIE && !!window.StyleMedia;
+
+if(!isEdge){
+
+	// init controller
+	var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "300%"}});
+
+	// build scenes
+	new ScrollMagic.Scene({triggerElement: "#d1parallax"})
+					.setTween("#d1parallax > div", {y: "150%", ease: Linear.easeNone})
+					.addTo(controller);
+}
+else{
+	$('#d1parallax').css({'position': 'fixed', 'top': '0px'});
+}
+</script>
+
 </html>
